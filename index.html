@@ -161,27 +161,25 @@
 <li>Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Heroku上，是搭建博客的首选框架。</li>
 <li>这是我跟着<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Yb411a7ty?spm_id_from=333.999.0.0">b站程序羊的视频</a>记的笔记，作为自己对知识的巩固和跟大家的分享<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2></li>
 </ul>
-<ol>
-<li><p>下载<a target="_blank" rel="noopener" href="https://nodejs.org/">nodejs</a>,选择LTS那个选项即可，安装直接一直下一步就好（这一步会同时安装好nodejs和npm包管理器，可以在命令行通过-v命令看他们是否已经安装好了）<br><img src="https://img-blog.csdnimg.cn/05325740233d4e70b5b02d9eb9411570.png"></p>
-</li>
+<p> 1.下载<a target="_blank" rel="noopener" href="https://nodejs.org/">nodejs</a>,选择LTS那个选项即可，安装直接一直下一步就好（这一步会同时安装好nodejs和npm包管理器，可以在命令行通过-v命令看他们是否已经安装好了）<br> <img src="https://img-blog.csdnimg.cn/05325740233d4e70b5b02d9eb9411570.png"></p>
+<ol start="2">
 <li><p>安装hexo博客框架</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p>如果不能科学上网，npm直接下载会比较慢，那么可以用cnpm配国内的源来下载<br>2.1  先下载cnpm</p>
+<p>如果不能科学上网，npm直接下载会比较慢，那么可以用cnpm配国内的源来下载</p>
+<p>2.1  先下载cnpm</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+
 <p>2.2  用cnpm来下载hexo(-g表示全局安装)</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
 
 <p>   2.3 查看hexo是否安装成功</p>
-   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
-<h2 id="开始搭建博客"><a href="#开始搭建博客" class="headerlink" title="开始搭建博客"></a>开始搭建博客</h2></li>
-<li><p>在想要的目录下新建一个空文件夹“myblog”,后续所有的东西都存在这个文件夹中</p>
-</li>
-<li><p>在这个目录下开始安装hexo博客框架，使用命令<code>hexo init</code><br><img src="https://img-blog.csdnimg.cn/ecad79e252f246da84bbc5d516e3ef65.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA7oSbIOWtnOaAqeWEv--9ng==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-</li>
-<li><p>启动博客，使用命令<code>hexo s</code><br><img src="https://img-blog.csdnimg.cn/24ea0429204745799e6ff11da5b43ada.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA7oSbIOWtnOaAqeWEv--9ng==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>到此为止，我们的博客已经搭建起来了，并且可以本地通过<code>http://localhost:4000/</code>这个网址去访问，效果如下：<br><img src="https://img-blog.csdnimg.cn/eb6994876dd248af87ed5966500bd74c.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA7oSbIOWtnOaAqeWEv--9ng==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>可以看到，hexo不仅为我们搭建好了博客的框架，还自动生成了第一篇博客，其中包括一些hexo的基础命令操作：</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo n <span class="string">&quot;my first blog&quot;</span>  //新建一篇博文【new】，新建之后可以打开这个文件进行编辑内容</span><br><span class="line">hexo s  // 本地启动hexo，可以进行预览效果【server】</span><br><span class="line">hexo g  // 监视文件更改，重新生成页面</span><br><span class="line">hexo d  // 将更改部署到远程</span><br></pre></td></tr></table></figure></li>
-<li><p>添加新的博文<br> &emsp; 可以直接在<code>...\myblog\source\_posts\</code>目录下直接添加新的markdown博文文档，也可以通过命令行来新建再添加内容<br> &emsp; 添加新博文之后需要进行更新操作：<code>hexo g</code>,<code>hexo s</code></p>
-</li>
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="开始搭建博客"><a href="#开始搭建博客" class="headerlink" title="开始搭建博客"></a>开始搭建博客</h2><ol>
+<li>在想要的目录下新建一个空文件夹“myblog”,后续所有的东西都存在这个文件夹中</li>
+<li>在这个目录下开始安装hexo博客框架，使用命令<code>hexo init</code><br><img src="https://img-blog.csdnimg.cn/ecad79e252f246da84bbc5d516e3ef65.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA7oSbIOWtnOaAqeWEv--9ng==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></li>
+<li>启动博客，使用命令<code>hexo s</code><br><img src="https://img-blog.csdnimg.cn/24ea0429204745799e6ff11da5b43ada.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA7oSbIOWtnOaAqeWEv--9ng==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>到此为止，我们的博客已经搭建起来了，并且可以本地通过<code>http://localhost:4000/</code>这个网址去访问，效果如下：<br><img src="https://img-blog.csdnimg.cn/eb6994876dd248af87ed5966500bd74c.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA7oSbIOWtnOaAqeWEv--9ng==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>可以看到，hexo不仅为我们搭建好了博客的框架，还自动生成了第一篇博客，其中包括一些hexo的基础命令操作： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo n <span class="string">&quot;my first blog&quot;</span>  //新建一篇博文【new】，新建之后可以打开这个文件进行编辑内容</span><br><span class="line">hexo s  // 本地启动hexo，可以进行预览效果【server】</span><br><span class="line">hexo g  // 监视文件更改，重新生成页面</span><br><span class="line">hexo d  // 将更改部署到远程</span><br></pre></td></tr></table></figure></li>
+<li>添加新的博文<br> &emsp; 可以直接在<code>...\myblog\source\_posts\</code>目录下直接添加新的markdown博文文档，也可以通过命令行来新建再添加内容<br> &emsp; 添加新博文之后需要进行更新操作：<code>hexo g</code>,<code>hexo s</code></li>
 </ol>
 <h2 id="把博客部署到github远端"><a href="#把博客部署到github远端" class="headerlink" title="把博客部署到github远端"></a>把博客部署到github远端</h2><ol>
 <li>先打开自己的github主页，选择新建仓库<br><img src="https://img-blog.csdnimg.cn/3c9d9e4adbd148d8a004f252fe85342c.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA7oSbIOWtnOaAqeWEv--9ng==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>仓库名写：自己的用户名.gihub.io(比如我的用户名是Liuqianyik,那么我的仓库名叫Liuqianyik.github.io)<br>描述可以随便写，比如：我的hexo仓库<br>然后直接下拉点击创建仓库即可</li>
