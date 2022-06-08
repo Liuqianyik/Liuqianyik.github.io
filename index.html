@@ -152,6 +152,70 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-vue watch首次赋值就触发" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/06/08/vue%20watch%E9%A6%96%E6%AC%A1%E8%B5%8B%E5%80%BC%E5%B0%B1%E8%A7%A6%E5%8F%91/">vue首次赋值不触发watch</a>
+    </h1>
+  
+
+        
+        <a href="/2022/06/08/vue%20watch%E9%A6%96%E6%AC%A1%E8%B5%8B%E5%80%BC%E5%B0%B1%E8%A7%A6%E5%8F%91/" class="archive-article-date">
+  	<time datetime="2022-06-08T06:54:22.800Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>通过watch监听的数据，当字段被第一次赋值时是不会执行监听函数的。只有值再次发生改变才会执行监听。</p>
+<h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Liu_yunzhao/article/details/95395427">vue首次赋值不触发watch及watch和computed的区别</a><br>在选项参数中指定 immediate: true 将立即以表达式的当前值触发回调<br>也就是说immediate值为true，则首次赋值时就执行handler函数，immediate值为false，则首次赋值时就不执行handler函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">watch: &#123;</span><br><span class="line">    name: &#123;</span><br><span class="line">        handler(newValue, oldValue) &#123;&#125;,</span><br><span class="line">        immediate: true,</span><br><span class="line">    &#125;,</span><br><span class="line">    age: &#123;</span><br><span class="line">        handler(newValue, oldValue) &#123;&#125;,</span><br><span class="line">        immediate: true,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/06/08/vue%20watch%E9%A6%96%E6%AC%A1%E8%B5%8B%E5%80%BC%E5%B0%B1%E8%A7%A6%E5%8F%91/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-vuex-getter用法归纳" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -173,17 +237,17 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>参考<a target="_blank" rel="noopener" href="https://vuex.vuejs.org/zh/guide/getters.html">Vuex Getter</a></p>
-<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>getter可以理解为store中的计算属性，当我们要在多个组件中用到state中的派生状态时，比如：</p>
+<h3 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h3><p>getter可以理解为store中的计算属性，当我们要在多个组件中用到state中的派生状态时，比如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">  <span class="function"><span class="title">doneTodosCount</span></span> () &#123;</span><br><span class="line">    <span class="built_in">return</span> this.<span class="variable">$store</span>.state.todos.filter(todo =&gt; todo.done).length</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>像这样在多个函数中复制这个函数是不太现实的，因此我们可以将这样的函数写在vuex-getter中，每次在组件中直接调用getter即可</p>
-<h3 id="getter写法"><a href="#getter写法" class="headerlink" title="getter写法"></a>getter写法</h3><ol>
+<h3 id="二、getter写法"><a href="#二、getter写法" class="headerlink" title="二、getter写法"></a>二、getter写法</h3><ol>
 <li>通过属性访问，作为 Vue 的响应式系统的一部分缓存其中<ol>
 <li>Getter 接受 state 作为其第一个参数：  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">const store = createStore(&#123;</span><br><span class="line">state: &#123;</span><br><span class="line">    todos: [</span><br><span class="line">    &#123; id: 1, text: &#x27;...&#x27;, done: true &#125;,</span><br><span class="line">    &#123; id: 2, text: &#x27;...&#x27;, done: false &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;,</span><br><span class="line">getters: &#123;</span><br><span class="line">    doneTodos (state) &#123;</span><br><span class="line">    return state.todos.filter(todo =&gt; todo.done)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
 <li>Getter 也可以接受其他 getter 作为第二个参数：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">getters: &#123;</span><br><span class="line">// ...</span><br><span class="line">doneTodosCount (state, getters) &#123;</span><br><span class="line">    return getters.doneTodos.length</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 <li>通过方法访问，可以通过让 getter 返回一个函数，来实现给 getter 传参。在你 store 里的数组进行查询时非常有用。getter 在通过方法访问时，每次都会去进行调用，而不会缓存结果。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">getters: &#123;</span><br><span class="line">  // ...</span><br><span class="line">  getTodoById: (state) =&gt; (id) =&gt; &#123;</span><br><span class="line">    return state.todos.find(todo =&gt; todo.id === id)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="getter调用时写法"><a href="#getter调用时写法" class="headerlink" title="getter调用时写法"></a>getter调用时写法</h3></li>
+<h3 id="三、getter调用时写法"><a href="#三、getter调用时写法" class="headerlink" title="三、getter调用时写法"></a>三、getter调用时写法</h3></li>
 <li>Getter 会暴露为 store.getters 对象，你可以以属性的形式访问这些值：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">store.getters.doneTodos // -&gt; [&#123; id: 1, text: &#x27;...&#x27;, done: true &#125;]</span><br></pre></td></tr></table></figure></li>
 <li>通过方法访问时需要传参，每次都会区进行调用，而不会缓存结果<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">store.getters.getTodoById(2) // -&gt; &#123; id: 2, text: &#x27;...&#x27;, done: false &#125;</span><br></pre></td></tr></table></figure></li>
 <li>与module结合<br>对于有命名空间的模块中的getter的访问方法如下：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">modules: &#123;</span><br><span class="line">  moduleA: &#123;</span><br><span class="line">    namespaced: true,</span><br><span class="line">    getters: &#123;</span><br><span class="line">      getterName: (state) =&gt; (param1, param2, ..) =&gt; &#123;</span><br><span class="line">        ...</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">$store.getters[&#x27;moduleA/getterName&#x27;](param1,param2)</span><br></pre></td></tr></table></figure></li>
