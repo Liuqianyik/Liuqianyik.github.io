@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022 | Lqy&#39;s Blog</title>
+  <title>vue-i18n插件用法 | Lqy&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Lqy&#39;s Blog">
-<meta property="og:url" content="http://example.com/archives/2022/index.html">
+  <meta name="description" content="vue-i18n是一个vue插件，可以让vue项目实现多语言，国际化。参考：  vue-i18n官方文档 segmentfault: 如何让一个vue项目支持多语言一、引入vue-i18n插件12345import Vue from &amp;#x27;vue&amp;#x27;import VueI18n from &amp;#x27;vue-i18n&amp;#x27;&#x2F;&#x2F; 通过全局方法使用插件Vue.use(VueI18n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue-i18n插件用法">
+<meta property="og:url" content="http://example.com/2022/07/10/vue-i18n%E7%94%A8%E6%B3%95/index.html">
 <meta property="og:site_name" content="Lqy&#39;s Blog">
+<meta property="og:description" content="vue-i18n是一个vue插件，可以让vue项目实现多语言，国际化。参考：  vue-i18n官方文档 segmentfault: 如何让一个vue项目支持多语言一、引入vue-i18n插件12345import Vue from &amp;#x27;vue&amp;#x27;import VueI18n from &amp;#x27;vue-i18n&amp;#x27;&#x2F;&#x2F; 通过全局方法使用插件Vue.use(VueI18n">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-07-10T08:06:21.329Z">
+<meta property="article:modified_time" content="2022-07-10T11:18:35.427Z">
 <meta property="article:author" content="Liu qianyi">
 <meta name="twitter:card" content="summary">
   
@@ -150,130 +154,217 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-vue-i18n用法" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      vue-i18n插件用法
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/07/10/vue-i18n%E7%94%A8%E6%B3%95/" class="archive-article-date">
+
+        
+        <a href="/2022/07/10/vue-i18n%E7%94%A8%E6%B3%95/" class="archive-article-date">
   	<time datetime="2022-07-10T08:06:21.329Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-10</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/07/10/vue-i18n%E7%94%A8%E6%B3%95/">vue-i18n插件用法</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>vue-i18n是一个vue插件，可以让vue项目实现多语言，国际化。参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://kazupon.github.io/vue-i18n/started.html">vue-i18n官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000015008808">segmentfault: 如何让一个vue项目支持多语言</a><h2 id="一、引入vue-i18n插件"><a href="#一、引入vue-i18n插件" class="headerlink" title="一、引入vue-i18n插件"></a>一、引入vue-i18n插件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#x27;vue&#x27;</span><br><span class="line">import VueI18n from &#x27;vue-i18n&#x27;</span><br><span class="line"></span><br><span class="line">// 通过全局方法使用插件</span><br><span class="line">Vue.use(VueI18n)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="二、vue-i18n的最简单的使用模板"><a href="#二、vue-i18n的最简单的使用模板" class="headerlink" title="二、vue-i18n的最简单的使用模板"></a>二、vue-i18n的最简单的使用模板</h2><p>分为以下4个部分：</p>
+<ul>
+<li>message字典对象</li>
+<li>创建vue-i18n实例</li>
+<li>创建vue实例时将i18n作为option传递进去</li>
+<li>在vue组件中使用i18n<ul>
+<li>在组件的template中，调用$t()方法</li>
+<li>在组件的script中，调用this.$i18n.t()方法<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/*</span><br><span class="line">** JAVASCRIPT</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">// 定义一个包含多语言的对象字典</span><br><span class="line">const messages = &#123;</span><br><span class="line">en: &#123;</span><br><span class="line">    message: &#123;</span><br><span class="line">    hello: &#x27;hello world&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">ja: &#123;</span><br><span class="line">    message: &#123;</span><br><span class="line">    hello: &#x27;こんにちは、世界&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 创建 VueI18n 实例 with options</span><br><span class="line">const i18n = new VueI18n(&#123;</span><br><span class="line">locale: &#x27;ja&#x27;, // set locale 默认使用日语</span><br><span class="line">messages, // set locale messages 多语言字典</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 在实例化vue时，将i18n当作一个option传进去，之后就可以在vue组件中使用i18n了</span><br><span class="line">new Vue(&#123; i18n &#125;).$mount(&#x27;#app&#x27;)</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">** HTML</span><br><span class="line">*/</span><br><span class="line">// 在组件中使用i18n插件</span><br><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">&lt;p&gt;&#123;&#123; $t(&quot;message.hello&quot;) &#125;&#125;&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">// 输出为日语</span><br><span class="line">&lt;div id=&quot;#app&quot;&gt;</span><br><span class="line">&lt;p&gt;こんにちは、世界&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="三、在项目中使用i18n"><a href="#三、在项目中使用i18n" class="headerlink" title="三、在项目中使用i18n"></a>三、在项目中使用i18n</h2><p>  上节的messages是一个包含了多语言的的对象，它就像我们的字典。既然是字典，我希望它只有一本。所以我只会new VueI18n()一次，并将实例化得到的i18n对象作为唯一的字典。<br>  新建一个locales文件夹，存放所有跟多语言相关的代码。目前包含三个文件：</p>
+<ul>
+<li>index.js : 统一设置locales文件夹下的语言包</li>
+<li>en.json : 【英语】json形式的语言包，为了对照方便，我们必须保证语言包的内容是一一对应的</li>
+<li>zh.json : 【中文】</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">// index.js </span><br><span class="line"></span><br><span class="line">import Vue from &#x27;vue&#x27;</span><br><span class="line">import VueI18n from &#x27;vue-i18n&#x27;</span><br><span class="line"></span><br><span class="line">Vue.use(VueI18n)</span><br><span class="line"></span><br><span class="line">const DEFAULT_LANG = &#x27;zh&#x27;</span><br><span class="line">const LOCALE_KEY = &#x27;localeLanguage&#x27;</span><br><span class="line"></span><br><span class="line">// 配置多语言字典对象</span><br><span class="line">const locales = &#123;</span><br><span class="line">  zh: require(&#x27;./zh.json&#x27;),</span><br><span class="line">  en: require(&#x27;./en.json&#x27;),</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 创建i18n实例对象（配置默认语言和字典对象）</span><br><span class="line">const i18n = new VueI18n(&#123;</span><br><span class="line">  locale: DEFAULT_LANG,</span><br><span class="line">  messages: locales,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// setup方法可以用来切换语种</span><br><span class="line">// 将当前语种存到 localStorage中，保存用户的使用习惯</span><br><span class="line">// 给body添加语种相关的class，因为不同语言可能导致排版出现差异，我们需要适配</span><br><span class="line">// 将当前语种存到Vue的全局配置中，以便未来可能的使用。</span><br><span class="line">export const setup = lang =&gt; &#123;</span><br><span class="line">  if (lang === undefined) &#123;</span><br><span class="line">    lang = window.localStorage.getItem(LOCALE_KEY)</span><br><span class="line">    if (locales[lang] === undefined) &#123;</span><br><span class="line">      lang = DEFAULT_LANG</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  window.localStorage.setItem(LOCALE_KEY, lang)</span><br><span class="line"></span><br><span class="line">  Object.keys(locales).forEach(lang =&gt; &#123;</span><br><span class="line">    document.body.classList.remove(`lang-$&#123;lang&#125;`)</span><br><span class="line">  &#125;)</span><br><span class="line">  document.body.classList.add(`lang-$&#123;lang&#125;`)</span><br><span class="line">  document.body.setAttribute(&#x27;lang&#x27;, lang)</span><br><span class="line"></span><br><span class="line">  Vue.config.lang = lang</span><br><span class="line">  i18n.locale = lang</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setup()</span><br><span class="line">export default i18n</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<p>最后在main.js中引入这个index.js即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#x27;vue&#x27;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">import i18n from &#x27;@crm/locales&#x27;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  i18n,</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  render: h =&gt; h(App),</span><br><span class="line">&#125;).$mount(&#x27;#app&#x27;)</span><br></pre></td></tr></table></figure>
 
+<h2 id="四、-可能遇到的问题"><a href="#四、-可能遇到的问题" class="headerlink" title="四、 可能遇到的问题"></a>四、 可能遇到的问题</h2><h3 id="1-问题一：vue实例外的js代码中的文本怎么替换？"><a href="#1-问题一：vue实例外的js代码中的文本怎么替换？" class="headerlink" title="1. 问题一：vue实例外的js代码中的文本怎么替换？"></a>1. 问题一：vue实例外的js代码中的文本怎么替换？</h3><p>前面说到，vue实例中我们可以使用this.$i18n.t，这里的this是vue的实例。那项目中很多js代码在vue的实例之外，我们要怎么办？</p>
+<p>最简单的解决方法是这样的，我们的locales/index.js这个文件已经export了i18n这个对象，那我们只需要在每次要使用的时候手动将i18n导入进来就可以了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">import i18n from &#x27;@crm/locales&#x27;</span><br><span class="line"></span><br><span class="line">//const test = &quot;测试数据&quot;</span><br><span class="line">const test = i18n.t(&#x27;message.test&#x27;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>可是这样一来，我们之后做诸如上面的文本替换时，就得小心翼翼的区别是否在vue实例中。如果是，我们用this.$i18n.t，否则先import然后用i18n.t。这显然增加了复杂性！</p>
+<p>为了解决这个问题，只直接的解决办法就是将i18n挂到window下，变成全局变量。我们就不必再Import进来，同时只使用统一方法:i18n.t。</p>
+<p>我们在main.js中添加这行代码:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#x27;vue&#x27;</span><br><span class="line"></span><br><span class="line">import App from &#x27;./app.vue&#x27;</span><br><span class="line">import store from &#x27;./store&#x27;</span><br><span class="line">import router from &#x27;./router&#x27;</span><br><span class="line">...</span><br><span class="line">import i18n from &#x27;@crm/locales&#x27;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">window.i18n = i18n</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  i18n,</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  render: h =&gt; h(App),</span><br><span class="line">&#125;).$mount(&#x27;#app&#x27;)</span><br></pre></td></tr></table></figure>
+<p>然后我们兴高采烈的将组件中的import i18n全去掉，并将this.$i18n.t改为i18n.t。然后项目跑起来就报错了：i18n is not defined。</p>
+<p>问题出在哪里？显示是组件调用i18n的时候，i18n还没有挂载到window上，所以是执行顺序出了问题。我们先来看一下下面代码的执行顺序：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//假设webpack的入口文件是```main.js```</span><br><span class="line"> </span><br><span class="line">//main.js</span><br><span class="line">import moduleA from &#x27;moduleA&#x27;</span><br><span class="line">console.log(1)</span><br><span class="line"> </span><br><span class="line">import moduleB from &#x27;moduleB&#x27;</span><br><span class="line">console.log(2)</span><br><span class="line"> </span><br><span class="line">//moduleA.js</span><br><span class="line">console.log(3)</span><br><span class="line"> </span><br><span class="line">//moduleB.js</span><br><span class="line">console.log(4)</span><br><span class="line"></span><br><span class="line">//最终在浏览器中打印出的数字顺序是: </span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">1</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<p>为什么会这样呢？跟ES6 module的机制有关系。import命令具有提升效果，会提升到整个模块的头部，首先执行。这种行为的本质是，import命令是编译阶段执行的，在代码运行之前。</p>
+<p>这样我们就找出之前报错的原因了，我们先import了App, router这些视图，然后Import的i18n并挂载到window。所以组件的script中的代码会最先执行，而此时i18n并未开始。所以我们首先将window.i18n = i18n移到locales/index中，然后调整main.js中import的顺序:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//locales/index</span><br><span class="line">...</span><br><span class="line">setup()</span><br><span class="line">window.i18n = i18n</span><br><span class="line"></span><br><span class="line">export default i18n</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//main.js</span><br><span class="line">import Vue from &#x27;vue&#x27;</span><br><span class="line"></span><br><span class="line">import i18n from &#x27;@crm/locales&#x27;</span><br><span class="line">import App from &#x27;./app.vue&#x27;</span><br><span class="line">import store from &#x27;./store&#x27;</span><br><span class="line">import router from &#x27;./router&#x27;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-假如存在很多个new-Vue-怎么办？"><a href="#2-假如存在很多个new-Vue-怎么办？" class="headerlink" title="2. 假如存在很多个new Vue()怎么办？"></a>2. 假如存在很多个new Vue()怎么办？</h3><p>前面我们在main.js的new Vue({i18n, …})中将i18n作为option放了进去，但很快我发现这个项目并只有一个Vue的实例。全局搜索发现一共有70多个。</p>
+<p>项目中很的诸如弹窗之类的组件，都是直接自己实例化一个Vue然后自己$mount()到DOM中。这些组件在实例化的过程中并没有混入i18n选项，所以他们的template上自然找不到$t()方法。</p>
+<p>怎么办？难道给每一个new Vue()都手动添加i18n选项吗？肯定不行，首先我们要给添加70多次，其次如果未来又有人写了新的new Vue()忘了添加Ii8n，那又回导致报错。所以我们要想一个万全的法子。</p>
+<p>官方文档里找不到解决办法，看来我们得hack一下了。首先我们来查vue-i18n的源码，找到$t()方法是怎么工作的。</p>
+<p>全局搜索$t，找到定义它的地方：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Object.defineProperty(Vue.prototype, &#x27;$t&#x27;, &#123;</span><br><span class="line">  get: function get () &#123;</span><br><span class="line">    var this$1 = this;</span><br><span class="line"></span><br><span class="line">    return function (key) &#123;</span><br><span class="line">      var values = [], len = arguments.length - 1;</span><br><span class="line">      while ( len-- &gt; 0 ) values[ len ] = arguments[ len + 1 ];</span><br><span class="line"></span><br><span class="line">      var i18n = this$1.$i18n;</span><br><span class="line">      return i18n._t.apply(i18n, [ key, i18n.locale, i18n._getMessages(), this$1 ].concat( values ))</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>可以看到$t挂载在Vue.prototype上，每当我们在实例中调用$t时，其实我们是在调用this.$i18n对象上的_t方法。现在问题变成，实例上的$i18n是什么是时候定义的。</p>
+<p>全局搜索$i18n，我们找到了前面提到过的每个插件必须提供的install方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function install (_Vue) &#123;</span><br><span class="line">  Vue = _Vue;</span><br><span class="line">  </span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  Object.defineProperty(Vue.prototype, &#x27;$i18n&#x27;, &#123;</span><br><span class="line">    get: function get () &#123; return this._i18n &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  extend(Vue);</span><br><span class="line">  Vue.mixin(mixin);</span><br><span class="line">  Vue.directive(&#x27;t&#x27;, &#123; bind: bind, update: update &#125;);</span><br><span class="line">  Vue.component(component.name, component);</span><br><span class="line"></span><br><span class="line">  // use object-based merge strategy</span><br><span class="line">  var strats = Vue.config.optionMergeStrategies;</span><br><span class="line">  strats.i18n = strats.methods;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到$i18n一开始就被定义在了Vue.prototype上，每次调用的时候其实我们是在调用this._i18n，所以现在问题变成实例的_i18n在哪里。同时可以看到在Install中我们还混入了mixin, directive, component，这些在上面都有提过它的作用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var mixin = &#123;</span><br><span class="line">  beforeCreate: function beforeCreate () &#123;</span><br><span class="line">    var options = this.$options;</span><br><span class="line">    options.i18n = options.i18n || (options.__i18n ? &#123;&#125; : null);</span><br><span class="line"></span><br><span class="line">    if (options.i18n) &#123;</span><br><span class="line">      if (options.i18n instanceof VueI18n) &#123;</span><br><span class="line">        ...</span><br><span class="line">        this._i18n = options.i18n;</span><br></pre></td></tr></table></figure>
+<p>我们在mixin中找到了this._i18n的来源，前面提到mixin会被注入到组件中。在每个组件创建前，我们将this.$options的i18n给了this._i18n。</p>
+<p>这个this.$options是什么？它的使用方式是Vue.mixin(mixin)，所以我们看一下vue的文档:全局混入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 为自定义的选项 &#x27;myOption&#x27; 注入一个处理器。</span><br><span class="line">Vue.mixin(&#123;</span><br><span class="line">  created: function () &#123;</span><br><span class="line">    var myOption = this.$options.myOption</span><br><span class="line">    if (myOption) &#123;</span><br><span class="line">      console.log(myOption)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  myOption: &#x27;hello!&#x27;</span><br><span class="line">&#125;)</span><br><span class="line">// =&gt; &quot;hello!&quot;</span><br></pre></td></tr></table></figure>
+<p>所以this.$options就是我们new Vue时提供的选项对象。</p>
+<p>所以问题的根源就是除了main.js中的new Vue外，其余70多个new Vue我们没有混入i18n这个选项。怎样才可以让每次new Vue时自动将i18n混入选项呢？看上去我们只能修改Vue的源码了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function Vue (options) &#123;</span><br><span class="line">  if (process.env.NODE_ENV !== &#x27;production&#x27; &amp;&amp;</span><br><span class="line">    !(this instanceof Vue)</span><br><span class="line">  ) &#123;</span><br><span class="line">    warn(&#x27;Vue is a constructor and should be called with the `new` keyword&#x27;);</span><br><span class="line">  &#125;</span><br><span class="line">  this._init(options);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到每次Vue实例化时，会调用_init方法，这个方法从哪里来呢？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function initMixin (Vue) &#123;</span><br><span class="line">  Vue.prototype._init = function (options) &#123;</span><br><span class="line">    ...</span><br><span class="line">在Vue.prototype上，所以我们只需要修改Vue.prototype就好了。</span><br><span class="line"></span><br><span class="line">//locales/index</span><br><span class="line">const init = Vue.prototype._init</span><br><span class="line">Vue.prototype._init = function(options) &#123;</span><br><span class="line">  init.call(this, &#123;</span><br><span class="line">    i18n,</span><br><span class="line">    ...options,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样我们在任何时候new Vue()就自动添加了i18n选项，问题解决！</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/07/10/vue-i18n%E7%94%A8%E6%B3%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/07/04/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="archive-article-date">
-  	<time datetime="2022-07-04T14:23:13.580Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-04</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2022/07/04/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vue生命周期的概念及用法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/07/04/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">vue生命周期的概念及用法</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/06/08/vue%20watch%E9%A6%96%E6%AC%A1%E8%B5%8B%E5%80%BC%E5%B0%B1%E8%A7%A6%E5%8F%91/" class="archive-article-date">
-  	<time datetime="2022-06-08T06:54:22.800Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/06/08/vue%20watch%E9%A6%96%E6%AC%A1%E8%B5%8B%E5%80%BC%E5%B0%B1%E8%A7%A6%E5%8F%91/">vue首次赋值不触发watch</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/06/08/vuex-getter%E7%94%A8%E6%B3%95%E5%BD%92%E7%BA%B3/" class="archive-article-date">
-  	<time datetime="2022-06-08T00:44:30.025Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/06/08/vuex-getter%E7%94%A8%E6%B3%95%E5%BD%92%E7%BA%B3/">Vuex Getter 用法归纳(结合module)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -296,8 +387,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
