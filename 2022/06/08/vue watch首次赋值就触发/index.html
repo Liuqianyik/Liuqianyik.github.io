@@ -16,7 +16,7 @@
 <meta property="og:description" content="通过watch监听的数据，当字段被第一次赋值时是不会执行监听函数的。只有值再次发生改变才会执行监听。 解决方法：参考：vue首次赋值不触发watch及watch和computed的区别在选项参数中指定 immediate: true 将立即以表达式的当前值触发回调也就是说immediate值为true，则首次赋值时就执行handler函数，immediate值为false，则首次赋值时就不执行ha">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-06-08T06:54:22.800Z">
-<meta property="article:modified_time" content="2022-06-08T07:43:06.095Z">
+<meta property="article:modified_time" content="2022-07-11T15:15:44.408Z">
 <meta property="article:author" content="Liu qianyi">
 <meta name="twitter:card" content="summary">
   
@@ -176,7 +176,7 @@
       
         <p>通过watch监听的数据，当字段被第一次赋值时是不会执行监听函数的。只有值再次发生改变才会执行监听。</p>
 <h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Liu_yunzhao/article/details/95395427">vue首次赋值不触发watch及watch和computed的区别</a><br>在选项参数中指定 immediate: true 将立即以表达式的当前值触发回调<br>也就是说immediate值为true，则首次赋值时就执行handler函数，immediate值为false，则首次赋值时就不执行handler函数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">watch: &#123;</span><br><span class="line">    name: &#123;</span><br><span class="line">        handler(newValue, oldValue) &#123;&#125;,</span><br><span class="line">        immediate: true,</span><br><span class="line">    &#125;,</span><br><span class="line">    age: &#123;</span><br><span class="line">        handler(newValue, oldValue) &#123;&#125;,</span><br><span class="line">        immediate: true,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">watch: &#123;</span><br><span class="line">    <span class="attr">name</span>: &#123;</span><br><span class="line">        <span class="function"><span class="title">handler</span>(<span class="params">newValue, oldValue</span>)</span> &#123;&#125;,</span><br><span class="line">        <span class="attr">immediate</span>: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">age</span>: &#123;</span><br><span class="line">        <span class="function"><span class="title">handler</span>(<span class="params">newValue, oldValue</span>)</span> &#123;&#125;,</span><br><span class="line">        <span class="attr">immediate</span>: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
 
       
