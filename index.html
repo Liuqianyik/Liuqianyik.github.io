@@ -152,6 +152,86 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-js,html,css注释方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/07/13/js,html,css%E6%B3%A8%E9%87%8A%E6%96%B9%E5%BC%8F/">js,html,css注释方式</a>
+    </h1>
+  
+
+        
+        <a href="/2022/07/13/js,html,css%E6%B3%A8%E9%87%8A%E6%96%B9%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2022-07-13T10:43:28.050Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>为了是代码更规范，增加代码的可读性，我们在写代码的时候一定要注意注释的添加，那相应的注释格式也有所不同。</p>
+<h2 id="一、js中的注释"><a href="#一、js中的注释" class="headerlink" title="一、js中的注释"></a>一、js中的注释</h2><p>分为三种：单行注释、多行注释、方法注释</p>
+<h3 id="1-单行注释"><a href="#1-单行注释" class="headerlink" title="1. 单行注释"></a>1. 单行注释</h3><ul>
+<li>最常见的”//“,在程序间随处可见,只能注释单行</li>
+<li>比较重要，高亮颜色需要最醒目<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这是一行注释，只能注释单行。</span></span><br><span class="line"><span class="comment">// 另一行注释</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-多行注释multi-line-comment"><a href="#2-多行注释multi-line-comment" class="headerlink" title="2. 多行注释multi-line comment"></a>2. 多行注释multi-line comment</h3></li>
+<li>多行注释以 /* 开始，以 */ 结尾</li>
+<li>一般js文件开头，介绍作者，函数等信息</li>
+<li>一般不太重要，高亮颜色设为不影响阅读代码的灰色即可<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">author:xxx</span></span><br><span class="line"><span class="comment">day:2008-08-10</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-方法注释function-annotation"><a href="#3-方法注释function-annotation" class="headerlink" title="3. 方法注释function annotation"></a>3. 方法注释function annotation</h3></li>
+<li>在方法之前定义，描述这个函数的功能，参数，编写者等信息</li>
+<li>注释颜色醒目程度介于1，2之间<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@name <span class="variable">hash</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description </span>Random hashing algorithm I found on Stack Overflow.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string&#125;</span> </span>str </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;boolean&#125;</span> </span>asString </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>seed </span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns <span class="type">&#123;string&#125;</span> <span class="variable">hash</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hash</span>(<span class="params">str, asString, seed</span>) </span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二、html中的注释"><a href="#二、html中的注释" class="headerlink" title="二、html中的注释"></a>二、html中的注释</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 这是一个注释，注释在浏览器中不会显示 --&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="三、css中的注释"><a href="#三、css中的注释" class="headerlink" title="三、css中的注释"></a>三、css中的注释</h2></li>
+<li>可以写在样式表中任意允许空格的位置。</li>
+<li>可以写成一行，也可以写成多行。</li>
+<li>/* */ 风格的注释语法可以用作单行注释，也可以用作多行注释<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 下面的注释用于禁用特定的样式 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">span &#123;</span></span><br><span class="line"><span class="comment">  color: blue;</span></span><br><span class="line"><span class="comment">  font-size: 1.5em;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">span</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">  <span class="comment">/* font-size: 1.5em; */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/13/js,html,css%E6%B3%A8%E9%87%8A%E6%96%B9%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-js回调函数相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -265,6 +345,7 @@
 <li>Formal Parameter 形式参数（Argument 和 Parameter 两个词在很多文献中均翻译为参数）</li>
 <li>higher-order function <a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017328655674400">高阶函数：函数名本身就是一个指向函数的变量</a> </li>
 <li>invoke 调用</li>
+<li>align 对齐</li>
 </ul>
 <h2 id="二、vue相关"><a href="#二、vue相关" class="headerlink" title="二、vue相关"></a>二、vue相关</h2><ol>
 <li>vue.use()是vue使用插件的固定语句</li>
@@ -279,9 +360,11 @@
 </ul>
 </li>
 </ol>
-<h2 id="四、js相关"><a href="#四、js相关" class="headerlink" title="四、js相关"></a>四、js相关</h2><ol>
-<li>没有异常回调函数的时候可以用try-catch</li>
-</ol>
+<h2 id="四、js相关"><a href="#四、js相关" class="headerlink" title="四、js相关"></a>四、js相关</h2><h4 id="1-没有异常回调函数的时候可以用try-catch"><a href="#1-没有异常回调函数的时候可以用try-catch" class="headerlink" title="1. 没有异常回调函数的时候可以用try-catch"></a>1. 没有异常回调函数的时候可以用try-catch</h4><h4 id="2-分号问题"><a href="#2-分号问题" class="headerlink" title="2. 分号问题"></a>2. 分号问题</h4><ul>
+<li>一行开头是括号或者方括号的时候加上分号就可以了，其他时候全部不需要。</li>
+<li>加与不加完全取决于个人意愿，不会影响程序的运行。</li>
+<li>分号的添加是可选的，“可以加分号但是大家都不加” 的语言就有：Go, Scala, Ruby, Python, Swift, Groovy…</li>
+</ul>
 
       
 
@@ -507,7 +590,7 @@
 <li>我们应该避免在这个钩子函数中去更改状态，因为刚更改结束<blockquote>
 <p>updated 不会保证所有的子组件也都被重新渲染完毕。如果你希望等待整个视图都渲染完毕，可以在 updated 内部使用 vm.$nextTick：</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">updated() &#123;</span><br><span class="line">  this.$nextTick(function () &#123;</span><br><span class="line">    // 仅在整个视图都被重新渲染完毕之后才会运行的代码</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">updated</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">  <span class="built_in">this</span>.$nextTick(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 仅在整个视图都被重新渲染完毕之后才会运行的代码</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>用法，目前我自己还没有用到，百度发现了一个博主在做的即时聊天项目，打开当前会话加载完消息后需要自动滚动到窗口最底部，这里用updated就很合适<br>参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44041976/article/details/107584572">vue updated生命周期的使用场景，可以做什么</a><h3 id="4-销毁阶段"><a href="#4-销毁阶段" class="headerlink" title="4. 销毁阶段"></a>4. 销毁阶段</h3></li>
 </ul>
 <p><strong>4.1 beforeDestroy(vue3中定义为beforeUnmount)</strong></p>
