@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022/7 | Lqy&#39;s Blog</title>
+  <title>sublime使用方法记录 | Lqy&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Lqy&#39;s Blog">
-<meta property="og:url" content="http://example.com/archives/2022/07/index.html">
+  <meta name="description" content="之前一直用的是vscode，现在因为导师要求和项目需要，改用sublime，记录一下从零到一的使用过程，留下一些使用技巧供自己以后回顾 一、下载安装直接去官网sublime下载，是免费的 二、配置 设置主题preferences &#x3D;&#x3D;&gt; select theme &#x3D;&#x3D;&gt; 选择自己想要的主题即可 安装package control菜单栏tools &#x3D;&#x3D;&gt; Install Pac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sublime使用方法记录">
+<meta property="og:url" content="http://example.com/2022/07/18/sublime%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="Lqy&#39;s Blog">
+<meta property="og:description" content="之前一直用的是vscode，现在因为导师要求和项目需要，改用sublime，记录一下从零到一的使用过程，留下一些使用技巧供自己以后回顾 一、下载安装直接去官网sublime下载，是免费的 二、配置 设置主题preferences &#x3D;&#x3D;&gt; select theme &#x3D;&#x3D;&gt; 选择自己想要的主题即可 安装package control菜单栏tools &#x3D;&#x3D;&gt; Install Pac">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-07-18T03:53:53.544Z">
+<meta property="article:modified_time" content="2022-07-19T05:07:35.998Z">
 <meta property="article:author" content="Liu qianyi">
 <meta name="twitter:card" content="summary">
   
@@ -150,184 +154,207 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-sublime使用方法记录" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      sublime使用方法记录
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/07/18/sublime%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E8%AE%B0%E5%BD%95/" class="archive-article-date">
+
+        
+        <a href="/2022/07/18/sublime%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E8%AE%B0%E5%BD%95/" class="archive-article-date">
   	<time datetime="2022-07-18T03:53:53.544Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-18</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/07/18/sublime%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E8%AE%B0%E5%BD%95/">sublime使用方法记录</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>  之前一直用的是vscode，现在因为导师要求和项目需要，改用sublime，记录一下从零到一的使用过程，留下一些使用技巧供自己以后回顾</p>
+<h2 id="一、下载安装"><a href="#一、下载安装" class="headerlink" title="一、下载安装"></a>一、下载安装</h2><p>直接去官网<a href="https://www.sublimetext.com/download_thanks?target=win-x64">sublime</a>下载，是免费的</p>
+<h2 id="二、配置"><a href="#二、配置" class="headerlink" title="二、配置"></a>二、配置</h2><ol>
+<li>设置主题<br>preferences ==&gt; select theme ==&gt; 选择自己想要的主题即可</li>
+<li>安装package control<br>菜单栏tools ==&gt; Install Package Control…</li>
+<li>安装插件  <ul>
+<li>打开package control快捷键：<code>Shift + Ctrl + P</code></li>
+<li>在搜索框中输入install，选择第一项“Package Control: Install Package”,点击之后等一会会出现package control的搜索框</li>
+<li>接下来就可以搜索需要的插件名进行下载了</li>
+<li><strong>注意：</strong> 每次下载插件都需要重复2，3步</li>
+</ul>
+</li>
+<li>Sublime Text 3偏好设置  <ul>
+<li>设置 tab 为2个空格  <ul>
+<li>Preferences =&gt; Setting =&gt; 在文件中如下添加两行代码设置<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;tab_size&quot;</span>: <span class="number">2</span>,</span><br><span class="line"><span class="string">&quot;translate_tabs_to_spaces&quot;</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>设置Sublime Text备注颜色  <ul>
+<li>通过Package Control: Install Package安装PackageResourceViewer  </li>
+<li>Ctrl+Shift+P 搜索选择 PackageResourceViewer: OpenResource  </li>
+<li>继续搜索选择 Color Scheme - Default  (可以选择你想要的color scheme)</li>
+<li>选择Monokai.sublime-color-scheme（monokai是我选择的color scheme，自己要用哪个colrscheme就改哪个）, rules中添加：<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;Comment&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scope&quot;</span>: <span class="string">&quot;comment&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;foreground&quot;</span>: <span class="string">&quot;#888888&quot;</span></span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;Comment Line&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scope&quot;</span>: <span class="string">&quot;comment.line&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;foreground&quot;</span>: <span class="string">&quot;#00fa9f&quot;</span></span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;Comment Block&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scope&quot;</span>: <span class="string">&quot;comment.block&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;foreground&quot;</span>: <span class="string">&quot;#666666&quot;</span></span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;Comment Block Document&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scope&quot;</span>: <span class="string">&quot;comment.block.documentation&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;foreground&quot;</span>: <span class="string">&quot;#00fa9f&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;background&quot;</span>: <span class="string">&quot;#3f3f3f&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;font_style&quot;</span>: <span class="string">&quot;italic&quot;</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、开发需要用到的插件"><a href="#三、开发需要用到的插件" class="headerlink" title="三、开发需要用到的插件"></a>三、开发需要用到的插件</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://packagecontrol.io/packages/Vue%20Syntax%20Highlight">Vue Syntax Hightlight</a>：vue代码高亮</li>
+<li><a target="_blank" rel="noopener" href="https://packagecontrol.io/packages/SublimeLinter">Sublimelinter</a>：代码检查框架插件，支持各种语言的检查，但其本身并没有代码检查的功能</li>
+<li><a target="_blank" rel="noopener" href="https://packagecontrol.io/packages/SublimeLinter-eslint">SublimeLinter-eslint</a>：在SublimeLinter插件的基础上，需要添加该插件Sublime​Linter-eslint，实现对 ESLint 语言检查支持</li>
+<li><a target="_blank" rel="noopener" href="https://packagecontrol.io/packages/Sass">Sass</a>：实现Scss和Sass语法高亮</li>
+<li><a href="">x</a>：高亮显示代码配色</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/randy3k/Terminus">Terminus</a>：调出终端</li>
+<li>终端快捷键配置：  <ul>
+<li>选择SublimeText3 -&gt; Preference -&gt; Key Bindings打开快捷键配置文件</li>
+<li>按如下方式配置快捷键配置文件：<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 选择ctrl+shift+T来进行Terminus终端的打开操作</span></span><br><span class="line">[</span><br><span class="line">   &#123; <span class="attr">&quot;keys&quot;</span>: [<span class="string">&quot;ctrl+shift+t&quot;</span>], <span class="attr">&quot;command&quot;</span>: <span class="string">&quot;toggle_terminus_panel&quot;</span> &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></li>
+<li><strong>注意：</strong> 自定义的快捷键可能和默认设置有重合，这时可能会不生效，在不生效的时候可以检查一下，如果真的有重合就换一个快捷键</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://www.php.cn/tool/sublime/457675.html">markdown相关</a>  <ul>
+<li>Markdown Preview</li>
+<li>Markdown Editing</li>
+<li>设置Markdown编辑高亮，打开Perferences &gt; Package Settings &gt; Markdown Preview &gt; Setting-User,输入以下代码，保存<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">&quot;font_size&quot;</span>: <span class="number">13</span>,    <span class="attr">&quot;ignored_packages&quot;</span>:</span><br><span class="line">  </span><br><span class="line">  [        <span class="string">&quot;Vintage&quot;</span></span><br><span class="line">  </span><br><span class="line">  ],</span><br><span class="line">  </span><br><span class="line">   </span><br><span class="line">  </span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment">      Enable or not mathjax support.</span></span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment">  */</span>    <span class="attr">&quot;enable_mathjax&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  </span><br><span class="line">   </span><br><span class="line">  </span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment">      Enable or not highlight.js support for syntax highlighting.</span></span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment">  */</span>    <span class="attr">&quot;enable_highlight&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>设置浏览器预览快捷键，打开Perferences &gt; Key Bindings，在右边输入以下代码，保存 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;keys&quot;: [&quot;Ctrl+m&quot;], &quot;command&quot;: &quot;markdown_preview&quot;, &quot;args&quot;:&#123;&quot;target&quot; : &quot;browser&quot;&#125; &#125;</span><br></pre></td></tr></table></figure></li>
+<li>验证是否配置成功，新建后缀为.md的文档，用Sublime编辑，保存,然后按快捷键ctrl+m,在默认浏览器中显示预览结果</li>
+</ul>
+</li>
+</ol>
+<h2 id="四、可能遇到的问题"><a href="#四、可能遇到的问题" class="headerlink" title="四、可能遇到的问题"></a>四、可能遇到的问题</h2><ol>
+<li>packages contorl安装插件装不上<br>解决办法：<br>直接菜单栏Perferences    –&gt;Browse Packages，Package Control  拷贝到sublime 的packages目录下，重启后重新点击  菜单栏Perferences，可以正常安装插件。</li>
+</ol>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/07/18/sublime%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E8%AE%B0%E5%BD%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/07/13/js,html,css%E6%B3%A8%E9%87%8A%E6%96%B9%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2022-07-13T10:43:28.050Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-13</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2022/07/13/js,html,css%E6%B3%A8%E9%87%8A%E6%96%B9%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">js,html,css注释方式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/07/13/js,html,css%E6%B3%A8%E9%87%8A%E6%96%B9%E5%BC%8F/">js,html,css注释方式</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/07/11/js%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E7%9B%B8%E5%85%B3/" class="archive-article-date">
-  	<time datetime="2022-07-11T14:50:45.191Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/07/11/js%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E7%9B%B8%E5%85%B3/">js回调函数用法</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/07/10/%E4%B8%80%E4%BA%9B%E5%89%8D%E7%AB%AF%E6%9D%82%E9%A1%B9%EF%BC%8C%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2022-07-10T11:20:23.261Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/07/10/%E4%B8%80%E4%BA%9B%E5%89%8D%E7%AB%AF%E6%9D%82%E9%A1%B9%EF%BC%8C%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/">一些前端小知识点</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/07/10/vue-i18n%E7%94%A8%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2022-07-10T08:06:21.329Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/07/10/vue-i18n%E7%94%A8%E6%B3%95/">vue-i18n插件用法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/07/04/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="archive-article-date">
-  	<time datetime="2022-07-04T14:23:13.580Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/07/04/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">vue生命周期的概念及用法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -350,8 +377,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
