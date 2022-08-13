@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Vuex Getter 用法归纳(结合module) | Lqy&#39;s Blog</title>
+  <title>防止按钮多次点击以及点击后不自动失焦问题 | Lqy&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="参考Vuex Getter 一、基本概念getter可以理解为store中的计算属性，当我们要在多个组件中用到state中的派生状态时，比如： 12345computed: &amp;#123;  doneTodosCount () &amp;#123;    return this.$store.state.todos.filter(todo &#x3D;&gt; todo.done).length  &amp;#125;&amp;#1">
+  <meta name="description" content="问题需求 点击按钮，通过click事件发起网络请求 点击之后按钮进入disabled状态，防止在请求完成之前二次点击，二次发起相同请求 点击之后按钮中显示的内容变为【暂停中…】，提示用户正在进行请求，提升用户交互体验 请求完成之后，按钮自动失焦，恢复原有状态  参考资料 elementui中el-button点击后不失去焦点(按钮颜色不变)的解决 Preventing multiple click">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vuex Getter 用法归纳(结合module)">
-<meta property="og:url" content="http://example.com/2022/06/08/vuex-getter%E7%94%A8%E6%B3%95%E5%BD%92%E7%BA%B3/index.html">
+<meta property="og:title" content="防止按钮多次点击以及点击后不自动失焦问题">
+<meta property="og:url" content="http://example.com/2022/08/13/%E9%98%B2%E6%AD%A2%E6%8C%89%E9%92%AE%E5%A4%9A%E6%AC%A1%E7%82%B9%E5%87%BB%E4%BB%A5%E5%8F%8A%E7%82%B9%E5%87%BB%E5%90%8E%E4%B8%8D%E8%87%AA%E5%8A%A8%E5%A4%B1%E7%84%A6%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Lqy&#39;s Blog">
-<meta property="og:description" content="参考Vuex Getter 一、基本概念getter可以理解为store中的计算属性，当我们要在多个组件中用到state中的派生状态时，比如： 12345computed: &amp;#123;  doneTodosCount () &amp;#123;    return this.$store.state.todos.filter(todo &#x3D;&gt; todo.done).length  &amp;#125;&amp;#1">
+<meta property="og:description" content="问题需求 点击按钮，通过click事件发起网络请求 点击之后按钮进入disabled状态，防止在请求完成之前二次点击，二次发起相同请求 点击之后按钮中显示的内容变为【暂停中…】，提示用户正在进行请求，提升用户交互体验 请求完成之后，按钮自动失焦，恢复原有状态  参考资料 elementui中el-button点击后不失去焦点(按钮颜色不变)的解决 Preventing multiple click">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-06-08T00:44:30.025Z">
-<meta property="article:modified_time" content="2022-07-11T15:14:05.120Z">
+<meta property="article:published_time" content="2022-08-13T01:23:51.849Z">
+<meta property="article:modified_time" content="2022-08-13T02:02:18.965Z">
 <meta property="article:author" content="Liu qianyi">
 <meta name="twitter:card" content="summary">
   
@@ -154,43 +154,41 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-vuex-getter用法归纳" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-防止按钮多次点击以及点击后不自动失焦问题" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Vuex Getter 用法归纳(结合module)
+      防止按钮多次点击以及点击后不自动失焦问题
     </h1>
   
 
         
-        <a href="/2022/06/08/vuex-getter%E7%94%A8%E6%B3%95%E5%BD%92%E7%BA%B3/" class="archive-article-date">
-  	<time datetime="2022-06-08T00:44:30.025Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-08</time>
+        <a href="/2022/08/13/%E9%98%B2%E6%AD%A2%E6%8C%89%E9%92%AE%E5%A4%9A%E6%AC%A1%E7%82%B9%E5%87%BB%E4%BB%A5%E5%8F%8A%E7%82%B9%E5%87%BB%E5%90%8E%E4%B8%8D%E8%87%AA%E5%8A%A8%E5%A4%B1%E7%84%A6%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2022-08-13T01:23:51.849Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>参考<a target="_blank" rel="noopener" href="https://vuex.vuejs.org/zh/guide/getters.html">Vuex Getter</a></p>
-<h3 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h3><p>getter可以理解为store中的计算属性，当我们要在多个组件中用到state中的派生状态时，比如：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">  doneTodosCount () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.$store.state.todos.filter(<span class="function"><span class="params">todo</span> =&gt;</span> todo.done).length</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>像这样在多个函数中复制这个函数是不太现实的，因此我们可以将这样的函数写在vuex-getter中，每次在组件中直接调用getter即可</p>
-<h3 id="二、getter写法"><a href="#二、getter写法" class="headerlink" title="二、getter写法"></a>二、getter写法</h3><ol>
-<li>通过属性访问，作为 Vue 的响应式系统的一部分缓存其中<ol>
-<li>Getter 接受 state 作为其第一个参数：  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = createStore(&#123;</span><br><span class="line"><span class="attr">state</span>: &#123;</span><br><span class="line">    <span class="attr">todos</span>: [</span><br><span class="line">    &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">text</span>: <span class="string">&#x27;...&#x27;</span>, <span class="attr">done</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">text</span>: <span class="string">&#x27;...&#x27;</span>, <span class="attr">done</span>: <span class="literal">false</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">getters</span>: &#123;</span><br><span class="line">    doneTodos (state) &#123;</span><br><span class="line">    <span class="keyword">return</span> state.todos.filter(<span class="function"><span class="params">todo</span> =&gt;</span> todo.done)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-<li>Getter 也可以接受其他 getter 作为第二个参数：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">getters: &#123;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">doneTodosCount (state, getters) &#123;</span><br><span class="line">    <span class="keyword">return</span> getters.doneTodos.length</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-<li>通过方法访问，可以通过让 getter 返回一个函数，来实现给 getter 传参。在你 store 里的数组进行查询时非常有用。getter 在通过方法访问时，每次都会去进行调用，而不会缓存结果。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">getters: &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="attr">getTodoById</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> <span class="function">(<span class="params">id</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> state.todos.find(<span class="function"><span class="params">todo</span> =&gt;</span> todo.id === id)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="三、getter调用时写法"><a href="#三、getter调用时写法" class="headerlink" title="三、getter调用时写法"></a>三、getter调用时写法</h3></li>
-<li>Getter 会暴露为 store.getters 对象，你可以以属性的形式访问这些值：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">store.getters.doneTodos <span class="comment">// -&gt; [&#123; id: 1, text: &#x27;...&#x27;, done: true &#125;]</span></span><br></pre></td></tr></table></figure></li>
-<li>通过方法访问时需要传参，每次都会区进行调用，而不会缓存结果<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">store.getters.getTodoById(<span class="number">2</span>) <span class="comment">// -&gt; &#123; id: 2, text: &#x27;...&#x27;, done: false &#125;</span></span><br></pre></td></tr></table></figure></li>
-<li>与module结合<br>对于有命名空间的模块中的getter的访问方法如下：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">modules: &#123;</span><br><span class="line">  <span class="attr">moduleA</span>: &#123;</span><br><span class="line">    <span class="attr">namespaced</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">getters</span>: &#123;</span><br><span class="line">      <span class="attr">getterName</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> <span class="function">(<span class="params">param1, param2, ..</span>) =&gt;</span> &#123;</span><br><span class="line">        ...</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">$store.getters[<span class="string">&#x27;moduleA/getterName&#x27;</span>](param1,param2)</span><br></pre></td></tr></table></figure></li>
-</ol>
-
+        <h2 id="问题需求"><a href="#问题需求" class="headerlink" title="问题需求"></a>问题需求</h2><ul>
+<li>点击按钮，通过click事件发起网络请求</li>
+<li>点击之后按钮进入disabled状态，防止在请求完成之前二次点击，二次发起相同请求</li>
+<li>点击之后按钮中显示的内容变为【暂停中…】，提示用户正在进行请求，提升用户交互体验</li>
+<li>请求完成之后，按钮自动失焦，恢复原有状态</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/05bbf9cf86de">elementui中el-button点击后不失去焦点(按钮颜色不变)的解决</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/16715075/preventing-multiple-clicks-on-button">Preventing multiple clicks on button</a></li>
+</ul>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 点击该按钮，就会触发restart方法，向后端发起ajax请求 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;restart&quot;</span> <span class="attr">id</span>=<span class="string">&quot;restart&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;bx bx-revision me-1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> 重启</span><br><span class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>参考文章中给出的解决方案是直接用点击事件发生的元素解决问题，即</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">restart</span>(<span class="params">evt</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> target = evt.target;</span><br><span class="line">    <span class="keyword">if</span>(target.nodeName == <span class="string">&quot;SPAN&quot;</span>)&#123;</span><br><span class="line">        target = evt.target.parentNode;</span><br><span class="line">    &#125;</span><br><span class="line">    target.blur();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里做了一步判断，也就是说，如果按钮中有多个子元素，点击按钮时点击到这些子元素所在的区域，我们就得一一做if判断，在去获取父级元素，也就是我们需要操作的button，这样比较麻烦<br>改进：直接用<code>document.getElementByI</code>获取按钮元素</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">restart</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 根据元素id获取button元素</span></span><br><span class="line">    <span class="keyword">let</span> evt = <span class="built_in">document</span>.getElementById(<span class="string">&quot;restart&quot;</span>)</span><br><span class="line">    <span class="comment">// 将button原始子元素暂存，用于请求结束后恢复</span></span><br><span class="line">    <span class="keyword">let</span> innerHTML = evt.innerHTML</span><br><span class="line">    <span class="comment">// 获取button元素的子元素，并将内容变为‘暂停中..’（我加了一个spin的加载动画），给用户交互提示</span></span><br><span class="line">    evt.innerHTML = <span class="string">&#x27;&lt;span class=&quot;spinner-border spinner-border-sm me-1&quot; role=&quot;status&quot;&gt;&lt;/span&gt;正在重启...&#x27;</span></span><br><span class="line">    <span class="comment">// 点击重启按钮之后将暂停按钮变为不可点击状态</span></span><br><span class="line">    evt.disabled = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 发起网络请求</span></span><br><span class="line">    <span class="built_in">this</span>.$axios.post(<span class="built_in">this</span>.GLOBAL.host+“后台接口地址”，<span class="built_in">this</span>.$qs.stringify(data))</span><br><span class="line">        .then(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 请求完成</span></span><br><span class="line">            <span class="keyword">if</span>(data.code === <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="comment">// 通知用户请求结果</span></span><br><span class="line">                <span class="built_in">this</span>.$notify(&#123; <span class="attr">text</span>: <span class="string">&#x27;重启成功!&#x27;</span>, <span class="attr">type</span>: <span class="string">&#x27;success&#x27;</span>, <span class="attr">group</span>: <span class="string">&#x27;app&#x27;</span> &#125;)            </span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="built_in">this</span>.$notify(&#123; <span class="attr">text</span>: <span class="string">&#x27;重启失败!&#x27;</span>, <span class="attr">type</span>: <span class="string">&#x27;error&#x27;</span>, <span class="attr">group</span>: <span class="string">&#x27;app&#x27;</span> &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 重启完成之后将重启按钮的内容恢复为原来的内容，</span></span><br><span class="line">            evt.innerHTML = innerHTML</span><br><span class="line">            <span class="comment">// 取消disabled状态</span></span><br><span class="line">            evt.disabled = <span class="literal">false</span></span><br><span class="line">            <span class="comment">// 让按钮失焦</span></span><br><span class="line">            evt.blur();</span><br><span class="line">        &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
       
 
       
@@ -269,7 +267,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/06/08/vuex-getter%E7%94%A8%E6%B3%95%E5%BD%92%E7%BA%B3/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/08/13/%E9%98%B2%E6%AD%A2%E6%8C%89%E9%92%AE%E5%A4%9A%E6%AC%A1%E7%82%B9%E5%87%BB%E4%BB%A5%E5%8F%8A%E7%82%B9%E5%87%BB%E5%90%8E%E4%B8%8D%E8%87%AA%E5%8A%A8%E5%A4%B1%E7%84%A6%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -283,18 +281,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/06/08/vue%20watch%E9%A6%96%E6%AC%A1%E8%B5%8B%E5%80%BC%E5%B0%B1%E8%A7%A6%E5%8F%91/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/08/13/css%E7%9B%B8%E5%AF%B9%E5%8D%95%E4%BD%8Drem,em%E7%AD%89%E5%92%8C%E7%BB%9D%E5%AF%B9%E5%8D%95%E4%BD%8Dpx/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          vue首次赋值不触发watch
+          css相对单位rem,em等和绝对单位px
         
       </div>
     </a>
   
   
-    <a href="/2021/11/23/%E5%9F%BA%E4%BA%8Ehexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">基于hexo搭建自己的静态博客</div>
+    <a href="/2022/07/30/Vue%E6%96%87%E6%A1%A3%E7%9F%A5%E8%AF%86/Vue%20Router/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vue Router</div>
       <i class="icon-circle-right"></i>
     </a>
   

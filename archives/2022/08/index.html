@@ -6,21 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>vue生命周期的概念及用法 | Lqy&#39;s Blog</title>
+  <title>Archives: 2022/8 | Lqy&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="vue的生命周期在做项目的过程中经常需要用到，在这里做简要记录,参考:  vue生命周期详解 一文带你弄懂Vue八大生命周期钩子函数 生命周期钩子  一、vue生命周期概述 我们把一个对象从生成（new）到被销毁（destory）的过程，称为生命周期。 vue的生命周期就是每个Vue实例在被创建时都要经过一系列的初始化过程：创建实例，装载模板，渲染模板等。Vue为生命周期中的每个状态都设置了钩子函">
-<meta property="og:type" content="article">
-<meta property="og:title" content="vue生命周期的概念及用法">
-<meta property="og:url" content="http://example.com/2022/07/04/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Lqy&#39;s Blog">
+<meta property="og:url" content="http://example.com/archives/2022/08/index.html">
 <meta property="og:site_name" content="Lqy&#39;s Blog">
-<meta property="og:description" content="vue的生命周期在做项目的过程中经常需要用到，在这里做简要记录,参考:  vue生命周期详解 一文带你弄懂Vue八大生命周期钩子函数 生命周期钩子  一、vue生命周期概述 我们把一个对象从生成（new）到被销毁（destory）的过程，称为生命周期。 vue的生命周期就是每个Vue实例在被创建时都要经过一系列的初始化过程：创建实例，装载模板，渲染模板等。Vue为生命周期中的每个状态都设置了钩子函">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://cn.vuejs.org/images/lifecycle.png">
-<meta property="article:published_time" content="2022-07-04T14:23:13.580Z">
-<meta property="article:modified_time" content="2022-07-11T15:39:46.485Z">
 <meta property="article:author" content="Liu qianyi">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cn.vuejs.org/images/lifecycle.png">
   
     <link rel="alternative" href="/atom.xml" title="Lqy&#39;s Blog" type="application/atom+xml">
   
@@ -156,219 +150,130 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-vue生命周期" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      vue生命周期的概念及用法
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2022" class="archive-year">2022</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2022/08/13/Vue%E6%8F%92%E4%BB%B6/vue-moment%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96/" class="archive-article-date">
+  	<time datetime="2022-08-13T08:17:36.442Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-13</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2022/08/13/Vue%E6%8F%92%E4%BB%B6/vue-moment%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96/">vue-moment时间格式化</a>
     </h1>
   
 
-        
-        <a href="/2022/07/04/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="archive-article-date">
-  	<time datetime="2022-07-04T14:23:13.580Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>vue的生命周期在做项目的过程中经常需要用到，在这里做简要记录,参考:</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6874855535234170887">vue生命周期详解</a></li>
-<li><a target="_blank" rel="noopener" href="https://bbs.huaweicloud.com/blogs/278913">一文带你弄懂Vue八大生命周期钩子函数</a></li>
-<li><a target="_blank" rel="noopener" href="https://v3.cn.vuejs.org/api/options-lifecycle-hooks.html">生命周期钩子</a></li>
-</ul>
-<h2 id="一、vue生命周期概述"><a href="#一、vue生命周期概述" class="headerlink" title="一、vue生命周期概述"></a>一、vue生命周期概述</h2><ul>
-<li>我们把一个对象从生成（new）到被销毁（destory）的过程，称为生命周期。</li>
-<li>vue的生命周期就是每个Vue实例在被创建时都要经过一系列的初始化过程：创建实例，装载模板，渲染模板等。Vue为生命周期中的每个状态都设置了钩子函数(监听函数) 。</li>
-<li>每当Vue实例处于不同的生命周期时，对应的钩子函数就会被触发调用。我们可以根据自己的需要在这些钩子函数中加入自己的代码。</li>
-</ul>
-<h2 id="二、四个阶段，八个生命周期函数"><a href="#二、四个阶段，八个生命周期函数" class="headerlink" title="二、四个阶段，八个生命周期函数"></a>二、四个阶段，八个生命周期函数</h2><h3 id="1-创建阶段"><a href="#1-创建阶段" class="headerlink" title="1. 创建阶段"></a>1. 创建阶段</h3><p>这个阶段 vue组件开始初始化，vue开始观察数据，这个阶段有 beforeCreate 和 created 两个生命周期钩子函数。<br><strong>1.1 beforeCreate阶段</strong><br>在实例初始化（即new Vue()）之后、进行数据侦听和事件/侦听器的配置之前同步调用。此时 data、methods、computed以及watch上的数据和方法还未初始化，都不能被访问。<br>应用：我们可以在这个周期去初始化store，将localstorage中的数据复制到store中，参考<a target="_blank" rel="noopener" href="https://www.mikestreety.co.uk/blog/vue-js-using-localstorage-with-the-vuex-store/">Vue: Using localStorage with Vuex store</a><br><strong>1.2 created</strong><br>在实例创建完成后被立即同步调用。在这一步中，实例已完成对选项的处理，意味着以下内容已被配置完毕：数据侦听、计算属性、方法、事件/侦听器的回调函数。然而，挂载阶段还没开始，且 $el property 目前尚不可用。<br>可以做什么：</p>
-<ul>
-<li>data 和 methods 都已经被初始化好了，如果要调用 methods 中的方法，或者操作 data 中的数据，最早可以在这个阶段中操作。</li>
-<li>无法与Dom进行交互，如果非要想，可以通过vm.$nextTick来访问Dom。</li>
-<li>异步数据的请求适合在 created 的钩子中使用，例如数据初始化。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 这里created中getElementById会出错，因为视图中的html并没有渲染出来，所以此时如果直接去操作html的dom节点，一定找不到相关的元素</span><br><span class="line">// 而在mounted中，由于此时html已经渲染出来了，所以可以直接操作dom节点。</span><br><span class="line">created:function()&#123;</span><br><span class="line">  this.name=&quot;唐浩益&quot;</span><br><span class="line">  this.age = &quot;12&quot;</span><br><span class="line">  this.city =&quot;杭州&quot;</span><br><span class="line">  var x = document.getElementById(&quot;name&quot;)//第一个命令台错误</span><br><span class="line">  console.log(x.innerHTML);</span><br><span class="line">&#125;,</span><br><span class="line">mounted:function()&#123;</span><br><span class="line">  var x = document.getElementById(&quot;name&quot;)//第二个命令台输出的结果</span><br><span class="line">  console.log(x.innerHTML);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2-挂载阶段"><a href="#2-挂载阶段" class="headerlink" title="2. 挂载阶段"></a>2. 挂载阶段</h3></li>
-</ul>
-<p><strong>2.1 beforeMount</strong><br>这个阶段完成了模板的编译，但是还没挂载到页面上。<br>要挂载的dom对象编译好了，但是页面的DOM树还没挂上去，这个阶段页面还没能显示出来。<br><strong>2.2 mounted</strong><br>这个阶段，模板编译好了，也挂载到页面中了，页面也可以显示了。<br>这里就可以使用document.getElementById去操作挂载好的dom元素了</p>
-<blockquote>
-<p>在实例挂载完成后被调用，这时候传递给 app.mount 的元素已经被新创建的 vm.$el 替换了。如果根实例被挂载到了一个文档内的元素上，当 mounted 被调用时， vm.$el 也会在文档内。 注意 mounted 不会保证所有的子组件也都被挂载完成。如果你希望等待整个视图都渲染完毕，可以在 mounted 内部使用 vm.$nextTick：</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mounted() &#123;</span><br><span class="line">  this.$nextTick(function () &#123;</span><br><span class="line">    // 仅在整个视图都被渲染之后才会运行的代码</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>该钩子在服务器端渲染期间不被调用。</p>
-<h3 id="3-运行阶段"><a href="#3-运行阶段" class="headerlink" title="3. 运行阶段"></a>3. 运行阶段</h3><p><strong>3.1 beforeUpdate</strong></p>
-<ul>
-<li>data中的数据已经更改</li>
-<li>准备挂载的dom中的数据也已更改</li>
-<li>页面已挂载的dom还未更改<blockquote>
-<p>在数据发生改变后，DOM 被更新之前被调用。这里适合在现有 DOM 将要被更新之前访问它，比如移除手动添加的事件监听器。<br>该钩子在服务器端渲染期间不被调用，因为只有初次渲染会在服务器端进行。</p>
-</blockquote>
-</li>
-</ul>
-<p><strong>3.2 updated</strong></p>
-<ul>
-<li>页面已挂载的dom也更新了</li>
-<li>我们应该避免在这个钩子函数中去更改状态，因为刚更改结束<blockquote>
-<p>updated 不会保证所有的子组件也都被重新渲染完毕。如果你希望等待整个视图都渲染完毕，可以在 updated 内部使用 vm.$nextTick：</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">updated</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">  <span class="built_in">this</span>.$nextTick(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 仅在整个视图都被重新渲染完毕之后才会运行的代码</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>用法，目前我自己还没有用到，百度发现了一个博主在做的即时聊天项目，打开当前会话加载完消息后需要自动滚动到窗口最底部，这里用updated就很合适<br>参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44041976/article/details/107584572">vue updated生命周期的使用场景，可以做什么</a><h3 id="4-销毁阶段"><a href="#4-销毁阶段" class="headerlink" title="4. 销毁阶段"></a>4. 销毁阶段</h3></li>
-</ul>
-<p><strong>4.1 beforeDestroy(vue3中定义为beforeUnmount)</strong></p>
-<ul>
-<li>beforeDestroy阶段处于vue实例被销毁之前，当然，这个阶段vue实例还能用.我们可以在这时进行善后收尾工作，比如清除计时器。</li>
-<li>该钩子在服务器端渲染期间不被调用。</li>
-</ul>
-<p><strong>4.2 destroyed(vue3:unmounted)</strong></p>
-<ul>
-<li>卸载组件实例后调用。调用此钩子时，只剩下了dom空壳,组件已被拆解，数据绑定被卸除,组件实例的所有指令都被解除绑定，所有事件侦听器都被移除，所有子组件实例被卸载。</li>
-<li>该钩子在服务器端渲染期间不被调用<blockquote>
-<p>在大多数场景中你不应该调用这个方法。最好使用 v-if 和 v-for 指令以数据驱动的方式控制子组件的生命周期。</p>
-</blockquote>
-<h2 id="三、生命周期示意图"><a href="#三、生命周期示意图" class="headerlink" title="三、生命周期示意图"></a>三、生命周期示意图</h2><img src="https://cn.vuejs.org/images/lifecycle.png" alt="生命周期示意图"></li>
-</ul>
+        <div class="article-info info-on-right">
+          
+          
 
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/07/04/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
   
-<nav id="article-nav">
-  
-    <a href="/2022/07/10/vue-i18n%E7%94%A8%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          vue-i18n插件用法
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2022/06/08/vue%20watch%E9%A6%96%E6%AC%A1%E8%B5%8B%E5%80%BC%E5%B0%B1%E8%A7%A6%E5%8F%91/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">vue首次赋值不触发watch</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2022/08/13/Vue%E6%96%87%E6%A1%A3%E7%9F%A5%E8%AF%86/Vue%E4%B8%ADwatch%E5%AF%B9%E8%B1%A1%E5%86%85%E5%B1%9E%E6%80%A7%E7%9A%84%E6%96%B9%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2022-08-13T07:47:39.563Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-13</time>
+</a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
+    	 
   
-  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2022/08/13/Vue%E6%96%87%E6%A1%A3%E7%9F%A5%E8%AF%86/Vue%E4%B8%ADwatch%E5%AF%B9%E8%B1%A1%E5%86%85%E5%B1%9E%E6%80%A7%E7%9A%84%E6%96%B9%E6%B3%95/">Vue中watch对象内属性的方法</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2022/08/13/css%E7%9B%B8%E5%AF%B9%E5%8D%95%E4%BD%8Drem,em%E7%AD%89%E5%92%8C%E7%BB%9D%E5%AF%B9%E5%8D%95%E4%BD%8Dpx/" class="archive-article-date">
+  	<time datetime="2022-08-13T02:09:25.344Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-13</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2022/08/13/css%E7%9B%B8%E5%AF%B9%E5%8D%95%E4%BD%8Drem,em%E7%AD%89%E5%92%8C%E7%BB%9D%E5%AF%B9%E5%8D%95%E4%BD%8Dpx/">css相对单位rem,em等和绝对单位px</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2022/08/13/%E9%98%B2%E6%AD%A2%E6%8C%89%E9%92%AE%E5%A4%9A%E6%AC%A1%E7%82%B9%E5%87%BB%E4%BB%A5%E5%8F%8A%E7%82%B9%E5%87%BB%E5%90%8E%E4%B8%8D%E8%87%AA%E5%8A%A8%E5%A4%B1%E7%84%A6%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2022-08-13T01:23:51.849Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-13</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2022/08/13/%E9%98%B2%E6%AD%A2%E6%8C%89%E9%92%AE%E5%A4%9A%E6%AC%A1%E7%82%B9%E5%87%BB%E4%BB%A5%E5%8F%8A%E7%82%B9%E5%87%BB%E5%90%8E%E4%B8%8D%E8%87%AA%E5%8A%A8%E5%A4%B1%E7%84%A6%E9%97%AE%E9%A2%98/">防止按钮多次点击以及点击后不自动失焦问题</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
   
+  
+    </div></section>
+  
+
+    
 
 
           </div>
@@ -391,8 +296,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

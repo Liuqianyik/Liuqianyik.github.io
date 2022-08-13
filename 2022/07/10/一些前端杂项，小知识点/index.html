@@ -16,7 +16,7 @@
 <meta property="og:description" content="记录我在开发过程中总遇到，但不太懂的小知识点 一、常见英语单词 instance 实例 context 语境，上下文 property 属性 Actual Argument 实际参数 Formal Parameter 形式参数（Argument 和 Parameter 两个词在很多文献中均翻译为参数） higher-order function 高阶函数：函数名本身就是一个指向函数的变量  inv">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-07-10T11:20:23.261Z">
-<meta property="article:modified_time" content="2022-07-19T03:13:48.930Z">
+<meta property="article:modified_time" content="2022-08-13T07:45:35.808Z">
 <meta property="article:author" content="Liu qianyi">
 <meta name="twitter:card" content="summary">
   
@@ -191,9 +191,11 @@
 <li>amulate 模仿</li>
 <li>portal 入口，门户，一个基于web的应用程序。它主要提供个性化、单点登录、不同来源的内容整合以及存放信息系统的表示层</li>
 <li>configuration 配置</li>
+<li>deprecated 已弃用</li>
 </ul>
 <h2 id="二、vue相关"><a href="#二、vue相关" class="headerlink" title="二、vue相关"></a>二、vue相关</h2><ol>
 <li>vue.use()是vue使用插件的固定语句</li>
+<li>vue中<code>data</code>是会返回一个对象的函数，<code>methods</code> 选项是一个包含所有方法的对象,其他生命周期钩子也都是会被调用的函数<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">data</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">   <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">data1</span>:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">      <span class="attr">data2</span>:<span class="string">&#x27;&#x27;</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"><span class="attr">methods</span>: &#123;</span><br><span class="line">   <span class="function"><span class="title">function1</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      ...</span><br><span class="line">   &#125;,</span><br><span class="line">   <span class="function"><span class="title">function2</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line"></span><br><span class="line">   &#125;,</span><br><span class="line">   ...</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">created</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">   ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="三、css相关"><a href="#三、css相关" class="headerlink" title="三、css相关"></a>三、css相关</h2><ol>
 <li>bootstrap中常用的一些class<ul>
@@ -315,7 +317,7 @@
     </a>
   
   
-    <a href="/2022/07/10/vue-i18n%E7%94%A8%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2022/07/10/Vue%E6%8F%92%E4%BB%B6/vue-i18n%E7%94%A8%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">vue-i18n插件用法</div>
       <i class="icon-circle-right"></i>
     </a>

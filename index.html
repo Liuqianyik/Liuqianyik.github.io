@@ -152,6 +152,599 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Vue插件/vue-moment时间格式化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/13/Vue%E6%8F%92%E4%BB%B6/vue-moment%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96/">vue-moment时间格式化</a>
+    </h1>
+  
+
+        
+        <a href="/2022/08/13/Vue%E6%8F%92%E4%BB%B6/vue-moment%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96/" class="archive-article-date">
+  	<time datetime="2022-08-13T08:17:36.442Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、参考资料"><a href="#一、参考资料" class="headerlink" title="一、参考资料"></a>一、参考资料</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://momentjs.com/">momentjs官网</a></li>
+<li><a target="_blank" rel="noopener" href="http://momentjs.cn/docs/">momentjs官网中文版使用文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/brockpetrie/vue-moment?ref=madewithvuejs.com">github：vue-moment</a></li>
+</ol>
+<h2 id="二、vue安装插件及配置"><a href="#二、vue安装插件及配置" class="headerlink" title="二、vue安装插件及配置"></a>二、vue安装插件及配置</h2><h3 id="1-通过npm安装"><a href="#1-通过npm安装" class="headerlink" title="1. 通过npm安装"></a>1. 通过npm安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install vue-moment</span><br></pre></td></tr></table></figure>
+<h3 id="2-在项目中引入并配置插件"><a href="#2-在项目中引入并配置插件" class="headerlink" title="2. 在项目中引入并配置插件"></a>2. 在项目中引入并配置插件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js全局引入</span></span><br><span class="line"><span class="keyword">import</span> VueMoment <span class="keyword">from</span> <span class="string">&#x27;vue-moment&#x27;</span></span><br><span class="line"><span class="keyword">import</span> moment <span class="keyword">from</span> <span class="string">&#x27;moment&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置本地时区</span></span><br><span class="line">moment.locale(<span class="string">&#x27;zh-cn&#x27;</span>)</span><br><span class="line">Vue.use(VueMoment, &#123;</span><br><span class="line">  moment</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-使用"><a href="#3-使用" class="headerlink" title="3. 使用"></a>3. 使用</h3><p>一般后端传来的时间以及我们直接用<code>new Date()。getTime()</code>获取到的都是类似<code>1656673259949</code>的的字符串，在前端页面上展示的时间想要符合预期格式就需要用到momentjs插件</p>
+<h4 id="3-1-常见用法："><a href="#3-1-常见用法：" class="headerlink" title="3.1. 常见用法："></a>3.1. 常见用法：</h4><ol>
+<li>星期，年月日时分秒 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123; someDate | moment(&quot;YYYY&quot;) &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- e.g. &quot;2010&quot; --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123; someDate | moment(&quot;dddd, hA&quot;) &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- e.g. &quot;Sun, 3PM&quot; --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123; someDate | moment(&quot;dddd, MMMM Do YYYY, h:mm:ss a&quot;) &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- e.g. &quot;Sunday, February 14th 2010, 3:25:50 pm&quot; --&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>计算时间差 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 计算somedate到当前时间的间隔，输出eg:一个月前 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123; someDate | moment(&quot;from&quot;, &quot;now&quot;) &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 不加“now”，效果一样，以下是上面一行的简写版 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123; someDate | moment(&quot;from&quot;) &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 给出参考时间的写法如下，计算 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123; someDate | moment(&quot;from&quot;, 1656673259949) &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/brockpetrie/vue-moment?ref=madewithvuejs.com">更多用法</a>在github官方项目可以看到</li>
+<li><a target="_blank" rel="noopener" href="https://momentjs.com/docs/#/displaying/from/">自定义格式的规则</a></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/08/13/Vue%E6%8F%92%E4%BB%B6/vue-moment%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Vue文档知识/Vue中watch对象内属性的方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/13/Vue%E6%96%87%E6%A1%A3%E7%9F%A5%E8%AF%86/Vue%E4%B8%ADwatch%E5%AF%B9%E8%B1%A1%E5%86%85%E5%B1%9E%E6%80%A7%E7%9A%84%E6%96%B9%E6%B3%95/">Vue中watch对象内属性的方法</a>
+    </h1>
+  
+
+        
+        <a href="/2022/08/13/Vue%E6%96%87%E6%A1%A3%E7%9F%A5%E8%AF%86/Vue%E4%B8%ADwatch%E5%AF%B9%E8%B1%A1%E5%86%85%E5%B1%9E%E6%80%A7%E7%9A%84%E6%96%B9%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2022-08-13T07:47:39.563Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、问题提出"><a href="#一、问题提出" class="headerlink" title="一、问题提出"></a>一、问题提出</h2><p>vue提供了watch方法，用于监听实例内data数据的变化。通常写法是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">    count: 10，</span><br><span class="line">    blog:&#123;</span><br><span class="line">        title:&#x27;my-blog&#x27;,</span><br><span class="line">        categories:[]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">watch: &#123;</span><br><span class="line">    count: function (newval, oldVal) &#123;</span><br><span class="line">        console.log(`new: %s, old: %s`, newVal, oldVal);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述情况里<code>data</code>中的<code>count</code>属性可以直接监听<br>但是如果需要监听的数据是对象内的某一属性值的变化:  </p>
+<ul>
+<li>直接watch整个对象的时候<code>(eg:blog)</code>会发现无论何时<code>newval</code>和<code>oldVal</code>的值都是一样的，这是因为<code>blog</code>这个对象的指向并没有发生改变。–&gt;深度监测</li>
+<li>直接watch对象的属性<code>(eg:blog.categories)</code>就会报错。–&gt;用字符串来表示对象的属性调用或使用<code>computed</code>计算属性做中间层</li>
+</ul>
+<h2 id="二、解决方案"><a href="#二、解决方案" class="headerlink" title="二、解决方案"></a>二、解决方案</h2><h3 id="1-深度监测"><a href="#1-深度监测" class="headerlink" title="1.深度监测"></a>1.深度监测</h3><p>watch blog里面的deep设为了true，这样的话，如果修改了这个blog中的任何一个属性，都会执行handler这个方法。不过这样会造成更多的性能开销，尤其是对象里面属性过多，结构嵌套过深的时候。而且有时候我们就只想关心这个对象中的某个特定属性，这个时候可以这样</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">    <span class="attr">blog</span>:&#123;</span><br><span class="line">        <span class="attr">title</span>:<span class="string">&#x27;my-blog&#x27;</span>,</span><br><span class="line">        <span class="attr">categories</span>:[]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">watch</span>: &#123;</span><br><span class="line">    <span class="attr">blog</span>:&#123;</span><br><span class="line">        <span class="function"><span class="title">handler</span>(<span class="params">newVal,oldVal</span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">`new: <span class="subst">$&#123;newVal&#125;</span>, old: <span class="subst">$&#123;oldVal&#125;</span>`</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">deep</span>:<span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-用字符串来表示对象的属性调用"><a href="#2-用字符串来表示对象的属性调用" class="headerlink" title="2.用字符串来表示对象的属性调用"></a>2.用字符串来表示对象的属性调用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">    blog:&#123;</span><br><span class="line">        title:&#x27;my-blog&#x27;,</span><br><span class="line">        categories:[]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">watch: &#123;</span><br><span class="line">    &#x27;blog.categories&#x27;(newVal, oldVal) &#123;</span><br><span class="line">        console.log(`new:$&#123;newVal&#125;, old:$&#123;oldVal&#125;`);</span><br><span class="line">    &#125;, </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-使用computed计算属性做中间层"><a href="#3-使用computed计算属性做中间层" class="headerlink" title="3.使用computed计算属性做中间层"></a>3.使用computed计算属性做中间层</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">    <span class="attr">blog</span>:&#123;</span><br><span class="line">        <span class="attr">title</span>:<span class="string">&#x27;my-blog&#x27;</span>,</span><br><span class="line">        <span class="attr">categories</span>:[]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">computed</span>: &#123;</span><br><span class="line">    <span class="function"><span class="title">categories</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.blog.categories;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">watch</span>: &#123;</span><br><span class="line">    <span class="function"><span class="title">categories</span>(<span class="params">newVal, oldVal</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`new:<span class="subst">$&#123;newVal&#125;</span>, old:<span class="subst">$&#123;oldVal&#125;</span>`</span>);</span><br><span class="line">    &#125;, </span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、参考资料"><a href="#三、参考资料" class="headerlink" title="三、参考资料"></a>三、参考资料</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://v2.cn.vuejs.org/v2/guide/computed.html">计算属性和侦听器</a></li>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000018080301">Vue中watch对象内属性的方法</a></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/08/13/Vue%E6%96%87%E6%A1%A3%E7%9F%A5%E8%AF%86/Vue%E4%B8%ADwatch%E5%AF%B9%E8%B1%A1%E5%86%85%E5%B1%9E%E6%80%A7%E7%9A%84%E6%96%B9%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-css相对单位rem,em等和绝对单位px" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/13/css%E7%9B%B8%E5%AF%B9%E5%8D%95%E4%BD%8Drem,em%E7%AD%89%E5%92%8C%E7%BB%9D%E5%AF%B9%E5%8D%95%E4%BD%8Dpx/">css相对单位rem,em等和绝对单位px</a>
+    </h1>
+  
+
+        
+        <a href="/2022/08/13/css%E7%9B%B8%E5%AF%B9%E5%8D%95%E4%BD%8Drem,em%E7%AD%89%E5%92%8C%E7%BB%9D%E5%AF%B9%E5%8D%95%E4%BD%8Dpx/" class="archive-article-date">
+  	<time datetime="2022-08-13T02:09:25.344Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><p>传统的项目开发中，我们只会用到<code>px</code>、<code>%</code>、<code>em</code>这几个单位，它可以适用于大部分的项目开发，且拥有比较良好的兼容性</p>
+<p>从CSS3开始，浏览器对计量单位的支持又提升到了另外一个境界，新增了<code>rem</code>、<code>vh</code>、<code>vw</code>、<code>vm</code>等一些新的计量单位</p>
+<p>利用这些新的单位开发出比较良好的响应式页面，适应多种不同分辨率的终端，包括移动设备等</p>
+<h2 id="二、长度单位分类"><a href="#二、长度单位分类" class="headerlink" title="二、长度单位分类"></a>二、长度单位分类</h2><p>总体来说css中的长度单位可以分为两种：相对长度单位和绝对长度单位</p>
+<table>
+<thead>
+<tr>
+<th>相对长度单位</th>
+<th>em、ex、ch、rem、vw、vh、vmin、vmax、%</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>绝对长度单位</td>
+<td>cm、mm、in、px、pt、pc</td>
+</tr>
+</tbody></table>
+<p>在这里主要介绍我们在开发中最常用到的px、em、rem、vh、vw</p>
+<h2 id="三、详细介绍px、em、rem、vh、vw、"><a href="#三、详细介绍px、em、rem、vh、vw、" class="headerlink" title="三、详细介绍px、em、rem、vh、vw、%"></a>三、详细介绍px、em、rem、vh、vw、%</h2><h3 id="1-px"><a href="#1-px" class="headerlink" title="1. px"></a>1. px</h3><p>px，表示像素(pixel)，所谓像素就是呈现在我们显示器上的一个个小点，每个像素点都是大小等同的，所以像素为计量单位被分在了绝对长度单位中</p>
+<p>有些人会把px认为是相对长度，原因在于在移动端中存在设备像素比，px实际显示的大小是不确定的</p>
+<p>这里之所以认为px为绝对单位，在于px的大小和元素的其他属性无关</p>
+<h3 id="2-em"><a href="#2-em" class="headerlink" title="2. em"></a>2. em</h3><p>em是相对长度单位。相对于当前对象内文本的字体尺寸。如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸（1em = 16px）</p>
+<p>特点：</p>
+<ul>
+<li>em 的值并不是固定的</li>
+<li>em 会继承父级元素的字体大小</li>
+<li>em 是相对长度单位。相对于当前对象内文本的字体尺寸。如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸.任意浏览器的默认字体高都是 16px<br>举个例子<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">    我是系统字体16px</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;font-size:2em&quot;</span> <span class="attr">id</span>=<span class="string">&quot;2&quot;</span>&gt;</span></span><br><span class="line">        我是相对父级元素[1]字体大小2倍，32px</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;font-size:2em&quot;</span> <span class="attr">id</span>=<span class="string">&quot;3&quot;</span>&gt;</span></span><br><span class="line">            我是相对父级元素[2]字体大小2倍，相对元素[1]字体大小4倍，64px</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="3-rem"><a href="#3-rem" class="headerlink" title="3. rem"></a>3. rem</h3><p>rem，相对单位，相对的只是HTML根元素font-size的值</p>
+<p>同理，如果想要简化font-size的转化，我们可以在根元素html中加入font-size: 62.5%</p>
+<p>html {font-size: 62.5%;  } /*  公式16px*62.5%=10px  */<br>这样页面中1rem=10px、1.2rem=12px、1.4rem=14px、1.6rem=16px;使得视觉、使用、书写都得到了极大的帮助</p>
+<p>特点：</p>
+<ul>
+<li><p>rem单位可谓集相对大小和绝对大小的优点于一身</p>
+</li>
+<li><p>和em不同的是rem总是相对于根元素，而不像em一样使用级联的方式来计算尺寸  </p>
+</li>
+</ul>
+<p>举个例子</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">    我是系统字体16px</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;font-size:2rem&quot;</span> <span class="attr">id</span>=<span class="string">&quot;2&quot;</span>&gt;</span></span><br><span class="line">        我是相对根元素字体的2倍：32px</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;font-size:2rem&quot;</span> <span class="attr">id</span>=<span class="string">&quot;3&quot;</span>&gt;</span></span><br><span class="line">            我也是相对根元素字体的2倍：32px</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-vw"><a href="#4-vw" class="headerlink" title="4. vw"></a>4. vw</h3><p>css3新单位，viewpoint width的缩写，视窗宽度，1vw等于视窗宽度的1%。</p>
+<p>举个例子：浏览器宽度1200px, 1 vw = 1200px/100 = 12 px。</p>
+<h3 id="5-vh"><a href="#5-vh" class="headerlink" title="5. vh"></a>5. vh</h3><p>css3新单位，viewpoint height的缩写，视窗高度，1vh等于视窗高度的1%。</p>
+<p>举个例子：浏览器高度900px, 1 vh = 900px/100 = 9 px。</p>
+<h3 id="6"><a href="#6" class="headerlink" title="6. %"></a>6. %</h3><p>一般宽泛的讲是相对于父元素，但是并不是十分准确。</p>
+<p>1、对于普通定位元素就是我们理解的父元素</p>
+<p>2、对于position: absolute;的元素是相对于已定位的父元素</p>
+<p>3、对于position: fixed;的元素是相对于 ViewPort（可视窗口）</p>
+<h2 id="四、补充"><a href="#四、补充" class="headerlink" title="四、补充"></a>四、补充</h2><ol>
+<li>一般情况下我们会在代码根元素中设置<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">62.5%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+使得根元素字体大小为10px，这样方便换算1.2rem=12px</li>
+<li>谷歌浏览器强制最小字体为12号，即使设置成 10px 最终都会显示成 12px，当把html的font-size设置成10px,子节点rem的计算还是以12px为基准</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/08/13/css%E7%9B%B8%E5%AF%B9%E5%8D%95%E4%BD%8Drem,em%E7%AD%89%E5%92%8C%E7%BB%9D%E5%AF%B9%E5%8D%95%E4%BD%8Dpx/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-防止按钮多次点击以及点击后不自动失焦问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/13/%E9%98%B2%E6%AD%A2%E6%8C%89%E9%92%AE%E5%A4%9A%E6%AC%A1%E7%82%B9%E5%87%BB%E4%BB%A5%E5%8F%8A%E7%82%B9%E5%87%BB%E5%90%8E%E4%B8%8D%E8%87%AA%E5%8A%A8%E5%A4%B1%E7%84%A6%E9%97%AE%E9%A2%98/">防止按钮多次点击以及点击后不自动失焦问题</a>
+    </h1>
+  
+
+        
+        <a href="/2022/08/13/%E9%98%B2%E6%AD%A2%E6%8C%89%E9%92%AE%E5%A4%9A%E6%AC%A1%E7%82%B9%E5%87%BB%E4%BB%A5%E5%8F%8A%E7%82%B9%E5%87%BB%E5%90%8E%E4%B8%8D%E8%87%AA%E5%8A%A8%E5%A4%B1%E7%84%A6%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2022-08-13T01:23:51.849Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题需求"><a href="#问题需求" class="headerlink" title="问题需求"></a>问题需求</h2><ul>
+<li>点击按钮，通过click事件发起网络请求</li>
+<li>点击之后按钮进入disabled状态，防止在请求完成之前二次点击，二次发起相同请求</li>
+<li>点击之后按钮中显示的内容变为【暂停中…】，提示用户正在进行请求，提升用户交互体验</li>
+<li>请求完成之后，按钮自动失焦，恢复原有状态</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/05bbf9cf86de">elementui中el-button点击后不失去焦点(按钮颜色不变)的解决</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/16715075/preventing-multiple-clicks-on-button">Preventing multiple clicks on button</a></li>
+</ul>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 点击该按钮，就会触发restart方法，向后端发起ajax请求 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;restart&quot;</span> <span class="attr">id</span>=<span class="string">&quot;restart&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;bx bx-revision me-1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> 重启</span><br><span class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>参考文章中给出的解决方案是直接用点击事件发生的元素解决问题，即</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">restart</span>(<span class="params">evt</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> target = evt.target;</span><br><span class="line">    <span class="keyword">if</span>(target.nodeName == <span class="string">&quot;SPAN&quot;</span>)&#123;</span><br><span class="line">        target = evt.target.parentNode;</span><br><span class="line">    &#125;</span><br><span class="line">    target.blur();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里做了一步判断，也就是说，如果按钮中有多个子元素，点击按钮时点击到这些子元素所在的区域，我们就得一一做if判断，在去获取父级元素，也就是我们需要操作的button，这样比较麻烦<br>改进：直接用<code>document.getElementByI</code>获取按钮元素</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">restart</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 根据元素id获取button元素</span></span><br><span class="line">    <span class="keyword">let</span> evt = <span class="built_in">document</span>.getElementById(<span class="string">&quot;restart&quot;</span>)</span><br><span class="line">    <span class="comment">// 将button原始子元素暂存，用于请求结束后恢复</span></span><br><span class="line">    <span class="keyword">let</span> innerHTML = evt.innerHTML</span><br><span class="line">    <span class="comment">// 获取button元素的子元素，并将内容变为‘暂停中..’（我加了一个spin的加载动画），给用户交互提示</span></span><br><span class="line">    evt.innerHTML = <span class="string">&#x27;&lt;span class=&quot;spinner-border spinner-border-sm me-1&quot; role=&quot;status&quot;&gt;&lt;/span&gt;正在重启...&#x27;</span></span><br><span class="line">    <span class="comment">// 点击重启按钮之后将暂停按钮变为不可点击状态</span></span><br><span class="line">    evt.disabled = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 发起网络请求</span></span><br><span class="line">    <span class="built_in">this</span>.$axios.post(<span class="built_in">this</span>.GLOBAL.host+“后台接口地址”，<span class="built_in">this</span>.$qs.stringify(data))</span><br><span class="line">        .then(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 请求完成</span></span><br><span class="line">            <span class="keyword">if</span>(data.code === <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="comment">// 通知用户请求结果</span></span><br><span class="line">                <span class="built_in">this</span>.$notify(&#123; <span class="attr">text</span>: <span class="string">&#x27;重启成功!&#x27;</span>, <span class="attr">type</span>: <span class="string">&#x27;success&#x27;</span>, <span class="attr">group</span>: <span class="string">&#x27;app&#x27;</span> &#125;)            </span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="built_in">this</span>.$notify(&#123; <span class="attr">text</span>: <span class="string">&#x27;重启失败!&#x27;</span>, <span class="attr">type</span>: <span class="string">&#x27;error&#x27;</span>, <span class="attr">group</span>: <span class="string">&#x27;app&#x27;</span> &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 重启完成之后将重启按钮的内容恢复为原来的内容，</span></span><br><span class="line">            evt.innerHTML = innerHTML</span><br><span class="line">            <span class="comment">// 取消disabled状态</span></span><br><span class="line">            evt.disabled = <span class="literal">false</span></span><br><span class="line">            <span class="comment">// 让按钮失焦</span></span><br><span class="line">            evt.blur();</span><br><span class="line">        &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/08/13/%E9%98%B2%E6%AD%A2%E6%8C%89%E9%92%AE%E5%A4%9A%E6%AC%A1%E7%82%B9%E5%87%BB%E4%BB%A5%E5%8F%8A%E7%82%B9%E5%87%BB%E5%90%8E%E4%B8%8D%E8%87%AA%E5%8A%A8%E5%A4%B1%E7%84%A6%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Vue文档知识/Vue Router" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/07/30/Vue%E6%96%87%E6%A1%A3%E7%9F%A5%E8%AF%86/Vue%20Router/">Vue Router</a>
+    </h1>
+  
+
+        
+        <a href="/2022/07/30/Vue%E6%96%87%E6%A1%A3%E7%9F%A5%E8%AF%86/Vue%20Router/" class="archive-article-date">
+  	<time datetime="2022-07-30T01:55:23.060Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>通过 Vue.js，我们已经用组件组成了我们的应用。当加入 Vue Router 时，我们需要做的就是将我们的组件映射到路由上，让 Vue Router 知道在哪里渲染它们。</p>
+<h3 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h3><ol>
+<li>路由是指根据url的不同，展示不同的内容</li>
+<li>router-link是跳转路由的标签，通过点击router-link标签，可以帮我们快速跳转到设置的路由下去</li>
+<li>router-view负责展示当前路由对应的组件内容</li>
+<li>/route/index.js文件下定义不同路由和其对应组件之间的关系<h3 id="最简实例"><a href="#最简实例" class="headerlink" title="最简实例"></a>最简实例</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello App!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--使用 router-link 组件进行导航 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--通过传递 `to` 来指定路由/链接 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--`&lt;router-link&gt;` 将呈现一个带有正确 `href` 属性的 `&lt;a&gt;` 标签--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">&quot;/&quot;</span>&gt;</span>Go to Home<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">&quot;/about&quot;</span>&gt;</span>Go to About<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 路由出口 --&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 路由匹配到的组件将渲染在这里 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">router-view</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>我们没有使用常规的 a 标签，而是使用一个自定义组件 router-link 来创建链接。这使得 <code>Vue Router</code> 可以在不重新加载页面的情况下更改 URL，处理 URL 的生成以及编码。</li>
+<li><blockquote>
+<p><code>router-view</code> 将显示与 url 对应的组件。你可以把它放在任何地方，以适应你的布局。<br>可以理解为是一个占位符，你点击一个routerlink，对应routerview的地方就展示路由对应的组件界面</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="项目中配置Router的步骤"><a href="#项目中配置Router的步骤" class="headerlink" title="项目中配置Router的步骤"></a>项目中配置Router的步骤</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 定义路由组件.</span></span><br><span class="line"><span class="comment">// 也可以从其他文件导入</span></span><br><span class="line"><span class="keyword">const</span> Home = &#123; <span class="attr">template</span>: <span class="string">&#x27;&lt;div&gt;Home&lt;/div&gt;&#x27;</span> &#125;</span><br><span class="line"><span class="keyword">const</span> About = &#123; <span class="attr">template</span>: <span class="string">&#x27;&lt;div&gt;About&lt;/div&gt;&#x27;</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 定义一些路由</span></span><br><span class="line"><span class="comment">// 每个路由都需要映射到一个组件。</span></span><br><span class="line"><span class="comment">// 我们后面再讨论嵌套路由。</span></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">&#x27;/&#x27;</span>, <span class="attr">component</span>: Home &#125;,</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">&#x27;/about&#x27;</span>, <span class="attr">component</span>: About &#125;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 创建路由实例并传递 `routes` 配置</span></span><br><span class="line"><span class="comment">// 你可以在这里输入更多的配置，但我们在这里</span></span><br><span class="line"><span class="comment">// 暂时保持简单</span></span><br><span class="line"><span class="keyword">const</span> router = VueRouter.createRouter(&#123;</span><br><span class="line">  <span class="comment">// 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。</span></span><br><span class="line">  <span class="attr">history</span>: VueRouter.createWebHashHistory(),</span><br><span class="line">  routes, <span class="comment">// `routes: routes` 的缩写</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 5. 创建并挂载根实例</span></span><br><span class="line"><span class="keyword">const</span> app = Vue.createApp(&#123;&#125;)</span><br><span class="line"><span class="comment">//确保 _use_ 路由实例使</span></span><br><span class="line"><span class="comment">//整个应用支持路由。</span></span><br><span class="line">app.use(router)</span><br><span class="line"></span><br><span class="line">app.mount(<span class="string">&#x27;#app&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 现在，应用已经启动了！</span></span><br></pre></td></tr></table></figure>
+<p>  通过调用 app.use(router)，我们可以在任意组件中以 this.$router 的形式访问它，并且以 this.$route 的形式访问当前路由：</p>
+<pre><code class="js">// Home.vue
+export default &#123;
+  computed: &#123;
+    username() &#123;
+      // 我们很快就会看到 `params` 是什么
+      return this.$route.params.username
+    &#125;,
+  &#125;,
+  methods: &#123;
+    goToDashboard() &#123;
+      if (isAuthenticated) &#123;
+        this.$router.push(&#39;/dashboard&#39;)
+      &#125; else &#123;
+        this.$router.push(&#39;/login&#39;)
+      &#125;
+    &#125;,
+  &#125;,
+&#125;
+</code></pre>
+<p>要在 setup 函数中访问路由，请调用 useRouter 或 useRoute 函数。</p>
+<p>在整个文档中，我们会经常使用 router 实例，请记住，this.$router 与直接使用通过 createRouter 创建的 router 实例完全相同。我们使用 this.$router 的原因是，我们不想在每个需要操作路由的组件中都导入路由。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/30/Vue%E6%96%87%E6%A1%A3%E7%9F%A5%E8%AF%86/Vue%20Router/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-dvc项目/vue项目目录中文件的作用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/07/24/dvc%E9%A1%B9%E7%9B%AE/vue%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95%E4%B8%AD%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8/">vue项目目录中各文件的作用</a>
+    </h1>
+  
+
+        
+        <a href="/2022/07/24/dvc%E9%A1%B9%E7%9B%AE/vue%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95%E4%B8%AD%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2022-07-24T03:08:36.363Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>node_modules: 用于存放我们项目的各种依赖，比如axios等，没有moudles文件，项目就没法运行，可以使用 npm install进行项目依赖的安装</li>
+<li>public:用于存放静态文件</li>
+<li>public/index.html:是一个模板文件，作用是生成项目的入口文件，webpack打包的js,css也会自动注入到该页面中。我们浏览器访问项目的时候就会默认打开生成好的index.html</li>
+<li>src:我们存放各种vue文件的地方</li>
+<li>src/assets:用于存放各种静态文件，如图片等</li>
+<li>src/compnents：用于存放我们的公共组件，如 header、footer等</li>
+<li>src/views：用于存放我们写好的各种页面，如login、main等</li>
+<li>src/APP.VUE: 主vue模块 引入其他模块，app.vue是项目的主组件，所有页面都是在app.vue下切换的</li>
+<li>src/main.js: 入口文件，主要作用是初始化vue实例，同时可以在此文件中引用某些组件库或者全局挂在一些变量</li>
+<li>src/router.js: 路由文件，这个里边可以理解为各个页面的地址路径，用于我们访问，同时可以直接在里边编写路由守卫</li>
+<li>src/store.js：主要用于项目里边的一些状态的保存，state中保存状态，mutations中写用于修改state中的状态，actions暂时没实践，不知道具体怎么使用</li>
+<li>package.json: 模块基本信息项目开发所需要模块，版本，项目名称</li>
+<li>package-lock.json: 是在 npm install时候生成一份文件，用以记录当前状态下实际安装的各个npm package的具体来源和版本号</li>
+<li>babel.config.js: 是一个工具链，主要用于在当前和较旧的浏览器或环境中将ECMAScript 2015+代码转换为JavaScript的向后兼容版本</li>
+<li>gitignore: git上传需要忽略的文件格式</li>
+<li>postcss.config.js: postcss 是帮我们后处理css ，css已经编译完成了，在stylus-loader编译成css之后，在通过postcss优化css，通过一系列组件去优化，比如以下，通过autoprefixer 添加css前缀<br>vue.config.js: 保存vue配置的文件，可以用于设置代理,打包配置等</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/24/dvc%E9%A1%B9%E7%9B%AE/vue%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95%E4%B8%AD%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-dvc项目/在本机运行dvclab项目步骤" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/07/23/dvc%E9%A1%B9%E7%9B%AE/%E5%9C%A8%E6%9C%AC%E6%9C%BA%E8%BF%90%E8%A1%8Cdvclab%E9%A1%B9%E7%9B%AE%E6%AD%A5%E9%AA%A4/">在本机运行dvclab项目步骤</a>
+    </h1>
+  
+
+        
+        <a href="/2022/07/23/dvc%E9%A1%B9%E7%9B%AE/%E5%9C%A8%E6%9C%AC%E6%9C%BA%E8%BF%90%E8%A1%8Cdvclab%E9%A1%B9%E7%9B%AE%E6%AD%A5%E9%AA%A4/" class="archive-article-date">
+  	<time datetime="2022-07-23T08:10:38.568Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-安装git"><a href="#1-安装git" class="headerlink" title="1. 安装git"></a>1. 安装git</h2><p>参考<a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/896043488029600/896067074338496">廖雪峰Git</a></p>
+<h2 id="2-克隆项目到本地"><a href="#2-克隆项目到本地" class="headerlink" title="2. 克隆项目到本地"></a>2. 克隆项目到本地</h2><ul>
+<li>在gitlab或者github找到想clone的项目地址，如<a target="_blank" rel="noopener" href="https://gitlab.dvclab.com/frontend/DvcAI-fe.git">https://gitlab.dvclab.com/frontend/DvcAI-fe.git</a>  </li>
+<li>到你想下载的目录下打开命令行 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://gitlab.dvclab.com/frontend/DvcAI-fe.git</span><br></pre></td></tr></table></figure>
+<h2 id="3-下载依赖包-一开始项目是用yarn构建的"><a href="#3-下载依赖包-一开始项目是用yarn构建的" class="headerlink" title="3. 下载依赖包: 一开始项目是用yarn构建的"></a>3. 下载依赖包: 一开始项目是用yarn构建的</h2> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn install</span><br></pre></td></tr></table></figure>
+<h2 id="4-运行项目"><a href="#4-运行项目" class="headerlink" title="4. 运行项目"></a>4. 运行项目</h2> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/23/dvc%E9%A1%B9%E7%9B%AE/%E5%9C%A8%E6%9C%AC%E6%9C%BA%E8%BF%90%E8%A1%8Cdvclab%E9%A1%B9%E7%9B%AE%E6%AD%A5%E9%AA%A4/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-sublime使用方法记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -220,10 +813,25 @@
 <li>验证是否配置成功，新建后缀为.md的文档，用Sublime编辑，保存,然后按快捷键ctrl+m,在默认浏览器中显示预览结果</li>
 </ul>
 </li>
+<li>SideBarEnhancements</li>
 </ol>
+<ul>
+<li>SideBarEnhancements 是一款很实用的右键菜单增强插件，有以 diff形式显示未保存的修改、在文件管理器中显示该文件、复制文件路径、在侧边栏中定位该文件等功能，也有基础的诸如新建文件/目录，编辑，打开/运行，显示，在选择中/上级目录/项目中查找，剪切，复制，粘贴，重命名，删除，刷新等常见功能。</li>
+</ul>
 <h2 id="四、可能遇到的问题"><a href="#四、可能遇到的问题" class="headerlink" title="四、可能遇到的问题"></a>四、可能遇到的问题</h2><ol>
 <li>packages contorl安装插件装不上<br>解决办法：<br>直接菜单栏Perferences    –&gt;Browse Packages，Package Control  拷贝到sublime 的packages目录下，重启后重新点击  菜单栏Perferences，可以正常安装插件。</li>
+<li>全局搜索快捷键不生效<br>菜单栏find =&gt; find in files可以全局搜索，但快捷键<code>ctrl+shift+f</code>不生效</li>
 </ol>
+<ul>
+<li>原因：输入法中的繁简切换快捷键冲突了</li>
+<li>解决方法：在输入法的设置中把繁简切换快捷键取消掉</li>
+</ul>
+<h2 id="五、常用快捷键"><a href="#五、常用快捷键" class="headerlink" title="五、常用快捷键"></a>五、常用快捷键</h2><ul>
+<li><code>ctrl+shift+~</code> 跳出终端</li>
+<li><code>ait+shift+2</code>  分屏</li>
+<li><code>ctrl+f</code> 在当前文件中查找</li>
+<li>``</li>
+</ul>
 
       
 
@@ -430,661 +1038,10 @@
 
 
   
-    <article id="post-一些前端杂项，小知识点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/10/%E4%B8%80%E4%BA%9B%E5%89%8D%E7%AB%AF%E6%9D%82%E9%A1%B9%EF%BC%8C%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/">一些前端小知识点</a>
-    </h1>
-  
-
-        
-        <a href="/2022/07/10/%E4%B8%80%E4%BA%9B%E5%89%8D%E7%AB%AF%E6%9D%82%E9%A1%B9%EF%BC%8C%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2022-07-10T11:20:23.261Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>记录我在开发过程中总遇到，但不太懂的小知识点</p>
-<h2 id="一、常见英语单词"><a href="#一、常见英语单词" class="headerlink" title="一、常见英语单词"></a>一、常见英语单词</h2><ul>
-<li>instance 实例</li>
-<li>context 语境，上下文</li>
-<li>property 属性</li>
-<li>Actual Argument 实际参数</li>
-<li>Formal Parameter 形式参数（Argument 和 Parameter 两个词在很多文献中均翻译为参数）</li>
-<li>higher-order function <a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017328655674400">高阶函数：函数名本身就是一个指向函数的变量</a> </li>
-<li>invoke 调用</li>
-<li>align 对齐</li>
-<li>assembly 部件</li>
-<li>plugin 插件</li>
-<li>annotation 注解，注释，批注（多行，针对方法，程序，可以添加一些参数@name..）</li>
-<li>comment 评论，单行注释</li>
-<li>amulate 模仿</li>
-<li>portal 入口，门户，一个基于web的应用程序。它主要提供个性化、单点登录、不同来源的内容整合以及存放信息系统的表示层</li>
-<li>configuration 配置</li>
-</ul>
-<h2 id="二、vue相关"><a href="#二、vue相关" class="headerlink" title="二、vue相关"></a>二、vue相关</h2><ol>
-<li>vue.use()是vue使用插件的固定语句</li>
-</ol>
-<h2 id="三、css相关"><a href="#三、css相关" class="headerlink" title="三、css相关"></a>三、css相关</h2><ol>
-<li>bootstrap中常用的一些class<ul>
-<li>fs-1 ~ fs-7 字号从大到小</li>
-<li>fw-bold 字体加粗</li>
-<li>mt、mb、ms、me分别控制上下左右的margin</li>
-<li>rounded 控制边框弧度</li>
-<li>gap-2 控制子组件的间隔</li>
-<li>bg-white控制背景颜色</li>
-<li>align-middle 定义在子标签上，让子标签纵向居中（在css中middle是说纵向居中，center是横向）</li>
-</ul>
-</li>
-</ol>
-<h2 id="四、js相关"><a href="#四、js相关" class="headerlink" title="四、js相关"></a>四、js相关</h2><h4 id="1-没有异常回调函数的时候可以用try-catch"><a href="#1-没有异常回调函数的时候可以用try-catch" class="headerlink" title="1. 没有异常回调函数的时候可以用try-catch"></a>1. 没有异常回调函数的时候可以用try-catch</h4><h4 id="2-分号问题"><a href="#2-分号问题" class="headerlink" title="2. 分号问题"></a>2. 分号问题</h4><ul>
-<li>一行开头是括号或者方括号的时候加上分号就可以了，其他时候全部不需要。</li>
-<li>加与不加完全取决于个人意愿，不会影响程序的运行。</li>
-<li>分号的添加是可选的，“可以加分号但是大家都不加” 的语言就有：Go, Scala, Ruby, Python, Swift, Groovy…</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/10/%E4%B8%80%E4%BA%9B%E5%89%8D%E7%AB%AF%E6%9D%82%E9%A1%B9%EF%BC%8C%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-vue-i18n用法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/10/vue-i18n%E7%94%A8%E6%B3%95/">vue-i18n插件用法</a>
-    </h1>
-  
-
-        
-        <a href="/2022/07/10/vue-i18n%E7%94%A8%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2022-07-10T08:06:21.329Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>vue-i18n是一个vue插件，可以让vue项目实现多语言，国际化。参考：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://kazupon.github.io/vue-i18n/started.html">vue-i18n官方文档</a></li>
-<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000015008808">segmentfault: 如何让一个vue项目支持多语言</a><h2 id="一、引入vue-i18n插件"><a href="#一、引入vue-i18n插件" class="headerlink" title="一、引入vue-i18n插件"></a>一、引入vue-i18n插件</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> VueI18n <span class="keyword">from</span> <span class="string">&#x27;vue-i18n&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过全局方法使用插件</span></span><br><span class="line">Vue.use(VueI18n)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="二、vue-i18n的最简单的使用模板"><a href="#二、vue-i18n的最简单的使用模板" class="headerlink" title="二、vue-i18n的最简单的使用模板"></a>二、vue-i18n的最简单的使用模板</h2><p>分为以下4个部分：</p>
-<ul>
-<li>message字典对象</li>
-<li>创建vue-i18n实例</li>
-<li>创建vue实例时将i18n作为option传递进去</li>
-<li>在vue组件中使用i18n<ul>
-<li>在组件的template中，调用$t()方法</li>
-<li>在组件的script中，调用this.$i18n.t()方法<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">** JAVASCRIPT</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个包含多语言的对象字典</span></span><br><span class="line"><span class="keyword">const</span> messages = &#123;</span><br><span class="line"><span class="attr">en</span>: &#123;</span><br><span class="line">    <span class="attr">message</span>: &#123;</span><br><span class="line">    <span class="attr">hello</span>: <span class="string">&#x27;hello world&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">ja</span>: &#123;</span><br><span class="line">    <span class="attr">message</span>: &#123;</span><br><span class="line">    <span class="attr">hello</span>: <span class="string">&#x27;こんにちは、世界&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建 VueI18n 实例 with options</span></span><br><span class="line"><span class="keyword">const</span> i18n = <span class="keyword">new</span> VueI18n(&#123;</span><br><span class="line"><span class="attr">locale</span>: <span class="string">&#x27;ja&#x27;</span>, <span class="comment">// set locale 默认使用日语</span></span><br><span class="line">messages, <span class="comment">// set locale messages 多语言字典</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在实例化vue时，将i18n当作一个option传进去，之后就可以在vue组件中使用i18n了</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123; i18n &#125;).$mount(<span class="string">&#x27;#app&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">** HTML</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">// 在组件中使用i18n插件</span></span><br><span class="line">&lt;div id=<span class="string">&quot;app&quot;</span>&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; $t(&quot;message.hello&quot;) &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出为日语</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;#app&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>こんにちは、世界<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h2 id="三、在项目中使用i18n"><a href="#三、在项目中使用i18n" class="headerlink" title="三、在项目中使用i18n"></a>三、在项目中使用i18n</h2><p>  上节的messages是一个包含了多语言的的对象，它就像我们的字典。既然是字典，我希望它只有一本。所以我只会new VueI18n()一次，并将实例化得到的i18n对象作为唯一的字典。<br>  新建一个locales文件夹，存放所有跟多语言相关的代码。目前包含三个文件：</p>
-<ul>
-<li>index.js : 统一设置locales文件夹下的语言包</li>
-<li>en.json : 【英语】json形式的语言包，为了对照方便，我们必须保证语言包的内容是一一对应的</li>
-<li>zh.json : 【中文】</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.js </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> VueI18n <span class="keyword">from</span> <span class="string">&#x27;vue-i18n&#x27;</span></span><br><span class="line"></span><br><span class="line">Vue.use(VueI18n)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> DEFAULT_LANG = <span class="string">&#x27;zh&#x27;</span></span><br><span class="line"><span class="keyword">const</span> LOCALE_KEY = <span class="string">&#x27;localeLanguage&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 配置多语言字典对象</span></span><br><span class="line"><span class="keyword">const</span> locales = &#123;</span><br><span class="line">  <span class="attr">zh</span>: <span class="built_in">require</span>(<span class="string">&#x27;./zh.json&#x27;</span>),</span><br><span class="line">  <span class="attr">en</span>: <span class="built_in">require</span>(<span class="string">&#x27;./en.json&#x27;</span>),</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建i18n实例对象（配置默认语言和字典对象）</span></span><br><span class="line"><span class="keyword">const</span> i18n = <span class="keyword">new</span> VueI18n(&#123;</span><br><span class="line">  <span class="attr">locale</span>: DEFAULT_LANG,</span><br><span class="line">  <span class="attr">messages</span>: locales,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// setup方法可以用来切换语种</span></span><br><span class="line"><span class="comment">// 将当前语种存到 localStorage中，保存用户的使用习惯</span></span><br><span class="line"><span class="comment">// 给body添加语种相关的class，因为不同语言可能导致排版出现差异，我们需要适配</span></span><br><span class="line"><span class="comment">// 将当前语种存到Vue的全局配置中，以便未来可能的使用。</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> setup = <span class="function"><span class="params">lang</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (lang === <span class="literal">undefined</span>) &#123;</span><br><span class="line">    lang = <span class="built_in">window</span>.localStorage.getItem(LOCALE_KEY)</span><br><span class="line">    <span class="keyword">if</span> (locales[lang] === <span class="literal">undefined</span>) &#123;</span><br><span class="line">      lang = DEFAULT_LANG</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">window</span>.localStorage.setItem(LOCALE_KEY, lang)</span><br><span class="line"></span><br><span class="line">  <span class="built_in">Object</span>.keys(locales).forEach(<span class="function"><span class="params">lang</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">document</span>.body.classList.remove(<span class="string">`lang-<span class="subst">$&#123;lang&#125;</span>`</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">document</span>.body.classList.add(<span class="string">`lang-<span class="subst">$&#123;lang&#125;</span>`</span>)</span><br><span class="line">  <span class="built_in">document</span>.body.setAttribute(<span class="string">&#x27;lang&#x27;</span>, lang)</span><br><span class="line"></span><br><span class="line">  Vue.config.lang = lang</span><br><span class="line">  i18n.locale = lang</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setup()</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> i18n</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>最后在main.js中引入这个index.js即可</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"><span class="keyword">import</span> i18n <span class="keyword">from</span> <span class="string">&#x27;@crm/locales&#x27;</span></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  i18n,</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  <span class="attr">render</span>: <span class="function"><span class="params">h</span> =&gt;</span> h(App),</span><br><span class="line">&#125;).$mount(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="四、-可能遇到的问题"><a href="#四、-可能遇到的问题" class="headerlink" title="四、 可能遇到的问题"></a>四、 可能遇到的问题</h2><h3 id="1-问题一：vue实例外的js代码中的文本怎么替换？"><a href="#1-问题一：vue实例外的js代码中的文本怎么替换？" class="headerlink" title="1. 问题一：vue实例外的js代码中的文本怎么替换？"></a>1. 问题一：vue实例外的js代码中的文本怎么替换？</h3><p>前面说到，vue实例中我们可以使用this.$i18n.t，这里的this是vue的实例。那项目中很多js代码在vue的实例之外，我们要怎么办？</p>
-<p>最简单的解决方法是这样的，我们的locales/index.js这个文件已经export了i18n这个对象，那我们只需要在每次要使用的时候手动将i18n导入进来就可以了。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">import</span> i18n <span class="keyword">from</span> <span class="string">&#x27;@crm/locales&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//const test = &quot;测试数据&quot;</span></span><br><span class="line"><span class="keyword">const</span> test = i18n.t(<span class="string">&#x27;message.test&#x27;</span>)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>可是这样一来，我们之后做诸如上面的文本替换时，就得小心翼翼的区别是否在vue实例中。如果是，我们用this.$i18n.t，否则先import然后用i18n.t。这显然增加了复杂性！</p>
-<p>为了解决这个问题，只直接的解决办法就是将i18n挂到window下，变成全局变量。我们就不必再Import进来，同时只使用统一方法:i18n.t。</p>
-<p>我们在main.js中添加这行代码:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./app.vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">&#x27;./router&#x27;</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">import</span> i18n <span class="keyword">from</span> <span class="string">&#x27;@crm/locales&#x27;</span></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.i18n = i18n</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  i18n,</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  <span class="attr">render</span>: <span class="function"><span class="params">h</span> =&gt;</span> h(App),</span><br><span class="line">&#125;).$mount(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>然后我们兴高采烈的将组件中的import i18n全去掉，并将this.$i18n.t改为i18n.t。然后项目跑起来就报错了：i18n is not defined。</p>
-<p>问题出在哪里？显示是组件调用i18n的时候，i18n还没有挂载到window上，所以是执行顺序出了问题。我们先来看一下下面代码的执行顺序：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假设webpack的入口文件是```main.js```</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//main.js</span></span><br><span class="line"><span class="keyword">import</span> moduleA <span class="keyword">from</span> <span class="string">&#x27;moduleA&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> moduleB <span class="keyword">from</span> <span class="string">&#x27;moduleB&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line"> </span><br><span class="line"><span class="comment">//moduleA.js</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span>)</span><br><span class="line"> </span><br><span class="line"><span class="comment">//moduleB.js</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//最终在浏览器中打印出的数字顺序是: </span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
-<p>为什么会这样呢？跟ES6 module的机制有关系。import命令具有提升效果，会提升到整个模块的头部，首先执行。这种行为的本质是，import命令是编译阶段执行的，在代码运行之前。</p>
-<p>这样我们就找出之前报错的原因了，我们先import了App, router这些视图，然后Import的i18n并挂载到window。所以组件的script中的代码会最先执行，而此时i18n并未开始。所以我们首先将window.i18n = i18n移到locales/index中，然后调整main.js中import的顺序:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//locales/index</span></span><br><span class="line">...</span><br><span class="line">setup()</span><br><span class="line"><span class="built_in">window</span>.i18n = i18n</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> i18n</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//main.js</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> i18n <span class="keyword">from</span> <span class="string">&#x27;@crm/locales&#x27;</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./app.vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">&#x27;./router&#x27;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-假如存在很多个new-Vue-怎么办？"><a href="#2-假如存在很多个new-Vue-怎么办？" class="headerlink" title="2. 假如存在很多个new Vue()怎么办？"></a>2. 假如存在很多个new Vue()怎么办？</h3><p>前面我们在main.js的new Vue({i18n, …})中将i18n作为option放了进去，但很快我发现这个项目并只有一个Vue的实例。全局搜索发现一共有70多个。</p>
-<p>项目中很的诸如弹窗之类的组件，都是直接自己实例化一个Vue然后自己$mount()到DOM中。这些组件在实例化的过程中并没有混入i18n选项，所以他们的template上自然找不到$t()方法。</p>
-<p>怎么办？难道给每一个new Vue()都手动添加i18n选项吗？肯定不行，首先我们要给添加70多次，其次如果未来又有人写了新的new Vue()忘了添加Ii8n，那又回导致报错。所以我们要想一个万全的法子。</p>
-<p>官方文档里找不到解决办法，看来我们得hack一下了。首先我们来查vue-i18n的源码，找到$t()方法是怎么工作的。</p>
-<p>全局搜索$t，找到定义它的地方：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(Vue.prototype, <span class="string">&#x27;$t&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">get</span>: <span class="function"><span class="keyword">function</span> <span class="title">get</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> this$<span class="number">1</span> = <span class="built_in">this</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">key</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> values = [], len = <span class="built_in">arguments</span>.length - <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">while</span> ( len-- &gt; <span class="number">0</span> ) values[ len ] = <span class="built_in">arguments</span>[ len + <span class="number">1</span> ];</span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> i18n = this$<span class="number">1.</span>$i18n;</span><br><span class="line">      <span class="keyword">return</span> i18n._t.apply(i18n, [ key, i18n.locale, i18n._getMessages(), this$<span class="number">1</span> ].concat( values ))</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>可以看到$t挂载在Vue.prototype上，每当我们在实例中调用$t时，其实我们是在调用this.$i18n对象上的_t方法。现在问题变成，实例上的$i18n是什么是时候定义的。</p>
-<p>全局搜索$i18n，我们找到了前面提到过的每个插件必须提供的install方法：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">install</span> (<span class="params">_Vue</span>) </span>&#123;</span><br><span class="line">  Vue = _Vue;</span><br><span class="line">  </span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  <span class="built_in">Object</span>.defineProperty(Vue.prototype, <span class="string">&#x27;$i18n&#x27;</span>, &#123;</span><br><span class="line">    <span class="attr">get</span>: <span class="function"><span class="keyword">function</span> <span class="title">get</span> (<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="built_in">this</span>._i18n &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  extend(Vue);</span><br><span class="line">  Vue.mixin(mixin);</span><br><span class="line">  Vue.directive(<span class="string">&#x27;t&#x27;</span>, &#123; <span class="attr">bind</span>: bind, <span class="attr">update</span>: update &#125;);</span><br><span class="line">  Vue.component(component.name, component);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// use object-based merge strategy</span></span><br><span class="line">  <span class="keyword">var</span> strats = Vue.config.optionMergeStrategies;</span><br><span class="line">  strats.i18n = strats.methods;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以看到$i18n一开始就被定义在了Vue.prototype上，每次调用的时候其实我们是在调用this._i18n，所以现在问题变成实例的_i18n在哪里。同时可以看到在Install中我们还混入了mixin, directive, component，这些在上面都有提过它的作用。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mixin = &#123;</span><br><span class="line">  <span class="attr">beforeCreate</span>: <span class="function"><span class="keyword">function</span> <span class="title">beforeCreate</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> options = <span class="built_in">this</span>.$options;</span><br><span class="line">    options.i18n = options.i18n || (options.__i18n ? &#123;&#125; : <span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (options.i18n) &#123;</span><br><span class="line">      <span class="keyword">if</span> (options.i18n <span class="keyword">instanceof</span> VueI18n) &#123;</span><br><span class="line">        ...</span><br><span class="line">        <span class="built_in">this</span>._i18n = options.i18n;</span><br></pre></td></tr></table></figure>
-<p>我们在mixin中找到了this._i18n的来源，前面提到mixin会被注入到组件中。在每个组件创建前，我们将this.$options的i18n给了this._i18n。</p>
-<p>这个this.$options是什么？它的使用方式是Vue.mixin(mixin)，所以我们看一下vue的文档:全局混入</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 为自定义的选项 &#x27;myOption&#x27; 注入一个处理器。</span></span><br><span class="line">Vue.mixin(&#123;</span><br><span class="line">  <span class="attr">created</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> myOption = <span class="built_in">this</span>.$options.myOption</span><br><span class="line">    <span class="keyword">if</span> (myOption) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(myOption)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  <span class="attr">myOption</span>: <span class="string">&#x27;hello!&#x27;</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// =&gt; &quot;hello!&quot;</span></span><br></pre></td></tr></table></figure>
-<p>所以this.$options就是我们new Vue时提供的选项对象。</p>
-<p>所以问题的根源就是除了main.js中的new Vue外，其余70多个new Vue我们没有混入i18n这个选项。怎样才可以让每次new Vue时自动将i18n混入选项呢？看上去我们只能修改Vue的源码了。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Vue</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">&#x27;production&#x27;</span> &amp;&amp;</span><br><span class="line">    !(<span class="built_in">this</span> <span class="keyword">instanceof</span> Vue)</span><br><span class="line">  ) &#123;</span><br><span class="line">    warn(<span class="string">&#x27;Vue is a constructor and should be called with the `new` keyword&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">this</span>._init(options);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以看到每次Vue实例化时，会调用_init方法，这个方法从哪里来呢？</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initMixin</span> (<span class="params">Vue</span>) </span>&#123;</span><br><span class="line">  Vue.prototype._init = <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">在Vue.prototype上，所以我们只需要修改Vue.prototype就好了。</span><br><span class="line"></span><br><span class="line"><span class="comment">//locales/index</span></span><br><span class="line"><span class="keyword">const</span> init = Vue.prototype._init</span><br><span class="line">Vue.prototype._init = <span class="function"><span class="keyword">function</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">  init.call(<span class="built_in">this</span>, &#123;</span><br><span class="line">    i18n,</span><br><span class="line">    ...options,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样我们在任何时候new Vue()就自动添加了i18n选项，问题解决！</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/10/vue-i18n%E7%94%A8%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-vue生命周期" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/04/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">vue生命周期的概念及用法</a>
-    </h1>
-  
-
-        
-        <a href="/2022/07/04/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="archive-article-date">
-  	<time datetime="2022-07-04T14:23:13.580Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>vue的生命周期在做项目的过程中经常需要用到，在这里做简要记录,参考:</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6874855535234170887">vue生命周期详解</a></li>
-<li><a target="_blank" rel="noopener" href="https://bbs.huaweicloud.com/blogs/278913">一文带你弄懂Vue八大生命周期钩子函数</a></li>
-<li><a target="_blank" rel="noopener" href="https://v3.cn.vuejs.org/api/options-lifecycle-hooks.html">生命周期钩子</a></li>
-</ul>
-<h2 id="一、vue生命周期概述"><a href="#一、vue生命周期概述" class="headerlink" title="一、vue生命周期概述"></a>一、vue生命周期概述</h2><ul>
-<li>我们把一个对象从生成（new）到被销毁（destory）的过程，称为生命周期。</li>
-<li>vue的生命周期就是每个Vue实例在被创建时都要经过一系列的初始化过程：创建实例，装载模板，渲染模板等。Vue为生命周期中的每个状态都设置了钩子函数(监听函数) 。</li>
-<li>每当Vue实例处于不同的生命周期时，对应的钩子函数就会被触发调用。我们可以根据自己的需要在这些钩子函数中加入自己的代码。</li>
-</ul>
-<h2 id="二、四个阶段，八个生命周期函数"><a href="#二、四个阶段，八个生命周期函数" class="headerlink" title="二、四个阶段，八个生命周期函数"></a>二、四个阶段，八个生命周期函数</h2><h3 id="1-创建阶段"><a href="#1-创建阶段" class="headerlink" title="1. 创建阶段"></a>1. 创建阶段</h3><p>这个阶段 vue组件开始初始化，vue开始观察数据，这个阶段有 beforeCreate 和 created 两个生命周期钩子函数。<br><strong>1.1 beforeCreate阶段</strong><br>在实例初始化（即new Vue()）之后、进行数据侦听和事件/侦听器的配置之前同步调用。此时 data、methods、computed以及watch上的数据和方法还未初始化，都不能被访问。<br>应用：我们可以在这个周期去初始化store，将localstorage中的数据复制到store中，参考<a target="_blank" rel="noopener" href="https://www.mikestreety.co.uk/blog/vue-js-using-localstorage-with-the-vuex-store/">Vue: Using localStorage with Vuex store</a><br><strong>1.2 created</strong><br>在实例创建完成后被立即同步调用。在这一步中，实例已完成对选项的处理，意味着以下内容已被配置完毕：数据侦听、计算属性、方法、事件/侦听器的回调函数。然而，挂载阶段还没开始，且 $el property 目前尚不可用。<br>可以做什么：</p>
-<ul>
-<li>data 和 methods 都已经被初始化好了，如果要调用 methods 中的方法，或者操作 data 中的数据，最早可以在这个阶段中操作。</li>
-<li>无法与Dom进行交互，如果非要想，可以通过vm.$nextTick来访问Dom。</li>
-<li>异步数据的请求适合在 created 的钩子中使用，例如数据初始化。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 这里created中getElementById会出错，因为视图中的html并没有渲染出来，所以此时如果直接去操作html的dom节点，一定找不到相关的元素</span><br><span class="line">// 而在mounted中，由于此时html已经渲染出来了，所以可以直接操作dom节点。</span><br><span class="line">created:function()&#123;</span><br><span class="line">  this.name=&quot;唐浩益&quot;</span><br><span class="line">  this.age = &quot;12&quot;</span><br><span class="line">  this.city =&quot;杭州&quot;</span><br><span class="line">  var x = document.getElementById(&quot;name&quot;)//第一个命令台错误</span><br><span class="line">  console.log(x.innerHTML);</span><br><span class="line">&#125;,</span><br><span class="line">mounted:function()&#123;</span><br><span class="line">  var x = document.getElementById(&quot;name&quot;)//第二个命令台输出的结果</span><br><span class="line">  console.log(x.innerHTML);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2-挂载阶段"><a href="#2-挂载阶段" class="headerlink" title="2. 挂载阶段"></a>2. 挂载阶段</h3></li>
-</ul>
-<p><strong>2.1 beforeMount</strong><br>这个阶段完成了模板的编译，但是还没挂载到页面上。<br>要挂载的dom对象编译好了，但是页面的DOM树还没挂上去，这个阶段页面还没能显示出来。<br><strong>2.2 mounted</strong><br>这个阶段，模板编译好了，也挂载到页面中了，页面也可以显示了。<br>这里就可以使用document.getElementById去操作挂载好的dom元素了</p>
-<blockquote>
-<p>在实例挂载完成后被调用，这时候传递给 app.mount 的元素已经被新创建的 vm.$el 替换了。如果根实例被挂载到了一个文档内的元素上，当 mounted 被调用时， vm.$el 也会在文档内。 注意 mounted 不会保证所有的子组件也都被挂载完成。如果你希望等待整个视图都渲染完毕，可以在 mounted 内部使用 vm.$nextTick：</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mounted() &#123;</span><br><span class="line">  this.$nextTick(function () &#123;</span><br><span class="line">    // 仅在整个视图都被渲染之后才会运行的代码</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>该钩子在服务器端渲染期间不被调用。</p>
-<h3 id="3-运行阶段"><a href="#3-运行阶段" class="headerlink" title="3. 运行阶段"></a>3. 运行阶段</h3><p><strong>3.1 beforeUpdate</strong></p>
-<ul>
-<li>data中的数据已经更改</li>
-<li>准备挂载的dom中的数据也已更改</li>
-<li>页面已挂载的dom还未更改<blockquote>
-<p>在数据发生改变后，DOM 被更新之前被调用。这里适合在现有 DOM 将要被更新之前访问它，比如移除手动添加的事件监听器。<br>该钩子在服务器端渲染期间不被调用，因为只有初次渲染会在服务器端进行。</p>
-</blockquote>
-</li>
-</ul>
-<p><strong>3.2 updated</strong></p>
-<ul>
-<li>页面已挂载的dom也更新了</li>
-<li>我们应该避免在这个钩子函数中去更改状态，因为刚更改结束<blockquote>
-<p>updated 不会保证所有的子组件也都被重新渲染完毕。如果你希望等待整个视图都渲染完毕，可以在 updated 内部使用 vm.$nextTick：</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">updated</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">  <span class="built_in">this</span>.$nextTick(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 仅在整个视图都被重新渲染完毕之后才会运行的代码</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>用法，目前我自己还没有用到，百度发现了一个博主在做的即时聊天项目，打开当前会话加载完消息后需要自动滚动到窗口最底部，这里用updated就很合适<br>参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44041976/article/details/107584572">vue updated生命周期的使用场景，可以做什么</a><h3 id="4-销毁阶段"><a href="#4-销毁阶段" class="headerlink" title="4. 销毁阶段"></a>4. 销毁阶段</h3></li>
-</ul>
-<p><strong>4.1 beforeDestroy(vue3中定义为beforeUnmount)</strong></p>
-<ul>
-<li>beforeDestroy阶段处于vue实例被销毁之前，当然，这个阶段vue实例还能用.我们可以在这时进行善后收尾工作，比如清除计时器。</li>
-<li>该钩子在服务器端渲染期间不被调用。</li>
-</ul>
-<p><strong>4.2 destroyed(vue3:unmounted)</strong></p>
-<ul>
-<li>卸载组件实例后调用。调用此钩子时，只剩下了dom空壳,组件已被拆解，数据绑定被卸除,组件实例的所有指令都被解除绑定，所有事件侦听器都被移除，所有子组件实例被卸载。</li>
-<li>该钩子在服务器端渲染期间不被调用<blockquote>
-<p>在大多数场景中你不应该调用这个方法。最好使用 v-if 和 v-for 指令以数据驱动的方式控制子组件的生命周期。</p>
-</blockquote>
-<h2 id="三、生命周期示意图"><a href="#三、生命周期示意图" class="headerlink" title="三、生命周期示意图"></a>三、生命周期示意图</h2><img src="https://cn.vuejs.org/images/lifecycle.png" alt="生命周期示意图"></li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/04/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-vue watch首次赋值就触发" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/08/vue%20watch%E9%A6%96%E6%AC%A1%E8%B5%8B%E5%80%BC%E5%B0%B1%E8%A7%A6%E5%8F%91/">vue首次赋值不触发watch</a>
-    </h1>
-  
-
-        
-        <a href="/2022/06/08/vue%20watch%E9%A6%96%E6%AC%A1%E8%B5%8B%E5%80%BC%E5%B0%B1%E8%A7%A6%E5%8F%91/" class="archive-article-date">
-  	<time datetime="2022-06-08T06:54:22.800Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>通过watch监听的数据，当字段被第一次赋值时是不会执行监听函数的。只有值再次发生改变才会执行监听。</p>
-<h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Liu_yunzhao/article/details/95395427">vue首次赋值不触发watch及watch和computed的区别</a><br>在选项参数中指定 immediate: true 将立即以表达式的当前值触发回调<br>也就是说immediate值为true，则首次赋值时就执行handler函数，immediate值为false，则首次赋值时就不执行handler函数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">watch: &#123;</span><br><span class="line">    <span class="attr">name</span>: &#123;</span><br><span class="line">        <span class="function"><span class="title">handler</span>(<span class="params">newValue, oldValue</span>)</span> &#123;&#125;,</span><br><span class="line">        <span class="attr">immediate</span>: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">age</span>: &#123;</span><br><span class="line">        <span class="function"><span class="title">handler</span>(<span class="params">newValue, oldValue</span>)</span> &#123;&#125;,</span><br><span class="line">        <span class="attr">immediate</span>: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/06/08/vue%20watch%E9%A6%96%E6%AC%A1%E8%B5%8B%E5%80%BC%E5%B0%B1%E8%A7%A6%E5%8F%91/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-vuex-getter用法归纳" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/08/vuex-getter%E7%94%A8%E6%B3%95%E5%BD%92%E7%BA%B3/">Vuex Getter 用法归纳(结合module)</a>
-    </h1>
-  
-
-        
-        <a href="/2022/06/08/vuex-getter%E7%94%A8%E6%B3%95%E5%BD%92%E7%BA%B3/" class="archive-article-date">
-  	<time datetime="2022-06-08T00:44:30.025Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>参考<a target="_blank" rel="noopener" href="https://vuex.vuejs.org/zh/guide/getters.html">Vuex Getter</a></p>
-<h3 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h3><p>getter可以理解为store中的计算属性，当我们要在多个组件中用到state中的派生状态时，比如：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">  doneTodosCount () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.$store.state.todos.filter(<span class="function"><span class="params">todo</span> =&gt;</span> todo.done).length</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>像这样在多个函数中复制这个函数是不太现实的，因此我们可以将这样的函数写在vuex-getter中，每次在组件中直接调用getter即可</p>
-<h3 id="二、getter写法"><a href="#二、getter写法" class="headerlink" title="二、getter写法"></a>二、getter写法</h3><ol>
-<li>通过属性访问，作为 Vue 的响应式系统的一部分缓存其中<ol>
-<li>Getter 接受 state 作为其第一个参数：  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = createStore(&#123;</span><br><span class="line"><span class="attr">state</span>: &#123;</span><br><span class="line">    <span class="attr">todos</span>: [</span><br><span class="line">    &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">text</span>: <span class="string">&#x27;...&#x27;</span>, <span class="attr">done</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">text</span>: <span class="string">&#x27;...&#x27;</span>, <span class="attr">done</span>: <span class="literal">false</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">getters</span>: &#123;</span><br><span class="line">    doneTodos (state) &#123;</span><br><span class="line">    <span class="keyword">return</span> state.todos.filter(<span class="function"><span class="params">todo</span> =&gt;</span> todo.done)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-<li>Getter 也可以接受其他 getter 作为第二个参数：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">getters: &#123;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">doneTodosCount (state, getters) &#123;</span><br><span class="line">    <span class="keyword">return</span> getters.doneTodos.length</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-<li>通过方法访问，可以通过让 getter 返回一个函数，来实现给 getter 传参。在你 store 里的数组进行查询时非常有用。getter 在通过方法访问时，每次都会去进行调用，而不会缓存结果。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">getters: &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="attr">getTodoById</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> <span class="function">(<span class="params">id</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> state.todos.find(<span class="function"><span class="params">todo</span> =&gt;</span> todo.id === id)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="三、getter调用时写法"><a href="#三、getter调用时写法" class="headerlink" title="三、getter调用时写法"></a>三、getter调用时写法</h3></li>
-<li>Getter 会暴露为 store.getters 对象，你可以以属性的形式访问这些值：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">store.getters.doneTodos <span class="comment">// -&gt; [&#123; id: 1, text: &#x27;...&#x27;, done: true &#125;]</span></span><br></pre></td></tr></table></figure></li>
-<li>通过方法访问时需要传参，每次都会区进行调用，而不会缓存结果<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">store.getters.getTodoById(<span class="number">2</span>) <span class="comment">// -&gt; &#123; id: 2, text: &#x27;...&#x27;, done: false &#125;</span></span><br></pre></td></tr></table></figure></li>
-<li>与module结合<br>对于有命名空间的模块中的getter的访问方法如下：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">modules: &#123;</span><br><span class="line">  <span class="attr">moduleA</span>: &#123;</span><br><span class="line">    <span class="attr">namespaced</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">getters</span>: &#123;</span><br><span class="line">      <span class="attr">getterName</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> <span class="function">(<span class="params">param1, param2, ..</span>) =&gt;</span> &#123;</span><br><span class="line">        ...</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">$store.getters[<span class="string">&#x27;moduleA/getterName&#x27;</span>](param1,param2)</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/06/08/vuex-getter%E7%94%A8%E6%B3%95%E5%BD%92%E7%BA%B3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-基于hexo搭建自己的静态博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/23/%E5%9F%BA%E4%BA%8Ehexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/">基于hexo搭建自己的静态博客</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/23/%E5%9F%BA%E4%BA%8Ehexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2021-11-23T14:05:37.320Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Heroku上，是搭建博客的首选框架。</li>
-<li>这是我跟着<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Yb411a7ty?spm_id_from=333.999.0.0">b站程序羊的视频</a>记的笔记，作为自己对知识的巩固和跟大家的分享<h2 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h2><h3 id="1-下载nodejs"><a href="#1-下载nodejs" class="headerlink" title="1.下载nodejs"></a>1.下载<a target="_blank" rel="noopener" href="https://nodejs.org/">nodejs</a></h3>选择LTS那个选项即可，安装直接一直下一步就好（这一步会同时安装好nodejs和npm包管理器，可以在命令行通过-v命令看他们是否已经安装好了）<br><img src="https://img-blog.csdnimg.cn/05325740233d4e70b5b02d9eb9411570.png"></li>
-</ul>
-<h3 id="2-安装hexo博客框架"><a href="#2-安装hexo博客框架" class="headerlink" title="2.安装hexo博客框架"></a>2.安装hexo博客框架</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p> 如果不能科学上网，npm直接下载会比较慢，那么可以用cnpm配国内的源来下载</p>
-<ul>
-<li>2.1 先下载cnpm<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure></li>
-<li>2.2 用cnpm来下载hexo(-g表示全局安装)</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<ul>
-<li>2.3 查看hexo是否安装成功</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="二、开始搭建博客"><a href="#二、开始搭建博客" class="headerlink" title="二、开始搭建博客"></a>二、开始搭建博客</h2><h3 id="1-在想要的目录下新建一个空文件夹“myblog”"><a href="#1-在想要的目录下新建一个空文件夹“myblog”" class="headerlink" title="1. 在想要的目录下新建一个空文件夹“myblog”"></a>1. 在想要的目录下新建一个空文件夹“myblog”</h3><p>后续所有的东西都存在这个文件夹中</p>
-<h3 id="2-在这个目录下开始安装hexo博客框架，使用命令hexo-init"><a href="#2-在这个目录下开始安装hexo博客框架，使用命令hexo-init" class="headerlink" title="2. 在这个目录下开始安装hexo博客框架，使用命令hexo init"></a>2. 在这个目录下开始安装hexo博客框架，使用命令<code>hexo init</code></h3><p><img src="https://img-blog.csdnimg.cn/ecad79e252f246da84bbc5d516e3ef65.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA7oSbIOWtnOaAqeWEv--9ng==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<h3 id="3-启动博客，使用命令hexo-s"><a href="#3-启动博客，使用命令hexo-s" class="headerlink" title="3. 启动博客，使用命令hexo s"></a>3. 启动博客，使用命令<code>hexo s</code></h3><p><img src="https://img-blog.csdnimg.cn/24ea0429204745799e6ff11da5b43ada.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA7oSbIOWtnOaAqeWEv--9ng==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>到此为止，我们的博客已经搭建起来了，并且可以本地通过<code>http://localhost:4000/</code>这个网址去访问，效果如下：<br><img src="https://img-blog.csdnimg.cn/eb6994876dd248af87ed5966500bd74c.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA7oSbIOWtnOaAqeWEv--9ng==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>可以看到，hexo不仅为我们搭建好了博客的框架，还自动生成了第一篇博客，其中包括一些hexo的基础命令操作：<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo n <span class="string">&quot;my first blog&quot;</span>  //新建一篇博文【new】，新建之后可以打开这个文件进行编辑内容</span><br><span class="line">hexo s  // 本地启动hexo，可以进行预览效果【server】</span><br><span class="line">hexo g  // 监视文件更改，重新生成页面</span><br><span class="line">hexo d  // 将更改部署到远程</span><br></pre></td></tr></table></figure></p>
-<h3 id="4-添加新的博文"><a href="#4-添加新的博文" class="headerlink" title="4. 添加新的博文"></a>4. 添加新的博文</h3><p>可以直接在<code>...\myblog\source\_posts\</code>目录下直接添加新的markdown博文文档，也可以通过命令行来新建再添加内容<br>添加新博文之后需要进行更新操作：<code>hexo g</code>,<code>hexo s</code></p>
-<h2 id="三、把博客部署到github远端"><a href="#三、把博客部署到github远端" class="headerlink" title="三、把博客部署到github远端"></a>三、把博客部署到github远端</h2><h3 id="1-先打开自己的github主页，选择新建仓库"><a href="#1-先打开自己的github主页，选择新建仓库" class="headerlink" title="1. 先打开自己的github主页，选择新建仓库"></a>1. 先打开自己的github主页，选择新建仓库</h3><p><img src="https://img-blog.csdnimg.cn/3c9d9e4adbd148d8a004f252fe85342c.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA7oSbIOWtnOaAqeWEv--9ng==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>仓库名写：自己的用户名.gihub.io(比如我的用户名是Liuqianyik,那么我的仓库名叫Liuqianyik.github.io)<br>描述可以随便写，比如：我的hexo仓库<br>然后直接下拉点击创建仓库即可</p>
-<h3 id="2-安装hexo的git部署插件"><a href="#2-安装hexo的git部署插件" class="headerlink" title="2. 安装hexo的git部署插件"></a>2. 安装hexo的git部署插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
-<h3 id="3-配置博客"><a href="#3-配置博客" class="headerlink" title="3. 配置博客"></a>3. 配置博客</h3><p>在我们本地的文件夹myblog下找到_config.yml文件，拉到最底下，找到Deployment选项，增加type和repo<br><img src="https://img-blog.csdnimg.cn/f36a75844d344fa0bdd4628a029033d3.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA7oSbIOWtnOaAqeWEv--9ng==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>repo的网址就是刚才在github创建好的仓库的git地址，可以在这里直接复制<br><img src="https://img-blog.csdnimg.cn/830ea1f960854c2ea18ae3c406bfd73a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA7oSbIOWtnOaAqeWEv--9ng==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<h3 id="4-将博客部署到远端"><a href="#4-将博客部署到远端" class="headerlink" title="4. 将博客部署到远端"></a>4. 将博客部署到远端</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<p>部署完成之后可以看到github的空仓库中出现了我们博客的文件，这时候我们就可以通过github的网址来在线访问博客啦<br>链接就是上一步git部署链接的后半部分，我的是<code>https://liuqianyik.github.io/</code><br><img src="https://img-blog.csdnimg.cn/06e80a0e66b6419d9e96ed39c191476c.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA7oSbIOWtnOaAqeWEv--9ng==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>在线访问效果和本地访问相同</p>
-<h2 id="四、更换主题"><a href="#四、更换主题" class="headerlink" title="四、更换主题"></a>四、更换主题</h2><p>程序羊推荐的主题：<a target="_blank" rel="noopener" href="https://github.com/litten/hexo-theme-yilia">https://github.com/litten/hexo-theme-yilia</a></p>
-<h3 id="1-下载主题-将别人的主题文件下载到我们本地的myblog-theme-yillia目录下"><a href="#1-下载主题-将别人的主题文件下载到我们本地的myblog-theme-yillia目录下" class="headerlink" title="1.下载主题(将别人的主题文件下载到我们本地的myblog/theme/yillia目录下)"></a>1.下载主题(将别人的主题文件下载到我们本地的myblog/theme/yillia目录下)</h3><pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/litten/hexo-theme-yilia.git theme/yillia</span><br></pre></td></tr></table></figure>
-如果报错可以参考：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/806e4e57c1e7492ba671144e49f24ac4.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA7oSbIOWtnOaAqeWEv--9ng==,size_20,color_FFFFFF,t_70,g_se,x_16)
-</code></pre>
-<h3 id="2-把主题配置到自己的博客中去"><a href="#2-把主题配置到自己的博客中去" class="headerlink" title="2.把主题配置到自己的博客中去"></a>2.把主题配置到自己的博客中去</h3><p>修改myblog/_config.yml文件：<br><img src="https://img-blog.csdnimg.cn/9e8de179771e452bacd2a467a4036c9a.png" alt="在这里插入图片描述"></p>
-<h3 id="3-重新生成，启动，部署hexo"><a href="#3-重新生成，启动，部署hexo" class="headerlink" title="3.重新生成，启动，部署hexo"></a>3.重新生成，启动，部署hexo</h3><pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo g // 监视更改的文件并重新生成</span><br><span class="line">hexo d // 远程可以看了</span><br><span class="line">hexo s // 本地可以通过4000端口看了</span><br></pre></td></tr></table></figure>
-</code></pre>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/23/%E5%9F%BA%E4%BA%8Ehexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/23/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/23/hello-world/" class="archive-article-date">
-  	<time datetime="2021-11-23T11:34:28.657Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/23/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
   
 
 
