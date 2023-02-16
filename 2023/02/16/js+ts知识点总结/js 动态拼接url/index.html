@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Vue3+Vite构建项目 | Lqy&#39;s Blog</title>
+  <title>js动态拼接url | Lqy&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1 Vue是什么？Vue 是一款用于构建用户界面的 JavaScript 框架。它基于标准 HTML、CSS 和 JavaScript 构建，并提供了一套声明式的、组件化的编程模型，帮助你高效地开发用户界面。 参考：Vue官网：简介 | Vue.js 1.1 Vue 特点Declarative Rendering，声明式渲染，基于JavaScript状态输出期望的HTMLReactivity，反应">
+  <meta name="description" content="使用场景发起http请求的时候，中台API定义的route中会有需要我们自定义的参数，比如： 123&#x2F;users?page&#x3D;$&amp;#123;page&amp;#125;&amp;size&#x3D;$&amp;#123;size&amp;#125;&amp;q&#x3D;$&amp;#123;q&amp;#125;&#x2F;&#x2F; or&#x2F;users&#x2F;:uid&#x2F;collection 请求的url写法1234567&#x2F;&#x2F; 方法一（我之前用的，很不灵活，直接用加号连接字符串，不">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue3+Vite构建项目">
-<meta property="og:url" content="http://example.com/2023/02/15/Vue3.0/vue3+vite/index.html">
+<meta property="og:title" content="js动态拼接url">
+<meta property="og:url" content="http://example.com/2023/02/16/js+ts%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/js%20%E5%8A%A8%E6%80%81%E6%8B%BC%E6%8E%A5url/index.html">
 <meta property="og:site_name" content="Lqy&#39;s Blog">
-<meta property="og:description" content="1 Vue是什么？Vue 是一款用于构建用户界面的 JavaScript 框架。它基于标准 HTML、CSS 和 JavaScript 构建，并提供了一套声明式的、组件化的编程模型，帮助你高效地开发用户界面。 参考：Vue官网：简介 | Vue.js 1.1 Vue 特点Declarative Rendering，声明式渲染，基于JavaScript状态输出期望的HTMLReactivity，反应">
+<meta property="og:description" content="使用场景发起http请求的时候，中台API定义的route中会有需要我们自定义的参数，比如： 123&#x2F;users?page&#x3D;$&amp;#123;page&amp;#125;&amp;size&#x3D;$&amp;#123;size&amp;#125;&amp;q&#x3D;$&amp;#123;q&amp;#125;&#x2F;&#x2F; or&#x2F;users&#x2F;:uid&#x2F;collection 请求的url写法1234567&#x2F;&#x2F; 方法一（我之前用的，很不灵活，直接用加号连接字符串，不">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-02-15T12:47:26.144Z">
-<meta property="article:modified_time" content="2023-02-16T03:04:37.327Z">
+<meta property="article:published_time" content="2023-02-16T02:50:08.582Z">
+<meta property="article:modified_time" content="2023-02-16T03:03:12.869Z">
 <meta property="article:author" content="Liu qianyi">
 <meta name="twitter:card" content="summary">
   
@@ -154,69 +154,29 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Vue3.0/vue3+vite" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-js+ts知识点总结/js 动态拼接url" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Vue3+Vite构建项目
+      js动态拼接url
     </h1>
   
 
         
-        <a href="/2023/02/15/Vue3.0/vue3+vite/" class="archive-article-date">
-  	<time datetime="2023-02-15T12:47:26.144Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-15</time>
+        <a href="/2023/02/16/js+ts%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/js%20%E5%8A%A8%E6%80%81%E6%8B%BC%E6%8E%A5url/" class="archive-article-date">
+  	<time datetime="2023-02-16T02:50:08.582Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-Vue是什么？"><a href="#1-Vue是什么？" class="headerlink" title="1 Vue是什么？"></a>1 Vue是什么？</h2><p>Vue 是一款用于构建用户界面的 JavaScript 框架。它基于标准 HTML、CSS 和 JavaScript 构建，并提供了一套声明式的、组件化的编程模型，帮助你高效地开发用户界面。</p>
-<p>参考：<br>Vue官网：<a target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/introduction.html#what-is-vue">简介 | Vue.js</a></p>
-<h3 id="1-1-Vue-特点"><a href="#1-1-Vue-特点" class="headerlink" title="1.1 Vue 特点"></a>1.1 Vue 特点</h3><p>Declarative Rendering，声明式渲染，基于JavaScript状态输出期望的HTML<br>Reactivity，反应式，自动追踪JavaScript状态，如有更新自动更新DOM</p>
-<h3 id="1-2-Vue2-x-Vue3-0"><a href="#1-2-Vue2-x-Vue3-0" class="headerlink" title="1.2 Vue2.x - Vue3.0"></a>1.2 Vue2.x - Vue3.0</h3><p>2020年9月18日，Vue.js发布3.0版本</p>
-<h4 id="1-2-1-新特性"><a href="#1-2-1-新特性" class="headerlink" title="1.2.1 新特性"></a>1.2.1 新特性</h4><ul>
-<li>Vue3设计了一套强大的组合式API（Composition-API）代替了Vue2中的Option-API，提高了复用性，我们可以更加优雅的组织我们的代码，函数，让相关功能的代码更加有序的组织在一起</li>
-<li>Vue3中使用Proxy配合Reflect从而代替了Vue2中的Object.defineProperty()方法，实现数据的响应式（数据代理）</li>
-<li>组件可以没有根标签, 内部会将多个标签包含在一个Fragment虚拟元素中,减少标签层级, 减小内存占用</li>
-<li>增加了一些新的组件标签，例如<teleport/> <suspense/></li>
-<li>提供了一种新的脚手架工具 Vite</li>
-</ul>
-<h2 id="2-工程构建"><a href="#2-工程构建" class="headerlink" title="2 工程构建"></a>2 工程构建</h2><h3 id="2-1-开发环境"><a href="#2-1-开发环境" class="headerlink" title="2.1 开发环境"></a>2.1 开发环境</h3><p>Sublime Text 4配置LSP支持TypeScript</p>
-<ol>
-<li>Install LSP, Vue Syntax Highlight and LSP-volar from Package Control.</li>
-<li>重启 Sublime Text</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/sublimelsp/LSP-volar">https://github.com/sublimelsp/LSP-volar</a></li>
-</ol>
-<p>配置LSP-volar：</p>
-<ol>
-<li>Ctrl+Shift+P 输入 LSP-volar Settings，打开配置界面</li>
-<li>右侧面板（自定义参数）中增加配置，实现LSP-volar插件对js/ts文件语法提示<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;selector&quot;</span>: <span class="string">&quot;text.html.vue | source.ts | source.tsx | source.js | source.jsx&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>参考：<br><a target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/scaling-up/tooling.html">Vue工具链</a></p>
-<h3 id="2-2-使用vite构建"><a href="#2-2-使用vite构建" class="headerlink" title="2.2 使用vite构建"></a>2.2 使用vite构建</h3><p>参考：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://cli.vuejs.org/zh/guide/creating-a-project.html#vue-create">创建一个项目| Vue CLI</a></li>
-<li><a target="_blank" rel="noopener" href="https://cn.vitejs.dev/">ViteJS</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/vuejs/create-vue">Create Vue</a></li>
-<li><a target="_blank" rel="noopener" href="https://vuejs.org/guide/quick-start.html">Vue 3 Quick Start</a></li>
-<li><a target="_blank" rel="noopener" href="https://lxchuan12.gitee.io/create-vue/">Vue 团队公开快如闪电的全新脚手架工具 create-vue</a></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 1. 构建项目</span><br><span class="line">npm init vue@3</span><br><span class="line">// 默认使用vite构建，选择TypeScript、Vue Router、Pinia、ESLint、Prettier</span><br><span class="line"></span><br><span class="line">// 2. 安装依赖</span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line">// 3. 部署开发测试服务器</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-2-1-配置-eslint-prettier"><a href="#2-2-1-配置-eslint-prettier" class="headerlink" title="2.2.1 配置 eslint-prettier"></a>2.2.1 配置 eslint-prettier</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .prettierrc.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;htmlWhitespaceSensitivity&quot;</span>: <span class="string">&quot;ignore&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;endOfLine&quot;</span>: <span class="string">&quot;auto&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;semi&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">&quot;singleQuote&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;useTabs&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">&quot;tabWidth&quot;</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">&quot;bracketSpacing&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;bracketSameLine&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;singleAttributePerLine&quot;</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>参考：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://prettier.io/docs/en/options.html">Prettier Options</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7050127881371910152">ESlint与Prettier配置指南</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36800701/article/details/112545940">解决格式化插件Prettier，格式化操作后，结束标签＞跑到下一行的问题。</a></li>
-</ul>
-<h4 id="2-2-2-tsconfig-json"><a href="#2-2-2-tsconfig-json" class="headerlink" title="2.2.2 tsconfig.json"></a>2.2.2 tsconfig.json</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compilerOptions → <span class="string">&quot;noImplicitAny&quot;</span>: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
+        <h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>发起http请求的时候，中台API定义的route中会有需要我们自定义的参数，比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/users?page=$&#123;page&#125;&amp;size=$&#123;size&#125;&amp;q=$&#123;q&#125;</span><br><span class="line"><span class="comment">// or</span></span><br><span class="line">/users/:uid/collection</span><br></pre></td></tr></table></figure>
+<h2 id="请求的url写法"><a href="#请求的url写法" class="headerlink" title="请求的url写法"></a>请求的url写法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法一（我之前用的，很不灵活，直接用加号连接字符串，不推荐）</span></span><br><span class="line">url = <span class="string">&#x27;/users?&#x27;</span> + <span class="built_in">this</span>.page + <span class="string">&#x27;&amp;&#x27;</span> + <span class="built_in">this</span>.q</span><br><span class="line">url = <span class="string">&#x27;/users/&#x27;</span> + <span class="built_in">this</span>.uid + <span class="string">&#x27;/collection&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法二（推荐）</span></span><br><span class="line">url = <span class="string">`&#x27;/users?&#x27;<span class="subst">$&#123;<span class="built_in">this</span>.page&#125;</span>&amp;<span class="subst">$&#123;<span class="built_in">this</span>.q&#125;</span>`</span></span><br><span class="line">url = <span class="string">`&#x27;/users/&#x27;<span class="subst">$&#123;<span class="built_in">this</span>.uid&#125;</span>&#x27;/collection&#x27;`</span></span><br></pre></td></tr></table></figure>
       
 
       
@@ -295,7 +255,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/02/15/Vue3.0/vue3+vite/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/02/16/js+ts%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/js%20%E5%8A%A8%E6%80%81%E6%8B%BC%E6%8E%A5url/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -309,18 +269,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/02/16/js+ts%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/js%20%E5%8A%A8%E6%80%81%E6%8B%BC%E6%8E%A5url/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          js动态拼接url
-        
-      </div>
-    </a>
   
-  
-    <a href="/2022/08/13/Vue%E5%AD%90%E7%BB%84%E4%BB%B6%E8%B0%83%E7%94%A8%E7%88%B6%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Vue子组件调用父组件中的自定义方法</div>
+    <a href="/2023/02/15/Vue3.0/vue3+vite/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vue3+Vite构建项目</div>
       <i class="icon-circle-right"></i>
     </a>
   
