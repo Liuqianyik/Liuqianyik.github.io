@@ -36,7 +36,9 @@
 
   
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -182,7 +184,7 @@
 <li>Vue3设计了一套强大的组合式API（Composition-API）代替了Vue2中的Option-API，提高了复用性，我们可以更加优雅的组织我们的代码，函数，让相关功能的代码更加有序的组织在一起</li>
 <li>Vue3中使用Proxy配合Reflect从而代替了Vue2中的Object.defineProperty()方法，实现数据的响应式（数据代理）</li>
 <li>组件可以没有根标签, 内部会将多个标签包含在一个Fragment虚拟元素中,减少标签层级, 减小内存占用</li>
-<li>增加了一些新的组件标签，例如<teleport/> <suspense/></li>
+<li>增加了一些新的组件标签，例如<teleport> <suspense></suspense></teleport></li>
 <li>提供了一种新的脚手架工具 Vite</li>
 </ul>
 <h2 id="2-工程构建"><a href="#2-工程构建" class="headerlink" title="2 工程构建"></a>2 工程构建</h2><h3 id="2-1-开发环境"><a href="#2-1-开发环境" class="headerlink" title="2.1 开发环境"></a>2.1 开发环境</h3><p>Sublime Text 4配置LSP支持TypeScript</p>
@@ -194,7 +196,7 @@
 <p>配置LSP-volar：</p>
 <ol>
 <li>Ctrl+Shift+P 输入 LSP-volar Settings，打开配置界面</li>
-<li>右侧面板（自定义参数）中增加配置，实现LSP-volar插件对js/ts文件语法提示<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;selector&quot;</span>: <span class="string">&quot;text.html.vue | source.ts | source.tsx | source.js | source.jsx&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>右侧面板（自定义参数）中增加配置，实现LSP-volar插件对js/ts文件语法提示<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">  <span class="attr">"selector"</span>: <span class="string">"text.html.vue | source.ts | source.tsx | source.js | source.jsx"</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
 </ol>
 <p>参考：<br><a target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/scaling-up/tooling.html">Vue工具链</a></p>
 <h3 id="2-2-使用vite构建"><a href="#2-2-使用vite构建" class="headerlink" title="2.2 使用vite构建"></a>2.2 使用vite构建</h3><p>参考：</p>
@@ -205,9 +207,9 @@
 <li><a target="_blank" rel="noopener" href="https://vuejs.org/guide/quick-start.html">Vue 3 Quick Start</a></li>
 <li><a target="_blank" rel="noopener" href="https://lxchuan12.gitee.io/create-vue/">Vue 团队公开快如闪电的全新脚手架工具 create-vue</a></li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 1. 构建项目</span><br><span class="line">npm init vue@3</span><br><span class="line">// 默认使用vite构建，选择TypeScript、Vue Router、Pinia、ESLint、Prettier</span><br><span class="line"></span><br><span class="line">// 2. 安装依赖</span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line">// 3. 部署开发测试服务器</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 1. 构建项目</span><br><span class="line">npm init vue@3</span><br><span class="line">// 默认使用vite构建，选择TypeScript、Vue Router、Pinia、ESLint、Prettier</span><br><span class="line"></span><br><span class="line">// 2. 安装依赖</span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line">// 3. 部署开发测试服务器</span><br><span class="line">npm run dev</span><br></pre></td></tr></tbody></table></figure>
 
-<h4 id="2-2-1-配置-eslint-prettier"><a href="#2-2-1-配置-eslint-prettier" class="headerlink" title="2.2.1 配置 eslint-prettier"></a>2.2.1 配置 eslint-prettier</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .prettierrc.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;htmlWhitespaceSensitivity&quot;</span>: <span class="string">&quot;ignore&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;endOfLine&quot;</span>: <span class="string">&quot;auto&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;semi&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">&quot;singleQuote&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;useTabs&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">&quot;tabWidth&quot;</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">&quot;bracketSpacing&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;bracketSameLine&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;singleAttributePerLine&quot;</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-1-配置-eslint-prettier"><a href="#2-2-1-配置-eslint-prettier" class="headerlink" title="2.2.1 配置 eslint-prettier"></a>2.2.1 配置 eslint-prettier</h4><figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .prettierrc.json</span></span><br><span class="line">{</span><br><span class="line">  <span class="attr">"htmlWhitespaceSensitivity"</span>: <span class="string">"ignore"</span>,</span><br><span class="line">  <span class="attr">"endOfLine"</span>: <span class="string">"auto"</span>,</span><br><span class="line">  <span class="attr">"semi"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">"singleQuote"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"useTabs"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">"tabWidth"</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">"bracketSpacing"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"bracketSameLine"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"singleAttributePerLine"</span>: <span class="literal">false</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <p>参考：</p>
 <ul>
@@ -215,7 +217,7 @@
 <li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7050127881371910152">ESlint与Prettier配置指南</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36800701/article/details/112545940">解决格式化插件Prettier，格式化操作后，结束标签＞跑到下一行的问题。</a></li>
 </ul>
-<h4 id="2-2-2-tsconfig-json"><a href="#2-2-2-tsconfig-json" class="headerlink" title="2.2.2 tsconfig.json"></a>2.2.2 tsconfig.json</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compilerOptions → <span class="string">&quot;noImplicitAny&quot;</span>: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-2-2-tsconfig-json"><a href="#2-2-2-tsconfig-json" class="headerlink" title="2.2.2 tsconfig.json"></a>2.2.2 tsconfig.json</h4><figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compilerOptions → <span class="string">"noImplicitAny"</span>: <span class="literal">false</span></span><br></pre></td></tr></tbody></table></figure>
 
       
 

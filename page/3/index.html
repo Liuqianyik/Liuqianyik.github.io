@@ -6,21 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>vue生命周期的概念及用法 | Lqy&#39;s Blog</title>
+  <title>Lqy&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="vue的生命周期在做项目的过程中经常需要用到，在这里做简要记录,参考:  vue生命周期详解 一文带你弄懂Vue八大生命周期钩子函数 生命周期钩子  一、vue生命周期概述 我们把一个对象从生成（new）到被销毁（destory）的过程，称为生命周期。 vue的生命周期就是每个Vue实例在被创建时都要经过一系列的初始化过程：创建实例，装载模板，渲染模板等。Vue为生命周期中的每个状态都设置了钩子函">
-<meta property="og:type" content="article">
-<meta property="og:title" content="vue生命周期的概念及用法">
-<meta property="og:url" content="http://example.com/2022/07/04/Vue%E6%96%87%E6%A1%A3%E7%9F%A5%E8%AF%86/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Lqy&#39;s Blog">
+<meta property="og:url" content="http://example.com/page/3/index.html">
 <meta property="og:site_name" content="Lqy&#39;s Blog">
-<meta property="og:description" content="vue的生命周期在做项目的过程中经常需要用到，在这里做简要记录,参考:  vue生命周期详解 一文带你弄懂Vue八大生命周期钩子函数 生命周期钩子  一、vue生命周期概述 我们把一个对象从生成（new）到被销毁（destory）的过程，称为生命周期。 vue的生命周期就是每个Vue实例在被创建时都要经过一系列的初始化过程：创建实例，装载模板，渲染模板等。Vue为生命周期中的每个状态都设置了钩子函">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://cn.vuejs.org/images/lifecycle.png">
-<meta property="article:published_time" content="2022-07-04T14:23:13.580Z">
-<meta property="article:modified_time" content="2022-07-11T15:39:46.485Z">
 <meta property="article:author" content="Liu qianyi">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cn.vuejs.org/images/lifecycle.png">
   
     <link rel="alternative" href="/atom.xml" title="Lqy&#39;s Blog" type="application/atom+xml">
   
@@ -38,9 +32,7 @@
 
   
 
-<meta name="generator" content="Hexo 5.4.0">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -158,105 +150,54 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Vue文档知识/vue生命周期" class="article article-type-post " itemscope itemprop="blogPost">
+            
+  
+    <article id="post-基于hexo搭建自己的静态博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      vue生命周期的概念及用法
-    </h1>
-  
-
-        
-        <a href="/2022/07/04/Vue%E6%96%87%E6%A1%A3%E7%9F%A5%E8%AF%86/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="archive-article-date">
-  	<time datetime="2022-07-04T14:23:13.580Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-04</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>vue的生命周期在做项目的过程中经常需要用到，在这里做简要记录,参考:</p>
+        <hr>
+<h2 id="title-基于hexo搭建自己的静态博客"><a href="#title-基于hexo搭建自己的静态博客" class="headerlink" title="title: 基于hexo搭建自己的静态博客"></a>title: 基于hexo搭建自己的静态博客</h2><ul>
+<li>Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Heroku上，是搭建博客的首选框架。</li>
+<li>这是我跟着<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Yb411a7ty?spm_id_from=333.999.0.0">b站程序羊的视频</a>记的笔记，作为自己对知识的巩固和跟大家的分享<h2 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h2><h3 id="1-下载nodejs"><a href="#1-下载nodejs" class="headerlink" title="1.下载nodejs"></a>1.下载<a target="_blank" rel="noopener" href="https://nodejs.org/">nodejs</a></h3>选择LTS那个选项即可，安装直接一直下一步就好（这一步会同时安装好nodejs和npm包管理器，可以在命令行通过-v命令看他们是否已经安装好了）</li>
+</ul>
+<p> <img src="https://img-blog.csdnimg.cn/05325740233d4e70b5b02d9eb9411570.png"></p>
+<h3 id="2-安装hexo博客框架"><a href="#2-安装hexo博客框架" class="headerlink" title="2.安装hexo博客框架"></a>2.安装hexo博客框架</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p> 如果不能科学上网，npm直接下载会比较慢，那么可以用cnpm配国内的源来下载</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6874855535234170887">vue生命周期详解</a></li>
-<li><a target="_blank" rel="noopener" href="https://bbs.huaweicloud.com/blogs/278913">一文带你弄懂Vue八大生命周期钩子函数</a></li>
-<li><a target="_blank" rel="noopener" href="https://v3.cn.vuejs.org/api/options-lifecycle-hooks.html">生命周期钩子</a></li>
+<li>2.1 先下载cnpm<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure></li>
+<li>2.2 用cnpm来下载hexo(-g表示全局安装)</li>
 </ul>
-<h2 id="一、vue生命周期概述"><a href="#一、vue生命周期概述" class="headerlink" title="一、vue生命周期概述"></a>一、vue生命周期概述</h2><ul>
-<li>我们把一个对象从生成（new）到被销毁（destory）的过程，称为生命周期。</li>
-<li>vue的生命周期就是每个Vue实例在被创建时都要经过一系列的初始化过程：创建实例，装载模板，渲染模板等。Vue为生命周期中的每个状态都设置了钩子函数(监听函数) 。</li>
-<li>每当Vue实例处于不同的生命周期时，对应的钩子函数就会被触发调用。我们可以根据自己的需要在这些钩子函数中加入自己的代码。</li>
-</ul>
-<h2 id="二、四个阶段，八个生命周期函数"><a href="#二、四个阶段，八个生命周期函数" class="headerlink" title="二、四个阶段，八个生命周期函数"></a>二、四个阶段，八个生命周期函数</h2><h3 id="1-创建阶段"><a href="#1-创建阶段" class="headerlink" title="1. 创建阶段"></a>1. 创建阶段</h3><p>这个阶段 vue组件开始初始化，vue开始观察数据，这个阶段有 beforeCreate 和 created 两个生命周期钩子函数。<br><strong>1.1 beforeCreate阶段</strong><br>在实例初始化（即new Vue()）之后、进行数据侦听和事件/侦听器的配置之前同步调用。此时 data、methods、computed以及watch上的数据和方法还未初始化，都不能被访问。<br>应用：我们可以在这个周期去初始化store，将localstorage中的数据复制到store中，参考<a target="_blank" rel="noopener" href="https://www.mikestreety.co.uk/blog/vue-js-using-localstorage-with-the-vuex-store/">Vue: Using localStorage with Vuex store</a><br><strong>1.2 created</strong><br>在实例创建完成后被立即同步调用。在这一步中，实例已完成对选项的处理，意味着以下内容已被配置完毕：数据侦听、计算属性、方法、事件/侦听器的回调函数。然而，挂载阶段还没开始，且 $el property 目前尚不可用。<br>可以做什么：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
 <ul>
-<li>data 和 methods 都已经被初始化好了，如果要调用 methods 中的方法，或者操作 data 中的数据，最早可以在这个阶段中操作。</li>
-<li>无法与Dom进行交互，如果非要想，可以通过vm.$nextTick来访问Dom。</li>
-<li>异步数据的请求适合在 created 的钩子中使用，例如数据初始化。<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 这里created中getElementById会出错，因为视图中的html并没有渲染出来，所以此时如果直接去操作html的dom节点，一定找不到相关的元素</span><br><span class="line">// 而在mounted中，由于此时html已经渲染出来了，所以可以直接操作dom节点。</span><br><span class="line">created:function(){</span><br><span class="line">  this.name="唐浩益"</span><br><span class="line">  this.age = "12"</span><br><span class="line">  this.city ="杭州"</span><br><span class="line">  var x = document.getElementById("name")//第一个命令台错误</span><br><span class="line">  console.log(x.innerHTML);</span><br><span class="line">},</span><br><span class="line">mounted:function(){</span><br><span class="line">  var x = document.getElementById("name")//第二个命令台输出的结果</span><br><span class="line">  console.log(x.innerHTML);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="2-挂载阶段"><a href="#2-挂载阶段" class="headerlink" title="2. 挂载阶段"></a>2. 挂载阶段</h3></li>
+<li>2.3 查看hexo是否安装成功</li>
 </ul>
-<p><strong>2.1 beforeMount</strong><br>这个阶段完成了模板的编译，但是还没挂载到页面上。<br>要挂载的dom对象编译好了，但是页面的DOM树还没挂上去，这个阶段页面还没能显示出来。<br><strong>2.2 mounted</strong><br>这个阶段，模板编译好了，也挂载到页面中了，页面也可以显示了。<br>这里就可以使用document.getElementById去操作挂载好的dom元素了</p>
-<blockquote>
-<p>在实例挂载完成后被调用，这时候传递给 app.mount 的元素已经被新创建的 vm.$el 替换了。如果根实例被挂载到了一个文档内的元素上，当 mounted 被调用时， vm.$el 也会在文档内。 注意 mounted 不会保证所有的子组件也都被挂载完成。如果你希望等待整个视图都渲染完毕，可以在 mounted 内部使用 vm.$nextTick：</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mounted() {</span><br><span class="line">  this.$nextTick(function () {</span><br><span class="line">    // 仅在整个视图都被渲染之后才会运行的代码</span><br><span class="line">  })</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>该钩子在服务器端渲染期间不被调用。</p>
-<h3 id="3-运行阶段"><a href="#3-运行阶段" class="headerlink" title="3. 运行阶段"></a>3. 运行阶段</h3><p><strong>3.1 beforeUpdate</strong></p>
-<ul>
-<li>data中的数据已经更改</li>
-<li>准备挂载的dom中的数据也已更改</li>
-<li>页面已挂载的dom还未更改<blockquote>
-<p>在数据发生改变后，DOM 被更新之前被调用。这里适合在现有 DOM 将要被更新之前访问它，比如移除手动添加的事件监听器。<br>该钩子在服务器端渲染期间不被调用，因为只有初次渲染会在服务器端进行。</p>
-</blockquote>
-</li>
-</ul>
-<p><strong>3.2 updated</strong></p>
-<ul>
-<li>页面已挂载的dom也更新了</li>
-<li>我们应该避免在这个钩子函数中去更改状态，因为刚更改结束<blockquote>
-<p>updated 不会保证所有的子组件也都被重新渲染完毕。如果你希望等待整个视图都渲染完毕，可以在 updated 内部使用 vm.$nextTick：</p>
-</blockquote>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">updated</span>(<span class="params"></span>)</span> {</span><br><span class="line">  <span class="built_in">this</span>.$nextTick(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</span><br><span class="line">    <span class="comment">// 仅在整个视图都被重新渲染完毕之后才会运行的代码</span></span><br><span class="line">  })</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
-<li>用法，目前我自己还没有用到，百度发现了一个博主在做的即时聊天项目，打开当前会话加载完消息后需要自动滚动到窗口最底部，这里用updated就很合适<br>参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44041976/article/details/107584572">vue updated生命周期的使用场景，可以做什么</a><h3 id="4-销毁阶段"><a href="#4-销毁阶段" class="headerlink" title="4. 销毁阶段"></a>4. 销毁阶段</h3></li>
-</ul>
-<p><strong>4.1 beforeDestroy(vue3中定义为beforeUnmount)</strong></p>
-<ul>
-<li>beforeDestroy阶段处于vue实例被销毁之前，当然，这个阶段vue实例还能用.我们可以在这时进行善后收尾工作，比如清除计时器。</li>
-<li>该钩子在服务器端渲染期间不被调用。</li>
-</ul>
-<p><strong>4.2 destroyed(vue3:unmounted)</strong></p>
-<ul>
-<li>卸载组件实例后调用。调用此钩子时，只剩下了dom空壳,组件已被拆解，数据绑定被卸除,组件实例的所有指令都被解除绑定，所有事件侦听器都被移除，所有子组件实例被卸载。</li>
-<li>该钩子在服务器端渲染期间不被调用<blockquote>
-<p>在大多数场景中你不应该调用这个方法。最好使用 v-if 和 v-for 指令以数据驱动的方式控制子组件的生命周期。</p>
-</blockquote>
-<h2 id="三、生命周期示意图"><a href="#三、生命周期示意图" class="headerlink" title="三、生命周期示意图"></a>三、生命周期示意图</h2><img src="https://cn.vuejs.org/images/lifecycle.png" alt="生命周期示意图"></li>
-</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="二、开始搭建博客"><a href="#二、开始搭建博客" class="headerlink" title="二、开始搭建博客"></a>二、开始搭建博客</h2><h3 id="1-在想要的目录下新建一个空文件夹“myblog”"><a href="#1-在想要的目录下新建一个空文件夹“myblog”" class="headerlink" title="1. 在想要的目录下新建一个空文件夹“myblog”"></a>1. 在想要的目录下新建一个空文件夹“myblog”</h3><p>后续所有的东西都存在这个文件夹中</p>
+<h3 id="2-在这个目录下开始安装hexo博客框架，使用命令hexo-init"><a href="#2-在这个目录下开始安装hexo博客框架，使用命令hexo-init" class="headerlink" title="2. 在这个目录下开始安装hexo博客框架，使用命令hexo init"></a>2. 在这个目录下开始安装hexo博客框架，使用命令<code>hexo init</code></h3><p><img src="https://img-blog.csdnimg.cn/ecad79e252f246da84bbc5d516e3ef65.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA7oSbIOWtnOaAqeWEv--9ng==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h3 id="3-启动博客，使用命令hexo-s"><a href="#3-启动博客，使用命令hexo-s" class="headerlink" title="3. 启动博客，使用命令hexo s"></a>3. 启动博客，使用命令<code>hexo s</code></h3><p><img src="https://img-blog.csdnimg.cn/24ea0429204745799e6ff11da5b43ada.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA7oSbIOWtnOaAqeWEv--9ng==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>到此为止，我们的博客已经搭建起来了，并且可以本地通过<code>http://localhost:4000/</code>这个网址去访问，效果如下：<br><img src="https://img-blog.csdnimg.cn/eb6994876dd248af87ed5966500bd74c.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA7oSbIOWtnOaAqeWEv--9ng==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>可以看到，hexo不仅为我们搭建好了博客的框架，还自动生成了第一篇博客，其中包括一些hexo的基础命令操作：<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo n <span class="string">&quot;my first blog&quot;</span>  //新建一篇博文【new】，新建之后可以打开这个文件进行编辑内容</span><br><span class="line">hexo s  // 本地启动hexo，可以进行预览效果【server】</span><br><span class="line">hexo g  // 监视文件更改，重新生成页面</span><br><span class="line">hexo d  // 将更改部署到远程</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-添加新的博文"><a href="#4-添加新的博文" class="headerlink" title="4. 添加新的博文"></a>4. 添加新的博文</h3><p>可以直接在<code>...\myblog\source\_posts\</code>目录下直接添加新的markdown博文文档，也可以通过命令行来新建再添加内容<br>添加新博文之后需要进行更新操作：<code>hexo g</code>,<code>hexo s</code></p>
+<h2 id="三、把博客部署到github远端"><a href="#三、把博客部署到github远端" class="headerlink" title="三、把博客部署到github远端"></a>三、把博客部署到github远端</h2><h3 id="1-先打开自己的github主页，选择新建仓库"><a href="#1-先打开自己的github主页，选择新建仓库" class="headerlink" title="1. 先打开自己的github主页，选择新建仓库"></a>1. 先打开自己的github主页，选择新建仓库</h3><p><img src="https://img-blog.csdnimg.cn/3c9d9e4adbd148d8a004f252fe85342c.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA7oSbIOWtnOaAqeWEv--9ng==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>仓库名写：自己的用户名.gihub.io(比如我的用户名是Liuqianyik,那么我的仓库名叫Liuqianyik.github.io)<br>描述可以随便写，比如：我的hexo仓库<br>然后直接下拉点击创建仓库即可</p>
+<h3 id="2-安装hexo的git部署插件"><a href="#2-安装hexo的git部署插件" class="headerlink" title="2. 安装hexo的git部署插件"></a>2. 安装hexo的git部署插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
+<h3 id="3-配置博客"><a href="#3-配置博客" class="headerlink" title="3. 配置博客"></a>3. 配置博客</h3><p>在我们本地的文件夹myblog下找到_config.yml文件，拉到最底下，找到Deployment选项，增加type和repo<br><img src="https://img-blog.csdnimg.cn/f36a75844d344fa0bdd4628a029033d3.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA7oSbIOWtnOaAqeWEv--9ng==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>repo的网址就是刚才在github创建好的仓库的git地址，可以在这里直接复制<br><img src="https://img-blog.csdnimg.cn/830ea1f960854c2ea18ae3c406bfd73a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA7oSbIOWtnOaAqeWEv--9ng==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h3 id="4-将博客部署到远端"><a href="#4-将博客部署到远端" class="headerlink" title="4. 将博客部署到远端"></a>4. 将博客部署到远端</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>部署完成之后可以看到github的空仓库中出现了我们博客的文件，这时候我们就可以通过github的网址来在线访问博客啦<br>链接就是上一步git部署链接的后半部分，我的是<code>https://liuqianyik.github.io/</code><br><img src="https://img-blog.csdnimg.cn/06e80a0e66b6419d9e96ed39c191476c.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA7oSbIOWtnOaAqeWEv--9ng==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>在线访问效果和本地访问相同</p>
+<h2 id="四、更换主题"><a href="#四、更换主题" class="headerlink" title="四、更换主题"></a>四、更换主题</h2><p>程序羊推荐的主题：<a target="_blank" rel="noopener" href="https://github.com/litten/hexo-theme-yilia">https://github.com/litten/hexo-theme-yilia</a></p>
+<h3 id="1-下载主题-将别人的主题文件下载到我们本地的myblog-theme-yillia目录下"><a href="#1-下载主题-将别人的主题文件下载到我们本地的myblog-theme-yillia目录下" class="headerlink" title="1.下载主题(将别人的主题文件下载到我们本地的myblog/theme/yillia目录下)"></a>1.下载主题(将别人的主题文件下载到我们本地的myblog/theme/yillia目录下)</h3><pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/litten/hexo-theme-yilia.git theme/yillia</span><br></pre></td></tr></table></figure>
+如果报错可以参考：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/806e4e57c1e7492ba671144e49f24ac4.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA7oSbIOWtnOaAqeWEv--9ng==,size_20,color_FFFFFF,t_70,g_se,x_16)
+</code></pre>
+<h3 id="2-把主题配置到自己的博客中去"><a href="#2-把主题配置到自己的博客中去" class="headerlink" title="2.把主题配置到自己的博客中去"></a>2.把主题配置到自己的博客中去</h3><p>修改myblog/_config.yml文件：<br><img src="https://img-blog.csdnimg.cn/9e8de179771e452bacd2a467a4036c9a.png" alt="在这里插入图片描述"></p>
+<h3 id="3-重新生成，启动，部署hexo"><a href="#3-重新生成，启动，部署hexo" class="headerlink" title="3.重新生成，启动，部署hexo"></a>3.重新生成，启动，部署hexo</h3><pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo g // 监视更改的文件并重新生成</span><br><span class="line">hexo d // 远程可以看了</span><br><span class="line">hexo s // 本地可以通过4000端口看了</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p>​    </p>
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -265,84 +206,16 @@
       
 
       
-
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/23/%E5%9F%BA%E4%BA%8Ehexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/">展开全文 >></a>
+        </p>
       
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/07/04/Vue%E6%96%87%E6%A1%A3%E7%9F%A5%E8%AF%86/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2022/07/10/Vue%E6%8F%92%E4%BB%B6/vue-i18n%E7%94%A8%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          vue-i18n插件用法
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2022/06/08/Vue%E6%96%87%E6%A1%A3%E7%9F%A5%E8%AF%86/vue%20watch%E9%A6%96%E6%AC%A1%E8%B5%8B%E5%80%BC%E5%B0%B1%E8%A7%A6%E5%8F%91/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">vue首次赋值不触发watch</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -362,14 +235,12 @@
 
 
 
-  
-  
-  
 
   
-
   
-
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
   
 
 
@@ -392,8 +263,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
