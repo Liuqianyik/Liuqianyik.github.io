@@ -1,21 +1,54 @@
-<!DOCTYPE html><html class="appearance-dark" lang="en"><head><meta charset="UTF-8"><title>Liu Qianyi's blog</title><meta name="description" content="满怀希望就会所向披靡~"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
-<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/img/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/widget-post-list.css"><meta name="generator" content="Hexo 5.4.0">
+<!DOCTYPE html><html class="appearance-user-can-set" lang="en"><head><meta charset="UTF-8"><title>Liu Qianyi's blog</title><meta name="description" content="满怀希望就会所向披靡~"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/widget-post-list.css"><meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Lqy's Blog" type="application/atom+xml">
 </head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Liu Qianyi's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><span>Archives · 2022</span></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><article class="post-container is-flex is-justify-content-center section container is-max-widescreen pt-4 px-2"><div class="columns is-variable is-1-tablet is-3-desktop-only is-2-widescreen is-full-width"><section class="column"><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/08/13/Vue%E7%94%9F%E6%80%81/Vue%E5%AD%90%E7%BB%84%E4%BB%B6%E8%B0%83%E7%94%A8%E7%88%B6%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95/">Vue子组件调用父组件中的自定义方法</a></h2><time class="has-text-grey" datetime="2022-08-13T09:33:41.798Z">2022-08-13</time><p class="is-flex-grow-2 mt-2">在vue项目中，父子组件之间传参和互相调用方法是经常需要用到的，这里主要讨论子组件通过调用父组件的方法,主要有以下三种方式
-一、通过this.$parent调用父组件的方法1234567891011121314151617&amp;lt;!-- 父组件 --&amp;gt;&amp;lt;template&amp;gt;  &amp;lt;div&amp;gt;    &amp;lt;child&amp;gt;&amp;lt;/child&amp;gt;  &amp;lt;/div&amp;gt;&amp;lt;/template&amp;gt;&amp;lt;script&amp;gt;import child from '~/components/dam/child';export default {    components: { child },    methods: {        fatherMethod() { ..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/08/13/Vue%E7%94%9F%E6%80%81/Vue%E5%AD%90%E7%BB%84%E4%BB%B6%E8%B0%83%E7%94%A8%E7%88%B6%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/08/13/Vue%E6%8F%92%E4%BB%B6/vue-moment%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96/">vue-moment时间格式化</a></h2><time class="has-text-grey" datetime="2022-08-13T08:17:36.442Z">2022-08-13</time><p class="is-flex-grow-2 mt-2">一、参考资料
+一、通过this.$parent调用父组件的方法&amp;lt;!-- 父组件 --&amp;gt;
+&amp;lt;template&amp;gt;
+  &amp;lt;div&amp;gt;
+    &amp;lt;child&amp;gt;&amp;lt;/child&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+&amp;lt;script&amp;gt;
+import child from '~/components/dam/child';
+export default {
+    components: { child },
+    methods: {
+        fatherMethod() {
+            co..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/08/13/Vue%E7%94%9F%E6%80%81/Vue%E5%AD%90%E7%BB%84%E4%BB%B6%E8%B0%83%E7%94%A8%E7%88%B6%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/08/13/Vue%E6%8F%92%E4%BB%B6/vue-moment%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96/">vue-moment时间格式化</a></h2><time class="has-text-grey" datetime="2022-08-13T08:17:36.442Z">2022-08-13</time><p class="is-flex-grow-2 mt-2">一、参考资料
 momentjs官网
 momentjs官网中文版使用文档
 github：vue-moment
 
-二、vue安装插件及配置1. 通过npm安装1$ npm install vue-moment
-2. 在项目中引入并配置插件123456789// main.js全局引入import VueMoment from 'vue-moment'import moment from 'moment'// 设置本地时区moment.locale('zh-cn')Vue.use(VueMoment, {  moment})
+二、vue安装插件及配置1. 通过npm安装$ npm install vue-moment
 
-3. 使用一般后端传来的时间以及我们直接用new Date()。getTime()获取到的都是类似1656673259949的的字符串，在前端页面上展示的时间想要符合预期格式就需要用到mo..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/08/13/Vue%E6%8F%92%E4%BB%B6/vue-moment%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/08/13/Vue%E7%94%9F%E6%80%81/Vue%E4%B8%ADwatch%E5%AF%B9%E8%B1%A1%E5%86%85%E5%B1%9E%E6%80%A7%E7%9A%84%E6%96%B9%E6%B3%95/">Vue中watch对象内属性的方法</a></h2><time class="has-text-grey" datetime="2022-08-13T07:47:39.563Z">2022-08-13</time><p class="is-flex-grow-2 mt-2">一、问题提出vue提供了watch方法，用于监听实例内data数据的变化。通常写法是：
-123456789101112data: {    count: 10，    blog:{        title:'my-blog',        categories:[]    }},watch: {    count: function (newval, oldVal) {        console.log(`new: %s, old: %s`, newVal, oldVal);    }}
+2. 在项目中引入并配置插件// main.js全局引入
+import VueMoment from 'vue-moment'
+import moment from 'moment'
+
+// 设置本地时区
+moment.locale('zh-cn')
+Vue.use(VueMoment, {
+  moment
+})
+
+3. 使用一般后端传来的时间以及我们直接用new Date()。getTime()获取到的都是类似1656673259949的的字符串，在前端页面上展示的时间想要符合预期格式就需要用到mom..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/08/13/Vue%E6%8F%92%E4%BB%B6/vue-moment%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/08/13/Vue%E7%94%9F%E6%80%81/Vue%E4%B8%ADwatch%E5%AF%B9%E8%B1%A1%E5%86%85%E5%B1%9E%E6%80%A7%E7%9A%84%E6%96%B9%E6%B3%95/">Vue中watch对象内属性的方法</a></h2><time class="has-text-grey" datetime="2022-08-13T07:47:39.563Z">2022-08-13</time><p class="is-flex-grow-2 mt-2">一、问题提出vue提供了watch方法，用于监听实例内data数据的变化。通常写法是：
+data: {
+    count: 10，
+    blog:{
+        title:'my-blog',
+        categories:[]
+    }
+},
+watch: {
+    count: function (newval, oldVal) {
+        console.log(`new: %s, old: %s`, newVal, oldVal);
+    }
+}
+
 上述情况里data中的count属性可以直接监听但是如果需要监听的数据是对象内的某一属性值的变化:  
 
-直接watch整个对象的时候(eg:blog)会发现无论何时newval和oldVal的值都是一样的，这是因..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/08/13/Vue%E7%94%9F%E6%80%81/Vue%E4%B8%ADwatch%E5%AF%B9%E8%B1%A1%E5%86%85%E5%B1%9E%E6%80%A7%E7%9A%84%E6%96%B9%E6%B3%95/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/08/13/CSS/css%E7%9B%B8%E5%AF%B9%E5%8D%95%E4%BD%8Drem,em%E7%AD%89%E5%92%8C%E7%BB%9D%E5%AF%B9%E5%8D%95%E4%BD%8Dpx/">css相对单位rem,em等和绝对单位px</a></h2><time class="has-text-grey" datetime="2022-08-13T02:09:25.344Z">2022-08-13</time><p class="is-flex-grow-2 mt-2">一、介绍传统的项目开发中，我们只会用到px、%、em这几个单位，它可以适用于大部分的项目开发，且拥有比较良好的兼容性
+直接watch整个对象的时候(eg:blog)会发现无论何时newval和oldVal的值都是一样的，这是因为bl..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/08/13/Vue%E7%94%9F%E6%80%81/Vue%E4%B8%ADwatch%E5%AF%B9%E8%B1%A1%E5%86%85%E5%B1%9E%E6%80%A7%E7%9A%84%E6%96%B9%E6%B3%95/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/08/13/CSS/css%E7%9B%B8%E5%AF%B9%E5%8D%95%E4%BD%8Drem,em%E7%AD%89%E5%92%8C%E7%BB%9D%E5%AF%B9%E5%8D%95%E4%BD%8Dpx/">css相对单位rem,em等和绝对单位px</a></h2><time class="has-text-grey" datetime="2022-08-13T02:09:25.344Z">2022-08-13</time><p class="is-flex-grow-2 mt-2">一、介绍传统的项目开发中，我们只会用到px、%、em这几个单位，它可以适用于大部分的项目开发，且拥有比较良好的兼容性
 从CSS3开始，浏览器对计量单位的支持又提升到了另外一个境界，新增了rem、vh、vw、vm等一些新的计量单位
 利用这些新的单位开发出比较良好的响应式页面，适应多种不同分辨率的终端，包括移动设备等
 二、长度单位分类总体来说css中的长度单位可以分为两种：相对长度单位和绝对长度单位
@@ -42,12 +75,18 @@ cm、mm、in、px、pt、pc
 elementui中el-button点击后不失去焦点(按钮颜色不变)的解决
 Preventing multiple clicks on button
 
-解决方案1234&amp;lt;!-- 点击该按钮，就会触发restart方法，向后端发起ajax请求 --&amp;gt;&amp;lt;button @click=&quot;restart&quot; id=&quot;restart&quot;&amp;gt;    &amp;lt;i class=&quot;bx bx-revision me-1&quot;&amp;gt;&amp;lt;/i..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/08/13/JavaScript/%E9%98%B2%E6%AD%A2%E6%8C%89%E9%92%AE%E5%A4%9A%E6%AC%A1%E7%82%B9%E5%87%BB%E4%BB%A5%E5%8F%8A%E7%82%B9%E5%87%BB%E5%90%8E%E4%B8%8D%E8%87%AA%E5%8A%A8%E5%A4%B1%E7%84%A6%E9%97%AE%E9%A2%98/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/07/30/Vue%E7%94%9F%E6%80%81/Vue%20Router/">Vue Router</a></h2><time class="has-text-grey" datetime="2022-07-30T01:55:23.060Z">2022-07-30</time><p class="is-flex-grow-2 mt-2">通过 Vue.js，我们已经用组件组成了我们的应用。当加入 Vue Router 时，我们需要做的就是将我们的组件映射到路由上，让 Vue Router 知道在哪里渲染它们。
+解决方案&amp;lt;!-- 点击该按钮，就会触发restart方法，向后端发起ajax请求 --&amp;gt;
+&amp;lt;button @click=&quot;restart&quot; id=&quot;restart&quot;&amp;gt;
+    &amp;lt;i class=&quot;bx bx-revision me-1&quot;&amp;gt;&amp;lt;/i&amp;g..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/08/13/JavaScript/%E9%98%B2%E6%AD%A2%E6%8C%89%E9%92%AE%E5%A4%9A%E6%AC%A1%E7%82%B9%E5%87%BB%E4%BB%A5%E5%8F%8A%E7%82%B9%E5%87%BB%E5%90%8E%E4%B8%8D%E8%87%AA%E5%8A%A8%E5%A4%B1%E7%84%A6%E9%97%AE%E9%A2%98/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/07/30/Vue%E7%94%9F%E6%80%81/Vue%20Router/">Vue Router</a></h2><time class="has-text-grey" datetime="2022-07-30T01:55:23.060Z">2022-07-30</time><p class="is-flex-grow-2 mt-2">通过 Vue.js，我们已经用组件组成了我们的应用。当加入 Vue Router 时，我们需要做的就是将我们的组件映射到路由上，让 Vue Router 知道在哪里渲染它们。
 基础概念
 路由是指根据url的不同，展示不同的内容
 router-link是跳转路由的标签，通过点击router-link标签，可以帮我们快速跳转到设置的路由下去
 router-view负责展示当前路由对应的组件内容
-/route/index.js文件下定义不同路由和其对应组件之间的关系最简实例12345678910111213&amp;lt;div id=&quot;app&quot;&amp;gt;  &amp;lt;h1&amp;gt;Hello App!&amp;lt;/h1&amp;gt;  &amp;lt;p&amp;gt;    &amp;lt;!--使用 router-link 组件进行导航 --&amp;gt;  ..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/07/30/Vue%E7%94%9F%E6%80%81/Vue%20Router/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/07/24/PsiAI%E9%A1%B9%E7%9B%AE/vue%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95%E4%B8%AD%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8/">vue项目目录中各文件的作用</a></h2><time class="has-text-grey" datetime="2022-07-24T03:08:36.363Z">2022-07-24</time><p class="is-flex-grow-2 mt-2">
+/route/index.js文件下定义不同路由和其对应组件之间的关系最简实例&amp;lt;div id=&quot;app&quot;&amp;gt;
+&amp;lt;h1&amp;gt;Hello App!&amp;lt;/h1&amp;gt;
+&amp;lt;p&amp;gt;
+ &amp;lt;!--使用 router-link 组件进行导航 --&amp;gt;
+ &amp;lt;!--通过传递 `to` 来指定路..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/07/30/Vue%E7%94%9F%E6%80%81/Vue%20Router/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/07/24/PsiAI%E9%A1%B9%E7%9B%AE/vue%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95%E4%B8%AD%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8/">vue项目目录中各文件的作用</a></h2><time class="has-text-grey" datetime="2022-07-24T03:08:36.363Z">2022-07-24</time><p class="is-flex-grow-2 mt-2">
 node_modules: 用于存放我们项目的各种依赖，比如axios等，没有moudles文件，项目就没法运行，可以使用 npm install进行项目依赖的安装
 public:用于存放静态文件
 public/index.html:是一个模板文件，作用是生成项目的入口文件，webpack打包的js,css也会自动注入到该页面中。我们浏览器访问项目的时候就会默认打开生成好的index.html
@@ -58,9 +97,13 @@ src/views：用于存放我们写好的各种页面，如login、main等
 src/APP.VUE: 主vue模块 引入其他模块，app.v..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/07/24/PsiAI%E9%A1%B9%E7%9B%AE/vue%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95%E4%B8%AD%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/07/23/PsiAI%E9%A1%B9%E7%9B%AE/%E5%9C%A8%E6%9C%AC%E6%9C%BA%E8%BF%90%E8%A1%8Cdvclab%E9%A1%B9%E7%9B%AE%E6%AD%A5%E9%AA%A4/">在本机运行dvclab项目步骤</a></h2><time class="has-text-grey" datetime="2022-07-23T08:10:38.568Z">2022-07-23</time><p class="is-flex-grow-2 mt-2">1. 安装git参考廖雪峰Git
 2. 克隆项目到本地
 在gitlab或者github找到想clone的项目地址，如https://gitlab.dvclab.com/frontend/DvcAI-fe.git  
-到你想下载的目录下打开命令行 1git clone https://gitlab.dvclab.com/frontend/DvcAI-fe.git
-3. 下载依赖包: 一开始项目是用yarn构建的 1yarn install
-4. 运行项目 1npm run dev
+到你想下载的目录下打开命令行git clone https://gitlab.dvclab.com/frontend/DvcAI-fe.git
+
+3. 下载依赖包: 一开始项目是用yarn构建的yarn install
+
+4. 运行项目npm run dev
+
+
 
 </p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/07/23/PsiAI%E9%A1%B9%E7%9B%AE/%E5%9C%A8%E6%9C%AC%E6%9C%BA%E8%BF%90%E8%A1%8Cdvclab%E9%A1%B9%E7%9B%AE%E6%AD%A5%E9%AA%A4/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/sublime"><i class="tag post-item-tag">sublime</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/07/18/sublime%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E8%AE%B0%E5%BD%95/">sublime使用方法记录</a></h2><time class="has-text-grey" datetime="2022-07-18T03:53:53.544Z">2022-07-18</time><p class="is-flex-grow-2 mt-2">  之前一直用的是vscode，现在因为导师要求和项目需要，改用sublime，记录一下从零到一的使用过程，留下一些使用技巧供自己以后回顾
 一、下载安装直接去官网sublime下载，是免费的
@@ -74,20 +117,24 @@ src/APP.VUE: 主vue模块 引入其他模块，app.v..</p><a class="button is-de
 一、js中的注释分为三种：单行注释、多行注释、方法注释
 1. 单行注释
 最常见的”//“,在程序间随处可见,只能注释单行
-比较重要，高亮颜色需要最醒目12// 这是一行注释，只能注释单行。// 另一行注释
+比较重要，高亮颜色需要最醒目// 这是一行注释，只能注释单行。
+// 另一行注释
+
 2. 多行注释multi-line comment
 多行注释以 /* 开始，以 */ 结尾
 一般js文件开头，介绍作者，函数等信息
-一般不太重要，高亮颜色设为不影响阅读代码的灰色即可1234/*author:xxxday:2008-08-10*/
-3. 方法注释function annotation
-在方法之前定义，描述这个函数的功能，参数，编写者等信息
-注释颜色醒目程度介于1，2之间12345678..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/07/13/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/js,html,css%E6%B3%A8%E9%87%8A%E6%96%B9%E5%BC%8F/">Read more</a></section></article><section class="paginator is-flex is-justify-content-flex-end is-flex-wrap-wrap mt-5"><span class="page-number current">1</span><a class="page-number" href="/archives/2022/page/2/">2</a><a class="extend next" rel="next" href="/archives/2022/page/2/"><i class="iconfont icon-next has-text-grey"></i></a></section></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container archives-widget is-in-archive-page"><h3>Archives</h3><section><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">1</span></li></ul></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+一般不太重要，高亮颜色设为不影响阅读代码的灰色即可```js/*author:xxxday:2008-08-10
+
+*/
+### 3. 方法注释function annotation
+- 在方法之前定义，描述这个函数的功能，参数，编写者等信息
+- 注释颜色醒目程度介于1，..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/07/13/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/js,html,css%E6%B3%A8%E9%87%8A%E6%96%B9%E5%BC%8F/">Read more</a></section></article><section class="paginator is-flex is-justify-content-flex-end is-flex-wrap-wrap mt-5"><span class="page-number current">1</span><a class="page-number" href="/archives/2022/page/2/">2</a><a class="extend next" rel="next" href="/archives/2022/page/2/"><i class="iconfont icon-next has-text-grey"></i></a></section></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container archives-widget is-in-archive-page"><h3>Archives</h3><section><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">1</span></li></ul></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
 
 window.addEventListener('resize', $claudia.throttle(function () {
     var images = document.querySelectorAll('.js-img-fadeIn')
 
     images.forEach($claudia.blurBackdropImg)
-}, 150))</script></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/haojen"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Liu Qianyi 2023</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+}, 150))</script></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Liuqianyik"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Liu Qianyi 2023</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
 
 window.addEventListener('resize', $claudia.throttle(function () {
     var images = document.querySelectorAll('.js-img-fadeIn')

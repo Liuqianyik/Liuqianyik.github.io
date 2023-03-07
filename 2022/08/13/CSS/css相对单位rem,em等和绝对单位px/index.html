@@ -1,5 +1,5 @@
-<!DOCTYPE html><html class="appearance-dark" lang="en"><head><meta charset="UTF-8"><title>css相对单位rem,em等和绝对单位px</title><meta name="description" content="满怀希望就会所向披靡~"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
-<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/img/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/common/jquery.fancybox.min.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="一、介绍传统的项目开发中，我们只会用到px、%、em这几个单位，它可以适用于大部分的项目开发，且拥有比较良好的兼容性
+<!DOCTYPE html><html class="appearance-user-can-set" lang="en"><head><meta charset="UTF-8"><title>css相对单位rem,em等和绝对单位px</title><meta name="description" content="满怀希望就会所向披靡~"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/common/jquery.fancybox.min.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="一、介绍传统的项目开发中，我们只会用到px、%、em这几个单位，它可以适用于大部分的项目开发，且拥有比较良好的兼容性
 从CSS3开始，浏览器对计量单位的支持又提升到了另外一个境界，新增了rem、vh、vw、vm等一些新的计量单位
 利用这些新的单位开发出比较良好的响应式页面，适应多种不同分辨率的终端，包括移动设备等
 二、长度单位分类总体来说css中的长度单位可以分为两种：相对长度单位和绝对长度单位
@@ -44,12 +44,21 @@ cm、mm、in、px、pt、pc
 <ul>
 <li>em 的值并不是固定的</li>
 <li>em 会继承父级元素的字体大小</li>
-<li>em 是相对长度单位。相对于当前对象内文本的字体尺寸。如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸.任意浏览器的默认字体高都是 16px<br>举个例子<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line">    我是系统字体16px</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"font-size:2em"</span> <span class="attr">id</span>=<span class="string">"2"</span>&gt;</span></span><br><span class="line">        我是相对父级元素[1]字体大小2倍，32px</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"font-size:2em"</span> <span class="attr">id</span>=<span class="string">"3"</span>&gt;</span></span><br><span class="line">            我是相对父级元素[2]字体大小2倍，相对元素[1]字体大小4倍，64px</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li>em 是相对长度单位。相对于当前对象内文本的字体尺寸。如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸.任意浏览器的默认字体高都是 16px<br>举个例子<pre><code class="html">&lt;div id="1"&gt;
+  我是系统字体16px
+  &lt;div style="font-size:2em" id="2"&gt;
+      我是相对父级元素[1]字体大小2倍，32px
+      &lt;div style="font-size:2em" id="3"&gt;
+          我是相对父级元素[2]字体大小2倍，相对元素[1]字体大小4倍，64px
+      &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+</li>
 </ul>
 <h3 id="3-rem"><a href="#3-rem" class="headerlink" title="3. rem"></a>3. rem</h3><p>rem，相对单位，相对的只是HTML根元素font-size的值</p>
 <p>同理，如果想要简化font-size的转化，我们可以在根元素html中加入font-size: 62.5%</p>
-<p>html {font-size: 62.5%;  } /*  公式16px*62.5%=10px  */<br>这样页面中1rem=10px、1.2rem=12px、1.4rem=14px、1.6rem=16px;使得视觉、使用、书写都得到了极大的帮助</p>
-<p>特点：</p>
+<p>html {font-size: 62.5%;  } /*  公式16px*62.5%=10px  */<br>这样页面中1rem=10px、1.2rem=12px、1.4rem=14px、1.6rem=16px;使得视觉、使用、书写都得到了极大的帮助<br>特点：</p>
 <ul>
 <li><p>rem单位可谓集相对大小和绝对大小的优点于一身</p>
 </li>
@@ -57,8 +66,16 @@ cm、mm、in、px、pt、pc
 </li>
 </ul>
 <p>举个例子</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line">    我是系统字体16px</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"font-size:2rem"</span> <span class="attr">id</span>=<span class="string">"2"</span>&gt;</span></span><br><span class="line">        我是相对根元素字体的2倍：32px</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"font-size:2rem"</span> <span class="attr">id</span>=<span class="string">"3"</span>&gt;</span></span><br><span class="line">            我也是相对根元素字体的2倍：32px</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-
+<pre><code class="html">&lt;div id="1"&gt;
+    我是系统字体16px
+    &lt;div style="font-size:2rem" id="2"&gt;
+        我是相对根元素字体的2倍：32px
+        &lt;div style="font-size:2rem" id="3"&gt;
+            我也是相对根元素字体的2倍：32px
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
 <h3 id="4-vw"><a href="#4-vw" class="headerlink" title="4. vw"></a>4. vw</h3><p>css3新单位，viewpoint width的缩写，视窗宽度，1vw等于视窗宽度的1%。</p>
 <p>举个例子：浏览器宽度1200px, 1 vw = 1200px/100 = 12 px。</p>
 <h3 id="5-vh"><a href="#5-vh" class="headerlink" title="5. vh"></a>5. vh</h3><p>css3新单位，viewpoint height的缩写，视窗高度，1vh等于视窗高度的1%。</p>
@@ -68,8 +85,11 @@ cm、mm、in、px、pt、pc
 <p>2、对于position: absolute;的元素是相对于已定位的父元素</p>
 <p>3、对于position: fixed;的元素是相对于 ViewPort（可视窗口）</p>
 <h2 id="四、补充"><a href="#四、补充" class="headerlink" title="四、补充"></a>四、补充</h2><ol>
-<li>一般情况下我们会在代码根元素中设置<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>{</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">62.5%</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<li>一般情况下我们会在代码根元素中设置<pre><code class="css">body{
+ font-size: 62.5%;
+}
+</code></pre>
 使得根元素字体大小为10px，这样方便换算1.2rem=12px</li>
 <li>谷歌浏览器强制最小字体为12号，即使设置成 10px 最终都会显示成 12px，当把html的font-size设置成10px,子节点rem的计算还是以12px为基准</li>
 </ol>
-</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2022/08/13/Vue%E7%94%9F%E6%80%81/Vue%E4%B8%ADwatch%E5%AF%B9%E8%B1%A1%E5%86%85%E5%B1%9E%E6%80%A7%E7%9A%84%E6%96%B9%E6%B3%95/" title="Vue中watch对象内属性的方法"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Vue中watch对象内属性的方法</span></a><a class="button is-default" href="/2022/08/13/JavaScript/%E9%98%B2%E6%AD%A2%E6%8C%89%E9%92%AE%E5%A4%9A%E6%AC%A1%E7%82%B9%E5%87%BB%E4%BB%A5%E5%8F%8A%E7%82%B9%E5%87%BB%E5%90%8E%E4%B8%8D%E8%87%AA%E5%8A%A8%E5%A4%B1%E7%84%A6%E9%97%AE%E9%A2%98/" title="防止按钮多次点击以及点击后不自动失焦问题"><span class="has-text-weight-semibold">Next: 防止按钮多次点击以及点击后不自动失焦问题</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Haojen/Claudia-theme-blog" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/haojen"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Liu Qianyi 2023</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"></script></body></html>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2022/08/13/Vue%E7%94%9F%E6%80%81/Vue%E4%B8%ADwatch%E5%AF%B9%E8%B1%A1%E5%86%85%E5%B1%9E%E6%80%A7%E7%9A%84%E6%96%B9%E6%B3%95/" title="Vue中watch对象内属性的方法"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Vue中watch对象内属性的方法</span></a><a class="button is-default" href="/2022/08/13/JavaScript/%E9%98%B2%E6%AD%A2%E6%8C%89%E9%92%AE%E5%A4%9A%E6%AC%A1%E7%82%B9%E5%87%BB%E4%BB%A5%E5%8F%8A%E7%82%B9%E5%87%BB%E5%90%8E%E4%B8%8D%E8%87%AA%E5%8A%A8%E5%A4%B1%E7%84%A6%E9%97%AE%E9%A2%98/" title="防止按钮多次点击以及点击后不自动失焦问题"><span class="has-text-weight-semibold">Next: 防止按钮多次点击以及点击后不自动失焦问题</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Liuqianyik/Liuqianyik.github.io" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Liuqianyik"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Liu Qianyi 2023</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"></script></body></html>

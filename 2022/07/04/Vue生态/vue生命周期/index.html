@@ -1,5 +1,5 @@
-<!DOCTYPE html><html class="appearance-dark" lang="en"><head><meta charset="UTF-8"><title>vue生命周期的概念及用法</title><meta name="description" content="满怀希望就会所向披靡~"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
-<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/img/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/common/jquery.fancybox.min.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="vue的生命周期在做项目的过程中经常需要用到，在这里做简要记录,参考:
+<!DOCTYPE html><html class="appearance-user-can-set" lang="en"><head><meta charset="UTF-8"><title>vue生命周期的概念及用法</title><meta name="description" content="满怀希望就会所向披靡~"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/common/jquery.fancybox.min.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="vue的生命周期在做项目的过程中经常需要用到，在这里做简要记录,参考:
 
 vue生命周期详解
 一文带你弄懂Vue八大生命周期钩子函数
@@ -28,14 +28,32 @@ vue的生命周期就是每个Vue实例在被创建时都要经过一系列的�
 <ul>
 <li>data 和 methods 都已经被初始化好了，如果要调用 methods 中的方法，或者操作 data 中的数据，最早可以在这个阶段中操作。</li>
 <li>无法与Dom进行交互，如果非要想，可以通过vm.$nextTick来访问Dom。</li>
-<li>异步数据的请求适合在 created 的钩子中使用，例如数据初始化。<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 这里created中getElementById会出错，因为视图中的html并没有渲染出来，所以此时如果直接去操作html的dom节点，一定找不到相关的元素</span><br><span class="line">// 而在mounted中，由于此时html已经渲染出来了，所以可以直接操作dom节点。</span><br><span class="line">created:function(){</span><br><span class="line">  this.name="唐浩益"</span><br><span class="line">  this.age = "12"</span><br><span class="line">  this.city ="杭州"</span><br><span class="line">  var x = document.getElementById("name")//第一个命令台错误</span><br><span class="line">  console.log(x.innerHTML);</span><br><span class="line">},</span><br><span class="line">mounted:function(){</span><br><span class="line">  var x = document.getElementById("name")//第二个命令台输出的结果</span><br><span class="line">  console.log(x.innerHTML);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<li>异步数据的请求适合在 created 的钩子中使用，例如数据初始化。<pre><code>// 这里created中getElementById会出错，因为视图中的html并没有渲染出来，所以此时如果直接去操作html的dom节点，一定找不到相关的元素
+// 而在mounted中，由于此时html已经渲染出来了，所以可以直接操作dom节点。
+created:function(){
+this.name="唐浩益"
+this.age = "12"
+this.city ="杭州"
+var x = document.getElementById("name")//第一个命令台错误
+console.log(x.innerHTML);
+},
+mounted:function(){
+var x = document.getElementById("name")//第二个命令台输出的结果
+console.log(x.innerHTML);
+}
+</code></pre>
 <h3 id="2-挂载阶段"><a href="#2-挂载阶段" class="headerlink" title="2. 挂载阶段"></a>2. 挂载阶段</h3></li>
 </ul>
 <p><strong>2.1 beforeMount</strong><br>这个阶段完成了模板的编译，但是还没挂载到页面上。<br>要挂载的dom对象编译好了，但是页面的DOM树还没挂上去，这个阶段页面还没能显示出来。<br><strong>2.2 mounted</strong><br>这个阶段，模板编译好了，也挂载到页面中了，页面也可以显示了。<br>这里就可以使用document.getElementById去操作挂载好的dom元素了</p>
 <blockquote>
 <p>在实例挂载完成后被调用，这时候传递给 app.mount 的元素已经被新创建的 vm.$el 替换了。如果根实例被挂载到了一个文档内的元素上，当 mounted 被调用时， vm.$el 也会在文档内。 注意 mounted 不会保证所有的子组件也都被挂载完成。如果你希望等待整个视图都渲染完毕，可以在 mounted 内部使用 vm.$nextTick：</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mounted() {</span><br><span class="line">  this.$nextTick(function () {</span><br><span class="line">    // 仅在整个视图都被渲染之后才会运行的代码</span><br><span class="line">  })</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>mounted() {
+  this.$nextTick(function () {
+    // 仅在整个视图都被渲染之后才会运行的代码
+  })
+}
+</code></pre>
 <p>该钩子在服务器端渲染期间不被调用。</p>
 <h3 id="3-运行阶段"><a href="#3-运行阶段" class="headerlink" title="3. 运行阶段"></a>3. 运行阶段</h3><p><strong>3.1 beforeUpdate</strong></p>
 <ul>
@@ -52,7 +70,13 @@ vue的生命周期就是每个Vue实例在被创建时都要经过一系列的�
 <li>我们应该避免在这个钩子函数中去更改状态，因为刚更改结束<blockquote>
 <p>updated 不会保证所有的子组件也都被重新渲染完毕。如果你希望等待整个视图都渲染完毕，可以在 updated 内部使用 vm.$nextTick：</p>
 </blockquote>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">updated</span>(<span class="params"></span>)</span> {</span><br><span class="line">  <span class="built_in">this</span>.$nextTick(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</span><br><span class="line">    <span class="comment">// 仅在整个视图都被重新渲染完毕之后才会运行的代码</span></span><br><span class="line">  })</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
+<pre><code class="js">updated() {
+this.$nextTick(function () {
+  // 仅在整个视图都被重新渲染完毕之后才会运行的代码
+})
+}
+</code></pre>
+</li>
 <li>用法，目前我自己还没有用到，百度发现了一个博主在做的即时聊天项目，打开当前会话加载完消息后需要自动滚动到窗口最底部，这里用updated就很合适<br>参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44041976/article/details/107584572">vue updated生命周期的使用场景，可以做什么</a><h3 id="4-销毁阶段"><a href="#4-销毁阶段" class="headerlink" title="4. 销毁阶段"></a>4. 销毁阶段</h3></li>
 </ul>
 <p><strong>4.1 beforeDestroy(vue3中定义为beforeUnmount)</strong></p>
@@ -68,4 +92,4 @@ vue的生命周期就是每个Vue实例在被创建时都要经过一系列的�
 </blockquote>
 <h2 id="三、生命周期示意图"><a href="#三、生命周期示意图" class="headerlink" title="三、生命周期示意图"></a>三、生命周期示意图</h2><img src="https://cn.vuejs.org/images/lifecycle.png" alt="生命周期示意图"></li>
 </ul>
-</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2022/07/10/Vue%E6%8F%92%E4%BB%B6/vue-i18n%E7%94%A8%E6%B3%95/" title="vue-i18n插件用法"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: vue-i18n插件用法</span></a><a class="button is-default" href="/2022/06/08/Vue%E7%94%9F%E6%80%81/vue%20watch%E9%A6%96%E6%AC%A1%E8%B5%8B%E5%80%BC%E5%B0%B1%E8%A7%A6%E5%8F%91/" title="vue首次赋值不触发watch"><span class="has-text-weight-semibold">Next: vue首次赋值不触发watch</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Haojen/Claudia-theme-blog" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/haojen"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Liu Qianyi 2023</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"></script></body></html>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2022/07/10/Vue%E6%8F%92%E4%BB%B6/vue-i18n%E7%94%A8%E6%B3%95/" title="vue-i18n插件用法"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: vue-i18n插件用法</span></a><a class="button is-default" href="/2022/06/08/Vue%E7%94%9F%E6%80%81/vue%20watch%E9%A6%96%E6%AC%A1%E8%B5%8B%E5%80%BC%E5%B0%B1%E8%A7%A6%E5%8F%91/" title="vue首次赋值不触发watch"><span class="has-text-weight-semibold">Next: vue首次赋值不触发watch</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Liuqianyik/Liuqianyik.github.io" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Liuqianyik"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Liu Qianyi 2023</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"></script></body></html>
